@@ -124,7 +124,7 @@ Temperature      ESP8266 NodeMCU
     ],
     technologies: ["Laravel", "MySQL", "HTML", "CSS", "JavaScript", "AI Assistant"],
     gallery: [
-      "/assets/images/projects/dimsio-pos/thumbnail.jpg",
+      "/assets/images/projects/dimsio-pos/Thumbnail.jpeg",
       "/assets/images/projects/dimsio-pos/Poster.jpeg",
       "/assets/images/projects/dimsio-pos/Dashboard.jpeg",
       "/assets/images/projects/dimsio-pos/Kasir.jpeg",
@@ -211,7 +211,7 @@ Temperature      ESP8266 NodeMCU
 Smartphone Dashboard`,
     architectureImage: "/assets/images/projects/vehicle-emission/System-Architecture.png",
     gallery: [
-      "/assets/images/projects/vehicle-emission/thumbnail.jpg",
+      "/assets/images/projects/vehicle-emission/Thumbnail.png",
       "/assets/images/projects/vehicle-emission/Cuplikan-layar-2026-07-12-125114.png",
       "/assets/images/projects/vehicle-emission/WhatsApp-Image-2026-07-12-at-12.48.49.jpeg",
       "/assets/images/projects/vehicle-emission/WhatsApp-Image-2026-07-12-at-12.49.19.jpeg",
