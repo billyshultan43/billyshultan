@@ -14,7 +14,7 @@ export const profile = {
   summary:
     "Electrical Engineering graduate with more than 2 years of experience in the development, assembly, and maintenance of environmental laboratory testing equipment. Experienced in digitalizing air quality monitoring equipment, troubleshooting, maintenance, and delivering technical training to customers. Committed to supporting the operation and engineering system development across the energy, environmental, and manufacturing industries.",
   heroSummary:
-    "Electrical Engineer specializing in IoT, Embedded Systems, and AI Integration. Designing end-to-end connected systems that bring together electronics, embedded firmware, and cloud applications to solve real-world engineering challenges.",
+    "Electrical Engineer specializing in IoT, Embedded Systems, and AI Integration. Building end-to-end connected systems that connect embedded hardware, firmware, and cloud applications for industrial and environmental monitoring.",
   location: "Jakarta Barat, DKI Jakarta",
   profileImage: "/assets/images/profile/profile.jpg",
   cvFile: "/assets/cv/cv.pdf",
