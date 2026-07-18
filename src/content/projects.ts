@@ -66,7 +66,7 @@ Temperature      ESP8266 NodeMCU
        Mobile Dashboard`,
     architectureImage: "/assets/images/projects/ambient-particulate/System-Architecture.png",
     gallery: [
-      "/assets/images/projects/ambient-particulate/thumbnail.jpg",
+      "/assets/images/projects/ambient-particulate/thumbnail-v2.jpg",
       "/assets/images/projects/ambient-particulate/X-Banner_AGIF-Team.png",
       "/assets/images/projects/ambient-particulate/3D-Design-Tampak-Dalam.png",
       "/assets/images/projects/ambient-particulate/3D-Design-Tampak-Luar.png",
