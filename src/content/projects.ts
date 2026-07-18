@@ -66,11 +66,12 @@ Temperature      ESP8266 NodeMCU
        Mobile Dashboard`,
     architectureImage: "/assets/images/projects/ambient-particulate/System-Architecture.png",
     gallery: [
+      "/assets/images/projects/ambient-particulate/thumbnail.jpg",
+      "/assets/images/projects/ambient-particulate/X-Banner_AGIF-Team.png",
       "/assets/images/projects/ambient-particulate/3D-Design-Tampak-Dalam.png",
       "/assets/images/projects/ambient-particulate/3D-Design-Tampak-Luar.png",
       "/assets/images/projects/ambient-particulate/System-Architecture.png",
       "/assets/images/projects/ambient-particulate/Screenshot_20231205_230018_cloud.blynk.jpg",
-      "/assets/images/projects/ambient-particulate/X-Banner_AGIF-Team.png",
       "/assets/images/projects/ambient-particulate/WhatsApp-Image-2024-01-20-at-22.44.40_38e1d0a0.jpg",
       "/assets/images/projects/ambient-particulate/WhatsApp-Image-2026-07-12-at-07.33.28.jpeg",
     ],
@@ -123,6 +124,8 @@ Temperature      ESP8266 NodeMCU
     ],
     technologies: ["Laravel", "MySQL", "HTML", "CSS", "JavaScript", "AI Assistant"],
     gallery: [
+      "/assets/images/projects/dimsio-pos/thumbnail.jpg",
+      "/assets/images/projects/dimsio-pos/Poster.jpeg",
       "/assets/images/projects/dimsio-pos/Dashboard.jpeg",
       "/assets/images/projects/dimsio-pos/Kasir.jpeg",
       "/assets/images/projects/dimsio-pos/Menu.jpeg",
@@ -133,7 +136,6 @@ Temperature      ESP8266 NodeMCU
       "/assets/images/projects/dimsio-pos/Ai-Grafik-dan-Analisis.jpeg",
       "/assets/images/projects/dimsio-pos/Laporan.jpeg",
       "/assets/images/projects/dimsio-pos/Struk.jpeg",
-      "/assets/images/projects/dimsio-pos/Poster.jpeg",
       "/assets/images/projects/dimsio-pos/System-Architecture.jpeg",
     ],
     documents: [
@@ -209,6 +211,7 @@ Temperature      ESP8266 NodeMCU
 Smartphone Dashboard`,
     architectureImage: "/assets/images/projects/vehicle-emission/System-Architecture.png",
     gallery: [
+      "/assets/images/projects/vehicle-emission/thumbnail.jpg",
       "/assets/images/projects/vehicle-emission/Cuplikan-layar-2026-07-12-125114.png",
       "/assets/images/projects/vehicle-emission/WhatsApp-Image-2026-07-12-at-12.48.49.jpeg",
       "/assets/images/projects/vehicle-emission/WhatsApp-Image-2026-07-12-at-12.49.19.jpeg",
