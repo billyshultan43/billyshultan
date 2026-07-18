@@ -22,9 +22,9 @@ const stats = [
   { value: "2+", label: "Years of Experience" },
   { value: "3", label: "Featured Projects" },
   { value: "15+", label: "Technologies" },
+  { value: "Electrical", label: "Engineer" },
   { value: "IoT", label: "Embedded Systems" },
   { value: "AI", label: "Integration" },
-  { value: "Full Stack", label: "Development" },
 ];
 
 export default function ResumePage() {
