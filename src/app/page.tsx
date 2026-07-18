@@ -82,19 +82,19 @@ export default function HomePage() {
       <section className="section-container section-padding">
         <SectionHeading
           eyebrow="Skills"
-          title="What I work with"
-          description="Technologies and domains I apply across hardware, connectivity, and software."
+          title="Technical Expertise"
+          description="Technologies, engineering expertise, and software tools I use to build IoT, embedded, and full-stack solutions."
           className="mb-10"
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((cat, i) => (
             <Reveal key={cat.name} delay={i * 0.05}>
-              <Card className="h-full p-6">
+              <Card className="h-full p-4">
                 <div className="flex items-center gap-2.5">
                   <Code2 size={16} className="text-accent" />
                   <h3 className="text-sm font-semibold text-white">{cat.name}</h3>
                 </div>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-3 flex flex-wrap gap-1.5">
                   {cat.skills.map((s) => (
                     <Badge key={s}>{s}</Badge>
                   ))}
