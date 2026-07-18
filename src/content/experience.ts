@@ -7,7 +7,7 @@ export const experience: ExperienceItem[] = [
     company: "PT Maju Selaras Instrumindo",
     period: "Dec 2023 – Present",
     current: true,
-    technologies: ["Air Quality Monitoring", "Water Quality Monitoring", "IoT", "Embedded Systems"],
+    technologies: ["ESP32", "Laravel", "Flutter", "Supabase", "PostgreSQL", "Arduino IDE", "Blynk", "MQTT", "IoT Sensors"],
     responsibilities: [
       "Contributed to the development and digitalization of ambient air quality monitoring equipment, including the High Volume Air Sampler (HVAS) for TSP, PM10, and PM2.5, to improve measurement efficiency and accuracy.",
       "Designed and developed a Water Quality Monitoring System end-to-end, integrating sensors, microcontroller, database, and a web-based monitoring dashboard — covering hardware selection, software development, database design, electrical system, mechanical design, and installation foundation.",
@@ -24,6 +24,7 @@ export const experience: ExperienceItem[] = [
     role: "Laboratory Assistant",
     company: "Electrical Engineering Laboratory, Universitas Mercu Buana",
     period: "Feb 2021 – Feb 2023",
+    technologies: ["Arduino IDE", "MATLAB", "Electrical Instruments", "PLC", "Embedded Systems"],
     responsibilities: [
       "Assisted and guided students in Electrical Engineering practical work according to modules and laboratory procedures.",
       "Prepared equipment, instruments, and practical materials to ensure laboratory activities ran smoothly.",
@@ -38,6 +39,7 @@ export const experience: ExperienceItem[] = [
     role: "Assistant Technician",
     company: "Bil-Q Teknik Cool",
     period: "2018 – 2021",
+    technologies: ["Electrical Systems", "HVAC", "Preventive Maintenance", "Troubleshooting"],
     responsibilities: [
       "Installed air conditioning (AC) cooling systems in residential buildings and offices.",
       "Installed refrigerant piping, electrical wiring, and condensate drainage systems.",
