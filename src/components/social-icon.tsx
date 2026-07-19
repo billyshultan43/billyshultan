@@ -31,7 +31,7 @@ export function SocialIcon({
       rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
       aria-label={social.name}
       className={cn(
-        "inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white/[0.02] text-secondary/70 transition-all duration-300 hover:border-accent/40 hover:bg-accent/5 hover:text-accent",
+        "inline-flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.02] text-secondary/60 transition-all duration-300 hover:border-accent/30 hover:bg-accent/5 hover:text-accent",
         className
       )}
     >

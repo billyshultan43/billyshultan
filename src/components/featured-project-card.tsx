@@ -10,19 +10,19 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
   return (
     <Reveal as="article">
       <Link href={`/projects/${project.slug}`} className="group block h-full">
-        <Card className="flex h-full flex-col overflow-hidden transition-all duration-500 hover:border-accent/25 md:flex-row">
-          <div className="relative h-56 w-full overflow-hidden md:h-auto md:w-1/2">
+        <Card className="flex h-full flex-col overflow-hidden transition-all duration-500 hover:border-accent/25 hover:shadow-glow md:flex-row">
+          <div className="relative h-60 w-full overflow-hidden md:h-auto md:w-[45%]">
             <Image
               src={project.gallery[0]}
               alt={project.title}
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 100vw, 45vw"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent md:bg-gradient-to-r" />
+            <div className="absolute inset-0 bg-gradient-to-t from-card/60 via-transparent to-transparent md:bg-gradient-to-r" />
           </div>
           <div className="flex flex-1 flex-col justify-center p-8">
-            <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-secondary/70">
+            <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-accent/60">
               {project.category} &middot; {project.year}
             </span>
             <h3 className="mt-3 flex items-start justify-between gap-3 text-2xl font-semibold text-primary">

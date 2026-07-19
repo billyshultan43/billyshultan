@@ -56,7 +56,7 @@ export default function HomePage() {
                 className="flex flex-col gap-1 px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
               >
                 <div className="flex items-start gap-4">
-                  <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/5 text-accent">
+                  <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent shadow-sm">
                     <Briefcase size={16} />
                   </span>
                   <div>

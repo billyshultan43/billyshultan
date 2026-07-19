@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --background: #0B0B0B;
-  --foreground: #F5F3EF;
-  --card: #151515;
-  --accent: #D6B98C;
-  --secondary: #B8B4AC;
+  --background: #0A0A0F;
+  --foreground: #F5F5F7;
+  --card: #13131B;
+  --accent: #7C5CFF;
+  --secondary: #A1A1AA;
   --line: rgba(255, 255, 255, 0.08);
 }
 
@@ -28,17 +28,17 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B0B0B;
+  background: #0A0A0F;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2e;
+  background: #2a2a35;
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a3a40;
+  background: #3a3a48;
 }
 
 @layer components {
@@ -46,7 +46,10 @@ body {
     @apply border border-line bg-white/[0.03] backdrop-blur-md;
   }
   .glass-strong {
-    @apply border border-line bg-card/70 backdrop-blur-xl;
+    @apply border border-line bg-card/80 backdrop-blur-xl;
+  }
+  .glass-card {
+    @apply border border-line bg-card/90 backdrop-blur-lg shadow-glass;
   }
   .section-container {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
@@ -59,7 +62,7 @@ body {
 .noise-overlay {
   position: absolute;
   inset: 0;
-  opacity: 0.02;
+  opacity: 0.025;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
@@ -67,7 +70,7 @@ body {
 .ambient-glow {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(100px);
+  filter: blur(120px);
   will-change: transform;
   pointer-events: none;
 }

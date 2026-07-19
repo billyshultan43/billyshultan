@@ -33,8 +33,8 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-xl border border-line bg-card/50 p-10 text-center">
-        <CheckCircle2 size={36} className="text-accent/70" />
+      <div className="flex flex-col items-center justify-center rounded-2xl border border-line bg-card/50 p-10 text-center">
+        <CheckCircle2 size={36} className="text-accent/60" />
         <h3 className="mt-4 text-lg font-semibold text-primary">Message ready</h3>
         <p className="mt-2 max-w-sm text-sm text-secondary">
           This is a local demo form — no message was actually sent. Please reach out via
@@ -43,7 +43,7 @@ export function ContactForm() {
         <button
           type="button"
           onClick={() => setSent(false)}
-          className="mt-6 rounded-full border border-line bg-white/[0.03] px-5 py-2 text-sm font-medium text-primary transition-colors hover:bg-white/[0.06]"
+          className="mt-6 rounded-xl border border-line bg-white/[0.03] px-5 py-2 text-sm font-medium text-primary transition-colors hover:bg-white/[0.06]"
         >
           Send another
         </button>
@@ -62,7 +62,7 @@ export function ContactForm() {
           {...register("name")}
           aria-invalid={!!errors.name}
           className={cn(
-            "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-primary placeholder:text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all duration-200",
+            "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-primary placeholder:text-secondary/40 focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all duration-200",
             errors.name ? "border-red-500/50" : "border-line"
           )}
           placeholder="Your name"
@@ -82,7 +82,7 @@ export function ContactForm() {
           {...register("email")}
           aria-invalid={!!errors.email}
           className={cn(
-            "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-primary placeholder:text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all duration-200",
+            "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-primary placeholder:text-secondary/40 focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all duration-200",
             errors.email ? "border-red-500/50" : "border-line"
           )}
           placeholder="you@example.com"
@@ -102,7 +102,7 @@ export function ContactForm() {
           {...register("message")}
           aria-invalid={!!errors.message}
           className={cn(
-            "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-primary placeholder:text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all duration-200",
+            "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-primary placeholder:text-secondary/40 focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all duration-200",
             errors.message ? "border-red-500/50" : "border-line"
           )}
           placeholder="How can we work together?"
@@ -115,7 +115,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-accent text-sm font-medium text-background transition-all duration-300 hover:bg-accent-hover hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] disabled:opacity-60 shadow-[0_4px_20px_-4px_rgba(214,185,140,0.3)]"
+        className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-accent-gradient text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] disabled:opacity-60 shadow-[0_4px_20px_-4px_rgba(124,92,255,0.3)]"
       >
         <Send size={16} /> {isSubmitting ? "Sending\u2026" : "Send Message"}
       </button>

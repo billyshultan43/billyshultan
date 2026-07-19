@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Download, GraduationCap, BadgeCheck, Award, Briefcase, ArrowUpRight, Star } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
@@ -33,13 +32,13 @@ export default function ResumePage() {
       <section className="section-container overflow-hidden pt-28 sm:pt-32">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Reveal>
-            <span className="mb-4 inline-block text-xs font-medium uppercase tracking-[0.25em] text-accent/80">
+            <span className="mb-4 inline-block text-xs font-medium uppercase tracking-[0.2em] text-accent">
               RESUME
             </span>
             <h1 className="font-serif text-4xl font-normal leading-[1.12] tracking-tight text-primary sm:text-5xl">
               Experience & Credentials
             </h1>
-            <div className="mt-5 h-px w-10 bg-accent/40" />
+            <div className="mt-5 h-1 w-8 rounded-full bg-accent-gradient" />
             <p className="mt-6 max-w-xl text-base leading-relaxed text-secondary">
               Electrical Engineer with 2+ years of professional experience in IoT, Embedded
               Systems, Full Stack Development, AI Integration, and Industrial Instrumentation.
@@ -52,7 +51,7 @@ export default function ResumePage() {
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="flex flex-col items-center justify-center rounded-xl border border-line bg-white/[0.02] px-3 py-6 text-center transition-all duration-300 hover:border-accent/15"
+                  className="flex flex-col items-center justify-center rounded-2xl border border-line bg-card/60 backdrop-blur-sm px-3 py-6 text-center transition-all duration-300 hover:border-accent/15 hover:shadow-glow"
                 >
                   <span className="text-2xl font-bold text-primary sm:text-3xl">{stat.value}</span>
                   <span className="mt-1.5 text-[11px] leading-tight text-secondary/80">
@@ -81,7 +80,7 @@ export default function ResumePage() {
                         <p className="text-sm text-secondary">{item.company}</p>
                       </div>
                     </div>
-                    <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white/[0.03] px-3 py-1 text-xs font-medium text-secondary">
+                    <span className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-white/[0.03] px-3 py-1 text-xs font-medium text-secondary">
                       {item.current && (
                         <span className="h-2 w-2 rounded-full bg-accent/70" />
                       )}
@@ -122,7 +121,7 @@ export default function ResumePage() {
               {achievements.map((ach) => (
                 <Reveal key={ach.id}>
                   <Card className="flex h-full flex-col p-6">
-                    <span className="inline-flex w-fit items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
+                    <span className="inline-flex w-fit items-center gap-2 rounded-lg bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
                       <Award size={14} /> {ach.title}
                     </span>
                     <h3 className="mt-4 text-base font-semibold leading-snug text-primary">
@@ -138,7 +137,7 @@ export default function ResumePage() {
                         href={ach.file}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-line bg-white/[0.02] px-4 py-2 text-sm font-medium text-primary transition-colors hover:border-accent/30 hover:bg-white/[0.05]"
+                        className="mt-4 inline-flex w-fit items-center gap-2 rounded-xl border border-line bg-white/[0.02] px-4 py-2 text-sm font-medium text-primary transition-colors hover:border-accent/30 hover:bg-white/[0.05]"
                       >
                         <Download size={15} /> View certificate
                       </a>
@@ -159,7 +158,7 @@ export default function ResumePage() {
                   <div className="flex items-start gap-3">
                     <BadgeCheck size={20} className="mt-0.5 shrink-0 text-accent/70" />
                     <div>
-                      <Badge className="border-accent/20 bg-accent/8 text-accent">{cert.category}</Badge>
+                      <Badge className="border-accent/20 bg-accent/10 text-accent">{cert.category}</Badge>
                       <h3 className="mt-2 text-base font-semibold leading-snug text-primary">{cert.name}</h3>
                     </div>
                   </div>
@@ -176,7 +175,7 @@ export default function ResumePage() {
                       href={cert.file}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-line bg-white/[0.02] px-4 py-2 text-sm font-medium text-primary transition-colors hover:border-accent/30 hover:bg-white/[0.05]"
+                      className="mt-4 inline-flex w-fit items-center gap-2 rounded-xl border border-line bg-white/[0.02] px-4 py-2 text-sm font-medium text-primary transition-colors hover:border-accent/30 hover:bg-white/[0.05]"
                     >
                       <Download size={15} /> Preview
                     </a>
@@ -200,7 +199,7 @@ export default function ResumePage() {
                       <p className="text-sm text-secondary">{item.institution}</p>
                     </div>
                   </div>
-                  <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white/[0.03] px-3 py-1 text-xs font-medium text-secondary">
+                  <span className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-white/[0.03] px-3 py-1 text-xs font-medium text-secondary">
                     {item.period}
                   </span>
                 </div>
@@ -232,7 +231,6 @@ export default function ResumePage() {
             </Reveal>
           ))}
         </div>
-
       </section>
     </>
   );

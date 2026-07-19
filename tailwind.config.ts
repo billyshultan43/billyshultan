@@ -6,14 +6,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0B0B0B",
-        surface: "#111111",
-        card: "#151515",
-        primary: "#F5F3EF",
-        secondary: "#B8B4AC",
-        muted: "#B8B4AC",
-        accent: "#D6B98C",
-        "accent-hover": "#E7C89A",
+        background: "#0A0A0F",
+        surface: "#111118",
+        card: "#13131B",
+        primary: "#F5F5F7",
+        secondary: "#A1A1AA",
+        muted: "#A1A1AA",
+        accent: "#7C5CFF",
+        "accent-hover": "#9178FF",
+        "accent-soft": "#A78BFA",
         line: "rgba(255,255,255,0.08)",
       },
       fontFamily: {
@@ -23,7 +24,8 @@ const config: Config = {
         display: ["var(--font-serif)", "Georgia", "serif"],
       },
       backgroundImage: {
-        "radial-glow": "radial-gradient(circle at 50% 0%, rgba(214,185,140,0.06), transparent 55%)",
+        "radial-glow": "radial-gradient(circle at 50% 0%, rgba(124,92,255,0.08), transparent 55%)",
+        "accent-gradient": "linear-gradient(135deg, #7C5CFF, #A78BFA)",
       },
       keyframes: {
         "fade-up": {
@@ -45,9 +47,10 @@ const config: Config = {
         "pulse-slow": "pulse-slow 4s ease-in-out infinite",
       },
       boxShadow: {
-        soft: "0 1px 3px rgba(0,0,0,0.3), 0 8px 32px rgba(0,0,0,0.4)",
-        glow: "0 0 0 1px rgba(214,185,140,0.15), 0 8px 32px rgba(214,185,140,0.06)",
-        premium: "0 4px 24px rgba(0,0,0,0.3)",
+        soft: "0 2px 8px rgba(0,0,0,0.25), 0 8px 32px rgba(0,0,0,0.35)",
+        glow: "0 0 0 1px rgba(124,92,255,0.15), 0 8px 32px rgba(124,92,255,0.08)",
+        premium: "0 4px 24px rgba(0,0,0,0.4)",
+        glass: "0 8px 32px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.15)",
       },
     },
   },

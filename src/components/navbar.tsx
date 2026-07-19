@@ -35,27 +35,27 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled
-          ? "border-b border-line bg-background/80 backdrop-blur-xl"
+          ? "bg-card/80 backdrop-blur-2xl border-b border-line"
           : "bg-transparent"
       )}
     >
-      <nav className="section-container relative flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 text-primary font-sans tracking-tight">
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent/20">
-            <span className="h-2 w-2 rounded-full bg-accent" />
+      <nav className="section-container relative flex h-18 items-center justify-between">
+        <Link href="/" className="flex items-center gap-2.5 text-primary font-sans tracking-tight">
+          <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-accent-gradient shadow-glow">
+            <span className="h-2.5 w-2.5 rounded-full bg-white/90" />
           </span>
-          <span className="hidden sm:inline text-sm font-medium">Billy Shultan</span>
+          <span className="hidden sm:inline text-sm font-medium tracking-wide">Billy Shultan</span>
         </Link>
 
-        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-0.5 md:flex">
+        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 className={cn(
-                  "rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300",
+                  "rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300",
                   isActive(link.href)
-                    ? "text-primary bg-white/[0.04]"
+                    ? "text-primary bg-white/[0.05]"
                     : "text-secondary hover:text-primary hover:bg-white/[0.03]"
                 )}
               >
@@ -77,16 +77,16 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-line bg-background/95 backdrop-blur-xl md:hidden">
+        <div className="border-t border-line bg-card/95 backdrop-blur-2xl md:hidden">
           <ul className="section-container flex flex-col gap-1 py-4">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   className={cn(
-                    "block rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-200",
+                    "block rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200",
                     isActive(link.href)
-                      ? "bg-white/[0.04] text-primary"
+                      ? "bg-white/[0.05] text-primary"
                       : "text-secondary hover:bg-white/[0.04] hover:text-primary"
                   )}
                 >

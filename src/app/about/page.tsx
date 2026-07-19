@@ -62,7 +62,7 @@ export default function AboutPage() {
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {profile.roles.map((r) => (
-                  <Badge key={r} className="border-accent/20 bg-accent/8 text-accent">
+                  <Badge key={r} className="border-accent/20 bg-accent/10 text-accent">
                     {r}
                   </Badge>
                 ))}
@@ -82,13 +82,13 @@ export default function AboutPage() {
           <div>
             <Reveal>
               <Card className="p-6">
-                <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary/70">
+                <h3 className="text-xs font-semibold uppercase tracking-[0.15em] text-secondary/70">
                   Technical Interests
                 </h3>
                 <ul className="mt-5 space-y-5">
                   {interests.map((item) => (
                     <li key={item.title} className="flex gap-3">
-                      <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/5 text-accent/70">
+                      <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent shadow-sm">
                         <item.icon size={18} />
                       </span>
                       <div>

@@ -63,7 +63,7 @@ export default async function ProjectDetailPage({
 
       <header className="section-container mt-6">
         <Reveal>
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-line">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-line shadow-glass">
             <img
               src={project.gallery[0]}
               alt={project.title}
@@ -72,7 +72,7 @@ export default async function ProjectDetailPage({
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
           </div>
           <div className="mt-8">
-            <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-secondary/70">
+            <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-accent/60">
               {project.category} &middot; {project.year}
             </span>
             <h1 className="mt-3 max-w-4xl font-serif text-3xl font-normal leading-tight text-primary sm:text-4xl">
@@ -104,7 +104,7 @@ export default async function ProjectDetailPage({
                   {project.architectureText}
                 </pre>
               )}
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-line">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-line shadow-glass">
                 <img
                   src={project.architectureImage}
                   alt={`${project.title} architecture`}
@@ -263,7 +263,7 @@ export default async function ProjectDetailPage({
         {prev ? (
           <Link
             href={`/projects/${prev.slug}`}
-            className="group flex flex-col rounded-xl border border-line bg-card p-5 transition-colors hover:border-accent/25"
+            className="group flex flex-col rounded-2xl border border-line bg-card/80 backdrop-blur-sm p-5 transition-colors hover:border-accent/25 hover:shadow-glow"
           >
             <span className="flex items-center gap-1.5 text-xs text-secondary">
               <ArrowLeft size={14} /> Previous
@@ -276,7 +276,7 @@ export default async function ProjectDetailPage({
         {next && (
           <Link
             href={`/projects/${next.slug}`}
-            className="group flex flex-col rounded-xl border border-line bg-card p-5 text-right transition-colors hover:border-accent/25 sm:items-end"
+            className="group flex flex-col rounded-2xl border border-line bg-card/80 backdrop-blur-sm p-5 text-right transition-colors hover:border-accent/25 hover:shadow-glow sm:items-end"
           >
             <span className="flex items-center gap-1.5 text-xs text-secondary">
               Next <ArrowRight size={14} />
