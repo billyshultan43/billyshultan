@@ -90,38 +90,36 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         className="relative h-72 w-72 sm:h-[24rem] sm:w-[24rem] lg:h-[26rem] lg:w-[26rem]"
       >
-        <div className="animate-pulse-slow absolute -inset-28 rounded-full border border-accent/5" style={{ animationDelay: "-4s" }} />
-        <div className="animate-pulse-slow absolute -inset-20 rounded-full border border-accent/[0.07]" style={{ animationDelay: "-2s" }} />
-        <div className="absolute -inset-12 rounded-full border border-accent/10" />
-        <div className="absolute -inset-6 rounded-full border border-accent/[0.12]" />
+        <div className="animate-pulse-slow absolute -inset-32 rounded-full border border-accent/5" style={{ animationDelay: "-5s" }} />
+        <div className="animate-pulse-slow absolute -inset-24 rounded-full border border-accent/[0.06]" style={{ animationDelay: "-3s" }} />
+        <div className="absolute -inset-16 rounded-full border border-accent/8" />
+        <div className="absolute -inset-10 rounded-full border border-accent/10" />
+        <div className="absolute -inset-4 rounded-full border border-accent/[0.14]" />
 
-        <div className="absolute -inset-10 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.18),transparent_60%)] blur-3xl" />
-        <div className="absolute -inset-5 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.1),transparent_50%)] blur-xl" />
+        <div className="absolute -inset-12 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.2),transparent_60%)] blur-3xl" />
+        <div className="absolute -inset-6 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.1),transparent_50%)] blur-2xl" />
 
-        <div className="absolute -top-4 right-0 h-3 w-3 rounded-full bg-accent/40" />
-        <div className="absolute -bottom-3 left-14 h-2 w-2 rounded-full bg-accent/25" />
-        <div className="absolute left-0 top-1/4 h-1.5 w-1.5 rounded-full bg-accent/40" />
-        <div className="absolute right-0 top-2/3 h-2 w-2 rounded-full bg-accent/20" />
-        <div className="absolute bottom-12 -right-4 h-1 w-1 rounded-full bg-accent/50" />
+        <div className="absolute -top-5 right-2 h-3 w-3 rounded-full bg-accent/40" />
+        <div className="absolute -bottom-4 left-16 h-2 w-2 rounded-full bg-accent/25" />
+        <div className="absolute left-0 top-1/3 h-1.5 w-1.5 rounded-full bg-accent/40" />
+        <div className="absolute right-0 top-1/2 h-2 w-2 rounded-full bg-accent/20" />
+        <div className="absolute bottom-16 -right-5 h-1 w-1 rounded-full bg-accent/50" />
 
-        <div className="absolute -inset-[3px] z-10 rounded-full bg-gradient-to-br from-accent/25 via-accent/5 to-transparent opacity-40 blur-lg" />
-        <div className="absolute inset-0 z-10 rounded-full ring-[1.5px] ring-accent/20 ring-inset" />
+        <div className="absolute inset-0 z-10 rounded-full border border-accent/20 shadow-[0_0_30px_-8px_rgba(139,92,246,0.15)]" />
 
-        <div className="absolute -inset-6 z-20 overflow-visible">
-          <div className="relative h-full w-full rounded-full overflow-hidden shadow-[0_20px_60px_-16px_rgba(0,0,0,0.6)]">
+        <div className="absolute -inset-12 z-20 overflow-visible">
+          <div className="relative h-full w-full">
             <Image
               src={profile.profileImage}
               alt={profile.name}
               fill
               priority
-              sizes="(max-width: 1024px) 320px, 480px"
+              sizes="(max-width: 1024px) 384px, 520px"
               className="object-cover object-top scale-105"
             />
-            <div className="absolute inset-0 rounded-full bg-gradient-to-b from-transparent via-transparent to-background/50" />
-            <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_50%_0%,rgba(139,92,246,0.06),transparent_40%)]" />
-            <div className="absolute inset-0 rounded-full shadow-[inset_0_0_50px_rgba(0,0,0,0.3)]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/50 pointer-events-none" />
           </div>
-          <div className="absolute -bottom-2 left-1/2 h-4 w-3/4 -translate-x-1/2 rounded-full bg-black/30 blur-xl" />
+          <div className="absolute -bottom-6 left-1/2 h-6 w-4/5 -translate-x-1/2 rounded-full bg-black/40 blur-2xl" />
         </div>
       </motion.div>
     </section>
