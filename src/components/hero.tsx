@@ -107,7 +107,7 @@ export function Hero() {
 
         <div className="absolute inset-0 z-10 rounded-full border border-accent/20 shadow-[0_0_30px_-8px_rgba(139,92,246,0.15)]" />
 
-        <div className="absolute -inset-x-20 -top-28 -bottom-16 z-20 overflow-visible">
+        <div className="absolute -inset-x-20 -top-28 bottom-4 z-20 overflow-visible">
           <div className="relative h-full w-full">
             <Image
               src={profile.profileImage}
@@ -115,7 +115,7 @@ export function Hero() {
               fill
               priority
               sizes="(max-width: 1024px) 440px, 580px"
-              className="object-contain object-top"
+              className="object-cover object-top"
             />
           </div>
         </div>
