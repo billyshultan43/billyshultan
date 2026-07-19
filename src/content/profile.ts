@@ -16,6 +16,6 @@ export const profile = {
   heroSummary:
     "Electrical Engineer specializing in IoT, Embedded Systems, and AI Integration. Building end-to-end connected systems that connect embedded hardware, firmware, and cloud applications for industrial and environmental monitoring.",
   location: "Jakarta Barat, DKI Jakarta",
-  profileImage: "/assets/images/profile/Profilee.png",
+  profileImage: "/assets/images/profile/profile.png",
   cvFile: "/assets/cv/cv.pdf",
 };
