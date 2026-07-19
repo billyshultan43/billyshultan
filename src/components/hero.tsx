@@ -108,7 +108,7 @@ export function Hero() {
         <div className="absolute inset-0 z-10 rounded-full border border-accent/20 shadow-[0_0_30px_-8px_rgba(139,92,246,0.15)]" />
 
         <div className="absolute -inset-20 z-20 overflow-visible">
-          <div className="relative h-full w-full flex items-start justify-center">
+          <div className="relative h-full w-full">
             <Image
               src={profile.profileImage}
               alt={profile.name}
@@ -118,7 +118,7 @@ export function Hero() {
               className="object-contain object-top"
             />
           </div>
-          <div className="absolute -bottom-8 left-1/2 h-8 w-3/4 -translate-x-1/2 rounded-full bg-black/40 blur-2xl" />
+          <div className="absolute -bottom-8 left-1/2 h-8 w-3/4 -translate-x-1/2 rounded-full bg-black/20 blur-2xl" />
         </div>
       </motion.div>
     </section>
