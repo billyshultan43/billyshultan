@@ -75,14 +75,6 @@ export function Hero() {
           className="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
         >
           <Link
-            href={profile.cvFile}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(buttonVariants({ size: "lg" }), "rounded-full")}
-          >
-            Download CV
-          </Link>
-          <Link
             href="/contact"
             className={cn(buttonVariants({ variant: "outline", size: "lg" }), "rounded-full")}
           >

@@ -44,17 +44,7 @@ export default function ResumePage() {
               Electrical Engineer with 2+ years of professional experience in IoT, Embedded
               Systems, Full Stack Development, AI Integration, and Industrial Instrumentation.
             </p>
-            <div className="mt-8 flex gap-3">
-              <Link
-                href={profile.cvFile}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(buttonVariants({ size: "lg" }), "rounded-full")}
-              >
-                <Download size={16} />
-                Download CV
-              </Link>
-            </div>
+            <div className="mt-8" />
           </Reveal>
 
           <div className="relative">
@@ -243,19 +233,6 @@ export default function ResumePage() {
           ))}
         </div>
 
-        <Reveal>
-          <div className="flex justify-center pt-4">
-            <Link
-              href={profile.cvFile}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(buttonVariants({ size: "lg" }), "rounded-full")}
-            >
-              <Download size={16} />
-              Download CV
-            </Link>
-          </div>
-        </Reveal>
       </section>
     </>
   );
