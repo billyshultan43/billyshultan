@@ -13,19 +13,19 @@ export function PageIntro({
   className?: string;
 }) {
   return (
-    <section className={cn("section-container pb-8 pt-28 sm:pt-32", className)}>
+    <section className={cn("section-container pb-10 pt-28 sm:pt-32", className)}>
       <Reveal>
         {eyebrow && (
-          <span className="mb-3 inline-block text-sm font-medium uppercase tracking-[0.2em] text-secondary">
+          <span className="mb-4 inline-block text-xs font-medium uppercase tracking-[0.25em] text-accent/80">
             {eyebrow}
           </span>
         )}
-        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        <h1 className="font-serif text-4xl font-normal leading-[1.12] tracking-tight text-primary sm:text-5xl">
           {title}
         </h1>
-        <div className="mt-4 h-1 w-16 rounded-full bg-accent-gradient" />
+        <div className="mt-5 h-px w-10 bg-accent/40" />
         {description && (
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-secondary">
             {description}
           </p>
         )}

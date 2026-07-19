@@ -6,30 +6,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#050505",
-        surface: "#111214",
-        card: "#111214",
-        primary: "#FFFFFF",
-        secondary: "#A1A1AA",
-        muted: "#A1A1AA",
-        accent: "#2563EB",
+        background: "#0B0B0B",
+        surface: "#111111",
+        card: "#151515",
+        primary: "#F5F3EF",
+        secondary: "#B8B4AC",
+        muted: "#B8B4AC",
+        accent: "#D6B98C",
+        "accent-hover": "#E7C89A",
         line: "rgba(255,255,255,0.08)",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
+        display: ["var(--font-serif)", "Georgia", "serif"],
       },
       backgroundImage: {
-        "grid-pattern":
-          "linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px)",
-        "radial-glow":
-          "radial-gradient(circle at 50% 0%, rgba(37,99,235,0.12), transparent 55%)",
-        "accent-gradient": "linear-gradient(180deg, #3B82F6 0%, #2563EB 100%)",
-        "accent-flow":
-          "linear-gradient(110deg, #2563EB 0%, #3B82F6 30%, #1d4ed8 55%, #2563EB 100%)",
-      },
-      backgroundSize: {
-        grid: "44px 44px",
+        "radial-glow": "radial-gradient(circle at 50% 0%, rgba(214,185,140,0.06), transparent 55%)",
       },
       keyframes: {
         "fade-up": {
@@ -44,24 +38,19 @@ const config: Config = {
           "0%, 100%": { opacity: "0.25" },
           "50%": { opacity: "0.5" },
         },
-        gradient: {
-          "0%": { backgroundPosition: "0% 50%" },
-          "100%": { backgroundPosition: "200% 50%" },
-        },
       },
       animation: {
         "fade-up": "fade-up 0.6s ease-out forwards",
         float: "float 7s ease-in-out infinite",
         "pulse-slow": "pulse-slow 4s ease-in-out infinite",
-        gradient: "gradient 5s linear infinite",
       },
       boxShadow: {
-        soft: "0 1px 2px rgba(0,0,0,0.4), 0 8px 30px rgba(0,0,0,0.35)",
-        glow: "0 0 0 1px rgba(37,99,235,0.4), 0 8px 30px rgba(37,99,235,0.15)",
+        soft: "0 1px 3px rgba(0,0,0,0.3), 0 8px 32px rgba(0,0,0,0.4)",
+        glow: "0 0 0 1px rgba(214,185,140,0.15), 0 8px 32px rgba(214,185,140,0.06)",
+        premium: "0 4px 24px rgba(0,0,0,0.3)",
       },
     },
   },
   plugins: [],
 };
-
 export default config;

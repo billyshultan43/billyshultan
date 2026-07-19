@@ -17,25 +17,25 @@ export function SectionHeading({
   return (
     <Reveal
       className={cn(
-        "mb-12",
+        "mb-14",
         align === "center" && "text-center mx-auto max-w-2xl",
         className
       )}
     >
       {eyebrow && (
-        <span className="mb-3 inline-block text-sm font-medium uppercase tracking-[0.2em] text-secondary">
+        <span className="mb-4 inline-block text-xs font-medium uppercase tracking-[0.25em] text-accent/80">
           {eyebrow}
         </span>
       )}
-      <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{title}</h2>
+      <h2 className="font-serif text-3xl font-normal leading-[1.15] tracking-tight text-primary sm:text-4xl">{title}</h2>
       <div
         className={cn(
-          "mt-4 h-1 w-16 rounded-full bg-accent-gradient",
+          "mt-5 h-px w-10 bg-accent/40",
           align === "center" && "mx-auto"
         )}
       />
       {description && (
-        <p className="mt-5 text-base leading-relaxed text-muted">{description}</p>
+        <p className="mt-6 text-base leading-relaxed text-secondary">{description}</p>
       )}
     </Reveal>
   );

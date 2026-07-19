@@ -48,13 +48,13 @@ export default function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <Reveal>
-              <h2 className="text-2xl font-semibold text-white">Professional Background</h2>
-              <p className="mt-4 text-base leading-relaxed text-muted">{profile.summary}</p>
+              <h2 className="text-2xl font-semibold text-primary">Professional Background</h2>
+              <p className="mt-4 text-base leading-relaxed text-secondary">{profile.summary}</p>
             </Reveal>
 
             <Reveal delay={0.05}>
-              <h3 className="mt-10 text-xl font-semibold text-white">Specialization</h3>
-              <p className="mt-3 text-base leading-relaxed text-muted">
+              <h3 className="mt-10 text-xl font-semibold text-primary">Specialization</h3>
+              <p className="mt-3 text-base leading-relaxed text-secondary">
                 My work centers on Electrical Engineering, the Internet of Things (IoT),
                 Embedded Systems, AI Integration, Software Development, and Full Stack
                 Development — with a consistent focus on environmental and industrial
@@ -62,7 +62,7 @@ export default function AboutPage() {
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {profile.roles.map((r) => (
-                  <Badge key={r} className="border-accent/30 bg-accent/10 text-accent">
+                  <Badge key={r} className="border-accent/20 bg-accent/8 text-accent">
                     {r}
                   </Badge>
                 ))}
@@ -70,8 +70,8 @@ export default function AboutPage() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <h3 className="mt-10 text-xl font-semibold text-white">Career Objective</h3>
-              <p className="mt-3 text-base leading-relaxed text-muted">
+              <h3 className="mt-10 text-xl font-semibold text-primary">Career Objective</h3>
+              <p className="mt-3 text-base leading-relaxed text-secondary">
                 Committed to supporting operational and engineering system development
                 across the energy, environmental, and manufacturing industries — combining
                 field-proven instrumentation skills with modern software and connectivity.
@@ -82,18 +82,18 @@ export default function AboutPage() {
           <div>
             <Reveal>
               <Card className="p-6">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-secondary">
+                <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary/70">
                   Technical Interests
                 </h3>
-                <ul className="mt-4 space-y-4">
+                <ul className="mt-5 space-y-5">
                   {interests.map((item) => (
                     <li key={item.title} className="flex gap-3">
-                      <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/5 text-secondary">
+                      <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/5 text-accent/70">
                         <item.icon size={18} />
                       </span>
                       <div>
-                        <p className="text-sm font-medium text-white">{item.title}</p>
-                        <p className="text-xs leading-relaxed text-muted">{item.text}</p>
+                        <p className="text-sm font-medium text-primary">{item.title}</p>
+                        <p className="mt-0.5 text-xs leading-relaxed text-secondary/80">{item.text}</p>
                       </div>
                     </li>
                   ))}
@@ -109,7 +109,7 @@ export default function AboutPage() {
             {skills.map((cat, i) => (
               <Reveal key={cat.name} delay={i * 0.06}>
                 <Card className="h-full p-5">
-                  <p className="text-sm font-semibold text-white">{cat.name}</p>
+                  <p className="text-sm font-semibold text-primary">{cat.name}</p>
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {cat.skills.slice(0, 6).map((s) => (
                       <Badge key={s}>{s}</Badge>

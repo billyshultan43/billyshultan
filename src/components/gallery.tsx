@@ -21,7 +21,7 @@ export function Gallery({ images, alt }: { images: string[]; alt: string }) {
             key={src}
             type="button"
             onClick={() => setActive(src)}
-            className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10"
+            className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-line"
             aria-label={`Open image ${i + 1}`}
           >
             <Image

@@ -30,7 +30,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return (
     <Reveal>
       <div>
-        <h2 className="text-xl font-semibold text-white">{title}</h2>
+        <h2 className="text-xl font-semibold text-primary">{title}</h2>
         <div className="mt-3 text-sm leading-relaxed text-secondary">{children}</div>
       </div>
     </Reveal>
@@ -55,34 +55,33 @@ export default async function ProjectDetailPage({
       <div className="section-container">
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 pt-8 text-sm text-secondary transition-colors hover:text-white"
+          className="inline-flex items-center gap-2 pt-8 text-sm text-secondary transition-colors hover:text-primary"
         >
           <ArrowLeft size={16} /> All projects
         </Link>
       </div>
 
-      {/* Hero image */}
       <header className="section-container mt-6">
         <Reveal>
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-line">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-line">
             <img
               src={project.gallery[0]}
               alt={project.title}
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
           </div>
-          <div className="mt-6">
-            <span className="text-xs font-medium uppercase tracking-wider text-secondary">
-              {project.category} · {project.year}
+          <div className="mt-8">
+            <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-secondary/70">
+              {project.category} &middot; {project.year}
             </span>
-            <h1 className="mt-2 max-w-4xl text-3xl font-bold leading-tight text-white sm:text-4xl">
+            <h1 className="mt-3 max-w-4xl font-serif text-3xl font-normal leading-tight text-primary sm:text-4xl">
               {project.title}
             </h1>
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-secondary">
               {project.summary}
             </p>
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div className="mt-6 flex flex-wrap gap-2">
               {project.technologies.map((t) => (
                 <Badge key={t}>{t}</Badge>
               ))}
@@ -101,7 +100,7 @@ export default async function ProjectDetailPage({
           {project.architectureImage && (
             <Section title="Architecture">
               {project.architectureText && (
-                <pre className="mb-5 overflow-x-auto rounded-xl border border-line bg-white/[0.02] p-4 text-xs leading-relaxed text-accent">
+                <pre className="mb-5 overflow-x-auto rounded-xl border border-line bg-white/[0.02] p-4 text-xs leading-relaxed text-accent/80">
                   {project.architectureText}
                 </pre>
               )}
@@ -126,7 +125,7 @@ export default async function ProjectDetailPage({
               <ul className="grid gap-2 sm:grid-cols-2">
                 {project.contributions.map((c) => (
                   <li key={c} className="flex gap-2">
-                    <Check size={16} className="mt-0.5 shrink-0 text-accent" />
+                    <Check size={16} className="mt-0.5 shrink-0 text-accent/70" />
                     <span>{c}</span>
                   </li>
                 ))}
@@ -139,7 +138,7 @@ export default async function ProjectDetailPage({
               <ul className="space-y-2">
                 {project.challenges.map((c) => (
                   <li key={c} className="flex gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/50" />
                     <span>{c}</span>
                   </li>
                 ))}
@@ -152,7 +151,7 @@ export default async function ProjectDetailPage({
               <ul className="space-y-2">
                 {project.lessons.map((l) => (
                   <li key={l} className="flex gap-2">
-                    <Check size={16} className="mt-0.5 shrink-0 text-accent" />
+                    <Check size={16} className="mt-0.5 shrink-0 text-accent/70" />
                     <span>{l}</span>
                   </li>
                 ))}
@@ -185,16 +184,16 @@ export default async function ProjectDetailPage({
         <aside className="space-y-5">
           {project.role && (
             <Card className="p-5">
-              <h3 className="flex items-center gap-2 text-sm font-semibold text-white">
-                <User size={16} className="text-accent" /> Role
+              <h3 className="flex items-center gap-2 text-sm font-semibold text-primary">
+                <User size={16} className="text-accent/70" /> Role
               </h3>
               <p className="mt-2 text-sm text-secondary">{project.role}</p>
             </Card>
           )}
 
           <Card className="p-5">
-            <h3 className="flex items-center gap-2 text-sm font-semibold text-white">
-              <Code2 size={16} className="text-accent" /> Technologies
+            <h3 className="flex items-center gap-2 text-sm font-semibold text-primary">
+              <Code2 size={16} className="text-accent/70" /> Technologies
             </h3>
             <div className="mt-3 flex flex-wrap gap-1.5">
               {project.technologies.map((t) => (
@@ -205,13 +204,13 @@ export default async function ProjectDetailPage({
 
           {project.hardware && (
             <Card className="p-5">
-              <h3 className="flex items-center gap-2 text-sm font-semibold text-white">
-                <Cpu size={16} className="text-accent" /> Hardware
+              <h3 className="flex items-center gap-2 text-sm font-semibold text-primary">
+                <Cpu size={16} className="text-accent/70" /> Hardware
               </h3>
               <ul className="mt-3 space-y-2 text-sm">
                 {project.hardware.map((h) => (
                   <li key={h.name}>
-                    <span className="font-medium text-white">{h.name}</span>
+                    <span className="font-medium text-primary">{h.name}</span>
                     <span className="text-secondary"> — {h.description}</span>
                   </li>
                 ))}
@@ -221,8 +220,8 @@ export default async function ProjectDetailPage({
 
           {project.software && (
             <Card className="p-5">
-              <h3 className="flex items-center gap-2 text-sm font-semibold text-white">
-                <Wrench size={16} className="text-accent" /> Software
+              <h3 className="flex items-center gap-2 text-sm font-semibold text-primary">
+                <Wrench size={16} className="text-accent/70" /> Software
               </h3>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {project.software.map((s) => (
@@ -260,17 +259,16 @@ export default async function ProjectDetailPage({
         </aside>
       </div>
 
-      {/* Prev / Next */}
       <nav className="section-container grid gap-4 border-t border-line py-10 sm:grid-cols-2">
         {prev ? (
           <Link
             href={`/projects/${prev.slug}`}
-            className="group flex flex-col rounded-2xl border border-line bg-card p-5 transition-colors hover:border-accent/40"
+            className="group flex flex-col rounded-xl border border-line bg-card p-5 transition-colors hover:border-accent/25"
           >
             <span className="flex items-center gap-1.5 text-xs text-secondary">
               <ArrowLeft size={14} /> Previous
             </span>
-            <span className="mt-1 font-medium text-white group-hover:text-accent">{prev.title}</span>
+            <span className="mt-1 font-medium text-primary group-hover:text-accent">{prev.title}</span>
           </Link>
         ) : (
           <span />
@@ -278,12 +276,12 @@ export default async function ProjectDetailPage({
         {next && (
           <Link
             href={`/projects/${next.slug}`}
-            className="group flex flex-col rounded-2xl border border-line bg-card p-5 text-right transition-colors hover:border-accent/40 sm:items-end"
+            className="group flex flex-col rounded-xl border border-line bg-card p-5 text-right transition-colors hover:border-accent/25 sm:items-end"
           >
             <span className="flex items-center gap-1.5 text-xs text-secondary">
               Next <ArrowRight size={14} />
             </span>
-            <span className="mt-1 font-medium text-white group-hover:text-accent">{next.title}</span>
+            <span className="mt-1 font-medium text-primary group-hover:text-accent">{next.title}</span>
           </Link>
         )}
       </nav>

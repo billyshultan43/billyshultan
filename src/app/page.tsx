@@ -22,7 +22,6 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* 2. Featured Projects */}
       <section className="section-container section-padding">
         <div className="flex items-end justify-between gap-4">
           <SectionHeading
@@ -37,7 +36,7 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
           <div className="md:col-span-2">
             <FeaturedProjectCard project={first} />
           </div>
@@ -47,22 +46,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. Experience (minimal) */}
       <section className="section-container section-padding">
-        <SectionHeading eyebrow="Experience" title="Where I've worked" className="mb-10" />
+        <SectionHeading eyebrow="Experience" title="Where I&apos;ve worked" className="mb-10" />
         <Reveal>
-          <Card className="divide-y divide-line p-2">
+          <Card className="divide-y divide-line/50">
             {experience.map((item) => (
               <div
                 key={item.id}
-                className="flex flex-col gap-1 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
+                className="flex flex-col gap-1 px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
               >
                 <div className="flex items-start gap-4">
-                  <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/[0.04] text-accent">
+                  <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/5 text-accent">
                     <Briefcase size={16} />
                   </span>
                   <div>
-                    <p className="font-medium text-white">{item.role}</p>
+                    <p className="font-medium text-primary">{item.role}</p>
                     <p className="text-sm text-secondary">{item.company}</p>
                   </div>
                 </div>
@@ -70,7 +68,7 @@ export default function HomePage() {
                   <p className="text-sm text-secondary sm:text-right sm:max-w-md">
                     {item.responsibilities[0]}
                   </p>
-                  <p className="mt-1 text-xs font-medium text-accent">{item.period}</p>
+                  <p className="mt-1.5 text-xs font-medium text-accent/80">{item.period}</p>
                 </div>
               </div>
             ))}
@@ -78,7 +76,6 @@ export default function HomePage() {
         </Reveal>
       </section>
 
-      {/* 4. Skills (grouped badges) */}
       <section className="section-container section-padding">
         <SectionHeading
           eyebrow="Skills"
@@ -89,12 +86,12 @@ export default function HomePage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((cat, i) => (
             <Reveal key={cat.name} delay={i * 0.05}>
-              <Card className="h-full p-4">
+              <Card className="h-full p-5">
                 <div className="flex items-center gap-2.5">
                   <Code2 size={16} className="text-accent" />
-                  <h3 className="text-sm font-semibold text-white">{cat.name}</h3>
+                  <h3 className="text-sm font-semibold text-primary">{cat.name}</h3>
                 </div>
-                <div className="mt-3 flex flex-wrap gap-1.5">
+                <div className="mt-4 flex flex-wrap gap-1.5">
                   {cat.skills.map((s) => (
                     <Badge key={s}>{s}</Badge>
                   ))}
@@ -105,19 +102,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Contact */}
       <section className="section-container section-padding">
         <Reveal>
-          <Card className="overflow-hidden">
-            <div className="relative px-8 py-12 text-center sm:px-16 sm:py-16">
+          <Card className="overflow-hidden border-accent/10">
+            <div className="relative px-8 py-16 text-center sm:px-16 sm:py-20">
               <div className="absolute inset-0 -z-10 bg-radial-glow" />
-              <h2 className="text-3xl font-bold text-white sm:text-4xl">
+              <h2 className="font-serif text-3xl font-normal text-primary sm:text-4xl">
                 Let&apos;s build something solid
               </h2>
               <p className="mx-auto mt-4 max-w-md text-secondary">
                 Reach out for engineering, IoT, or full stack opportunities.
               </p>
-              <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <div className="mt-10 flex flex-wrap justify-center gap-3">
                 {contactLinks.map((s) => (
                   <a
                     key={s.name}

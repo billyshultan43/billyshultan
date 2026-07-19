@@ -25,7 +25,6 @@ export function ContactForm() {
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
 
   const onSubmit = async (data: FormValues) => {
-    // Local-only demo: no backend is configured.
     await new Promise((r) => setTimeout(r, 600));
     console.log("Contact form submitted (local demo):", data);
     setSent(true);
@@ -34,17 +33,17 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-white/10 bg-surface/40 p-10 text-center">
-        <CheckCircle2 size={40} className="text-secondary" />
-        <h3 className="mt-4 text-lg font-semibold text-white">Message ready</h3>
-        <p className="mt-2 max-w-sm text-sm text-muted">
+      <div className="flex flex-col items-center justify-center rounded-xl border border-line bg-card/50 p-10 text-center">
+        <CheckCircle2 size={36} className="text-accent/70" />
+        <h3 className="mt-4 text-lg font-semibold text-primary">Message ready</h3>
+        <p className="mt-2 max-w-sm text-sm text-secondary">
           This is a local demo form — no message was actually sent. Please reach out via
           the contact details provided.
         </p>
         <button
           type="button"
           onClick={() => setSent(false)}
-          className="mt-5 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10"
+          className="mt-6 rounded-full border border-line bg-white/[0.03] px-5 py-2 text-sm font-medium text-primary transition-colors hover:bg-white/[0.06]"
         >
           Send another
         </button>
@@ -55,7 +54,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
       <div>
-        <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-white">
+        <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-primary">
           Name
         </label>
         <input
@@ -63,18 +62,18 @@ export function ContactForm() {
           {...register("name")}
           aria-invalid={!!errors.name}
           className={cn(
-            "w-full rounded-lg border bg-white/5 px-4 py-3 text-sm text-white placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary/60",
-            errors.name ? "border-red-500/60" : "border-white/10"
+            "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-primary placeholder:text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all duration-200",
+            errors.name ? "border-red-500/50" : "border-line"
           )}
           placeholder="Your name"
         />
         {errors.name && (
-          <p className="mt-1 text-xs text-red-400">{errors.name.message}</p>
+          <p className="mt-1.5 text-xs text-red-400">{errors.name.message}</p>
         )}
       </div>
 
       <div>
-        <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-white">
+        <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-primary">
           Email
         </label>
         <input
@@ -83,18 +82,18 @@ export function ContactForm() {
           {...register("email")}
           aria-invalid={!!errors.email}
           className={cn(
-            "w-full rounded-lg border bg-white/5 px-4 py-3 text-sm text-white placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary/60",
-            errors.email ? "border-red-500/60" : "border-white/10"
+            "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-primary placeholder:text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all duration-200",
+            errors.email ? "border-red-500/50" : "border-line"
           )}
           placeholder="you@example.com"
         />
         {errors.email && (
-          <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>
+          <p className="mt-1.5 text-xs text-red-400">{errors.email.message}</p>
         )}
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-white">
+        <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-primary">
           Message
         </label>
         <textarea
@@ -103,22 +102,22 @@ export function ContactForm() {
           {...register("message")}
           aria-invalid={!!errors.message}
           className={cn(
-            "w-full rounded-lg border bg-white/5 px-4 py-3 text-sm text-white placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-primary/60",
-            errors.message ? "border-red-500/60" : "border-white/10"
+            "w-full rounded-xl border bg-white/[0.03] px-4 py-3 text-sm text-primary placeholder:text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all duration-200",
+            errors.message ? "border-red-500/50" : "border-line"
           )}
           placeholder="How can we work together?"
         />
         {errors.message && (
-          <p className="mt-1 text-xs text-red-400">{errors.message.message}</p>
+          <p className="mt-1.5 text-xs text-red-400">{errors.message.message}</p>
         )}
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-accent-gradient text-sm font-medium text-white shadow-glow transition-all hover:brightness-110 disabled:opacity-60"
+        className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-accent text-sm font-medium text-background transition-all duration-300 hover:bg-accent-hover hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] disabled:opacity-60 shadow-[0_4px_20px_-4px_rgba(214,185,140,0.3)]"
       >
-        <Send size={16} /> {isSubmitting ? "Sending…" : "Send Message"}
+        <Send size={16} /> {isSubmitting ? "Sending\u2026" : "Send Message"}
       </button>
     </form>
   );

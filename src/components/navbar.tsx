@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { Menu, X, Cpu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { navLinks } from "@/content/site";
 import { cn } from "@/lib/utils";
 
@@ -33,26 +33,30 @@ export function Navbar() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled ? "glass-strong border-b border-line" : "bg-transparent"
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+        scrolled
+          ? "border-b border-line bg-background/80 backdrop-blur-xl"
+          : "bg-transparent"
       )}
     >
       <nav className="section-container relative flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 font-semibold text-white">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-gradient text-white">
-            <Cpu size={16} />
+        <Link href="/" className="flex items-center gap-2 text-primary font-sans tracking-tight">
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent/20">
+            <span className="h-2 w-2 rounded-full bg-accent" />
           </span>
-          <span className="hidden sm:inline">Billy</span>
+          <span className="hidden sm:inline text-sm font-medium">Billy Shultan</span>
         </Link>
 
-        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
+        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-0.5 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 className={cn(
-                  "rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                  isActive(link.href) ? "text-white" : "text-secondary hover:text-white"
+                  "rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300",
+                  isActive(link.href)
+                    ? "text-primary bg-white/[0.04]"
+                    : "text-secondary hover:text-primary hover:bg-white/[0.03]"
                 )}
               >
                 {link.label}
@@ -66,24 +70,24 @@ export function Navbar() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line bg-white/[0.03] text-white md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.03] text-primary md:hidden"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </nav>
 
       {open && (
-        <div className="glass-strong border-t border-line md:hidden">
+        <div className="border-t border-line bg-background/95 backdrop-blur-xl md:hidden">
           <ul className="section-container flex flex-col gap-1 py-4">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   className={cn(
-                    "block rounded-md px-3 py-2.5 text-sm font-medium transition-colors",
+                    "block rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-200",
                     isActive(link.href)
-                      ? "bg-white/[0.04] text-white"
-                      : "text-secondary hover:bg-white/[0.04] hover:text-white"
+                      ? "bg-white/[0.04] text-primary"
+                      : "text-secondary hover:bg-white/[0.04] hover:text-primary"
                   )}
                 >
                   {link.label}
