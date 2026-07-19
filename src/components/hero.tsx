@@ -38,6 +38,14 @@ function highlightAIIntegration(text: string) {
 export function Hero() {
   return (
     <section className="section-container relative flex flex-col-reverse items-center gap-12 pb-16 pt-20 sm:pt-28 lg:flex-row lg:gap-16">
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -right-24 top-1/2 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(214,185,140,0.15)_0%,transparent_70%)] blur-[100px]" />
+        <div className="absolute -bottom-20 right-0 h-[350px] w-[450px] bg-[radial-gradient(ellipse_at_bottom_right,rgba(30,25,20,0.5)_0%,transparent_70%)] blur-[80px]" />
+        <div className="absolute left-1/2 top-0 h-[250px] w-[700px] -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,rgba(214,185,140,0.05)_0%,transparent_60%)]" />
+        <div className="absolute -left-32 top-1/4 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(214,185,140,0.04)_0%,transparent_70%)] blur-[80px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/10 via-transparent to-[#0B0B0B]/70" />
+      </div>
+
       <motion.div
         variants={container}
         initial="hidden"
@@ -84,13 +92,13 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         className="group relative h-52 w-52 sm:h-64 sm:w-64 lg:h-72 lg:w-72"
       >
-        <div className="absolute -inset-6 rounded-[3rem] bg-accent/5 blur-3xl" />
-        <div className="absolute -inset-4 rounded-[2.5rem] bg-white/[0.02] backdrop-blur-xl" />
-        <div className="absolute -inset-3 rounded-[2.3rem] bg-gradient-to-br from-accent/8 via-transparent to-accent/5 blur-2xl" />
+        <div className="absolute -inset-8 rounded-[3.5rem] bg-[radial-gradient(circle,rgba(214,185,140,0.12)_0%,transparent_70%)] blur-3xl" />
+        <div className="absolute -inset-5 rounded-[2.8rem] bg-accent/5 blur-2xl" />
+        <div className="absolute -inset-3 rounded-[2.5rem] bg-white/[0.02] backdrop-blur-xl" />
 
-        <div className="absolute -inset-1 rounded-[2.2rem] bg-gradient-to-br from-accent/30 via-accent/15 to-accent/5 opacity-30 blur-xl" />
-        <div className="absolute -inset-[2px] rounded-[2.2rem] bg-gradient-to-br from-accent/30 via-accent/15 to-accent/10 opacity-0 transition-opacity duration-700 group-hover:opacity-60" />
-        <div className="absolute -inset-[1px] rounded-[2.2rem] bg-gradient-to-br from-accent/20 via-accent/10 to-accent/5 p-[1px]">
+        <div className="absolute -inset-[2px] rounded-[2.2rem] bg-gradient-to-br from-accent/25 via-accent/10 to-transparent opacity-30 blur-xl" />
+        <div className="absolute -inset-[2px] rounded-[2.2rem] bg-gradient-to-br from-accent/25 via-accent/10 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-50" />
+        <div className="absolute -inset-[1px] rounded-[2.2rem] bg-gradient-to-br from-accent/20 via-accent/10 to-transparent p-[1px]">
           <div className="h-full w-full rounded-[2.15rem] bg-background" />
         </div>
 
@@ -128,9 +136,9 @@ export function Hero() {
         </svg>
 
         <motion.div
-          animate={{ y: [0, -5, 0] }}
-          transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
-          className="relative h-full w-full overflow-hidden rounded-[2rem] shadow-[0_0_40px_-8px_rgba(214,185,140,0.15),0_20px_60px_-12px_rgba(0,0,0,0.5)] ring-1 ring-accent/15"
+          animate={{ y: [0, -6, 0] }}
+          transition={{ duration: 5, ease: "easeInOut", repeat: Infinity }}
+          className="relative h-full w-full overflow-hidden rounded-[2rem] shadow-[0_0_60px_-12px_rgba(214,185,140,0.2),0_30px_80px_-20px_rgba(0,0,0,0.6)]"
         >
           <Image
             src={profile.profileImage}
@@ -140,9 +148,13 @@ export function Hero() {
             sizes="(max-width: 1024px) 256px, 288px"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-background/30 via-transparent to-background/60" />
-          <div className="absolute inset-0 rounded-[2rem] shadow-[inset_0_0_40px_rgba(0,0,0,0.35)]" />
-          <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(ellipse_at_30%_30%,transparent_40%,rgba(214,185,140,0.06)_70%,transparent_80%)] opacity-60" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,rgba(11,11,11,0.7)_75%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(100,75,40,0.3)_80%)] mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-black/30" />
+          <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(ellipse_at_50%_0%,rgba(214,185,140,0.15)_0%,transparent_40%)]" />
+          <div className="absolute inset-0 rounded-[2rem] shadow-[inset_0_0_50px_rgba(0,0,0,0.4)]" />
+          <div className="absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/[0.08]" />
+          <div className="absolute inset-0 rounded-[2rem] ring-1 ring-accent/10" />
         </motion.div>
       </motion.div>
     </section>
