@@ -11,12 +11,12 @@ export function FeaturedProjectCard({ project }: { project: Project }) {
     <Reveal as="article">
       <Link href={`/projects/${project.slug}`} className="group block h-full">
         <Card className="flex h-full flex-col overflow-hidden transition-all duration-500 hover:border-accent/25 hover:shadow-glow md:flex-row">
-          <div className="relative h-60 w-full overflow-hidden md:h-auto md:w-[45%]">
+          <div className="relative h-64 w-full overflow-hidden md:h-auto md:w-[48%]">
             <Image
               src={project.gallery[0]}
               alt={project.title}
               fill
-              sizes="(max-width: 768px) 100vw, 45vw"
+              sizes="(max-width: 768px) 100vw, 48vw"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-card/60 via-transparent to-transparent md:bg-gradient-to-r" />

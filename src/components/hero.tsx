@@ -39,10 +39,9 @@ export function Hero() {
   return (
     <section className="section-container relative flex flex-col-reverse items-center gap-14 pb-16 pt-24 sm:pt-32 lg:flex-row lg:gap-20">
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -right-24 top-1/2 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(124,92,255,0.12)_0%,transparent_70%)] blur-[100px]" />
-        <div className="absolute -left-32 top-1/4 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.06)_0%,transparent_70%)] blur-[80px]" />
-        <div className="absolute left-1/2 top-0 h-[200px] w-[600px] -translate-x-1/2 bg-[gradient(to_bottom,rgba(124,92,255,0.04),transparent)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F]/10 via-transparent to-[#0A0A0F]/60" />
+        <div className="absolute -right-24 top-1/2 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.15)_0%,transparent_70%)] blur-[100px]" />
+        <div className="absolute -left-32 top-1/4 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.08)_0%,transparent_70%)] blur-[80px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-transparent to-background/60" />
       </div>
 
       <motion.div
@@ -89,38 +88,39 @@ export function Hero() {
         initial={{ opacity: 0, scale: 0.92 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-        className="group relative h-56 w-56 sm:h-72 sm:w-72 lg:h-80 lg:w-80"
+        className="relative h-64 w-64 sm:h-80 sm:w-80 lg:h-[22rem] lg:w-[22rem]"
       >
-        <div className="absolute -inset-10 rounded-full bg-[radial-gradient(circle,rgba(124,92,255,0.1)_0%,transparent_70%)] blur-3xl" />
-        <div className="absolute -inset-6 rounded-full bg-accent/5 blur-2xl" />
-        <div className="absolute -inset-4 rounded-full bg-white/[0.02] backdrop-blur-xl" />
+        <div className="animate-pulse-slow absolute -inset-20 rounded-full border border-accent/5" />
+        <div className="animate-pulse-slow absolute -inset-14 rounded-full border border-accent/[0.08]" style={{ animationDelay: "-2s" }} />
+        <div className="absolute -inset-8 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.12),transparent_70%)] blur-2xl" />
+        <div className="absolute -inset-4 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.15),transparent_60%)] blur-3xl" />
 
-        <div className="absolute -inset-[3px] rounded-full bg-gradient-to-br from-accent/20 via-accent/5 to-transparent opacity-30 blur-lg" />
-        <div className="absolute -inset-[3px] rounded-full bg-gradient-to-br from-accent/20 via-accent/5 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-50" />
-        <div className="absolute -inset-[1px] rounded-full bg-gradient-to-br from-accent/15 via-accent/5 to-transparent p-[1px]">
-          <div className="h-full w-full rounded-full bg-background" />
+        <div className="absolute -top-3 right-4 h-3 w-3 rounded-full bg-accent/40" />
+        <div className="absolute -bottom-2 left-10 h-2 w-2 rounded-full bg-accent/25" />
+        <div className="absolute left-0 top-1/3 h-1.5 w-1.5 rounded-full bg-accent/40" />
+        <div className="absolute right-0 top-2/3 h-2 w-2 rounded-full bg-accent/20" />
+        <div className="absolute bottom-8 -right-3 h-1 w-1 rounded-full bg-accent/50" />
+
+        <div
+          className="absolute -inset-[3px] rounded-full bg-gradient-to-br from-accent/20 via-accent/5 to-transparent opacity-30 blur-lg"
+        />
+        <div className="absolute inset-0 z-10 rounded-full ring-2 ring-accent/20 ring-inset" />
+
+        <div className="absolute inset-[3px] z-20 rounded-full overflow-hidden">
+          <div className="absolute inset-0 scale-110 -translate-y-2">
+            <Image
+              src={profile.profileImage}
+              alt={profile.name}
+              fill
+              priority
+              sizes="(max-width: 1024px) 256px, 352px"
+              className="object-cover object-center"
+            />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-black/10" />
+          <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_50%_0%,rgba(139,92,246,0.08),transparent_35%)]" />
+          <div className="absolute inset-0 rounded-full shadow-[inset_0_0_40px_rgba(0,0,0,0.25)]" />
         </div>
-
-        <motion.div
-          animate={{ y: [0, -6, 0] }}
-          transition={{ duration: 5, ease: "easeInOut", repeat: Infinity }}
-          className="relative h-full w-full overflow-hidden rounded-full shadow-[0_0_60px_-16px_rgba(124,92,255,0.25),0_30px_80px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/[0.06]"
-        >
-          <Image
-            src={profile.profileImage}
-            alt={profile.name}
-            fill
-            priority
-            sizes="(max-width: 1024px) 256px, 320px"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(10,10,15,0.6)_80%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(80,60,180,0.2)_85%)] mix-blend-multiply" />
-          <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-black/20" />
-          <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_50%_0%,rgba(124,92,255,0.1)_0%,transparent_35%)]" />
-          <div className="absolute inset-0 rounded-full shadow-[inset_0_0_50px_rgba(0,0,0,0.3)]" />
-          <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-accent/10" />
-        </motion.div>
       </motion.div>
     </section>
   );

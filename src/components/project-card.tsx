@@ -12,7 +12,7 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
     <Reveal as="article" delay={index * 0.08}>
       <Link href={`/projects/${project.slug}`} className="group block h-full">
         <Card className="flex h-full flex-col overflow-hidden transition-all duration-500 hover:border-accent/25 hover:shadow-glow">
-          <div className="relative h-52 w-full overflow-hidden">
+          <div className="relative h-56 w-full overflow-hidden">
             <Image
               src={cover}
               alt={project.title}

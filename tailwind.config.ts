@@ -6,14 +6,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0A0A0F",
-        surface: "#111118",
-        card: "#13131B",
-        primary: "#F5F5F7",
+        background: "#090909",
+        surface: "#101010",
+        card: "#141414",
+        primary: "#F5F5F5",
         secondary: "#A1A1AA",
         muted: "#A1A1AA",
-        accent: "#7C5CFF",
-        "accent-hover": "#9178FF",
+        accent: "#8B5CF6",
+        "accent-hover": "#A78BFA",
         "accent-soft": "#A78BFA",
         line: "rgba(255,255,255,0.08)",
       },
@@ -24,8 +24,8 @@ const config: Config = {
         display: ["var(--font-serif)", "Georgia", "serif"],
       },
       backgroundImage: {
-        "radial-glow": "radial-gradient(circle at 50% 0%, rgba(124,92,255,0.08), transparent 55%)",
-        "accent-gradient": "linear-gradient(135deg, #7C5CFF, #A78BFA)",
+        "radial-glow": "radial-gradient(circle at 50% 0%, rgba(139,92,246,0.08), transparent 55%)",
+        "accent-gradient": "linear-gradient(135deg, #8B5CF6, #A78BFA)",
       },
       keyframes: {
         "fade-up": {
@@ -40,17 +40,24 @@ const config: Config = {
           "0%, 100%": { opacity: "0.25" },
           "50%": { opacity: "0.5" },
         },
+        "drift": {
+          "0%, 100%": { transform: "translate(0, 0)" },
+          "25%": { transform: "translate(2%, -3%)" },
+          "50%": { transform: "translate(-1%, 2%)" },
+          "75%": { transform: "translate(3%, 1%)" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.6s ease-out forwards",
         float: "float 7s ease-in-out infinite",
         "pulse-slow": "pulse-slow 4s ease-in-out infinite",
+        "drift": "drift 20s ease-in-out infinite",
       },
       boxShadow: {
-        soft: "0 2px 8px rgba(0,0,0,0.25), 0 8px 32px rgba(0,0,0,0.35)",
-        glow: "0 0 0 1px rgba(124,92,255,0.15), 0 8px 32px rgba(124,92,255,0.08)",
-        premium: "0 4px 24px rgba(0,0,0,0.4)",
-        glass: "0 8px 32px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.15)",
+        soft: "0 2px 8px rgba(0,0,0,0.3), 0 8px 32px rgba(0,0,0,0.4)",
+        glow: "0 0 0 1px rgba(139,92,246,0.15), 0 8px 32px rgba(139,92,246,0.08)",
+        premium: "0 4px 24px rgba(0,0,0,0.5)",
+        glass: "0 8px 32px rgba(0,0,0,0.35), 0 1px 3px rgba(0,0,0,0.2)",
       },
     },
   },

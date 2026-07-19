@@ -6,7 +6,7 @@ import { SocialIcon } from "./social-icon";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-line bg-card/40">
+    <footer className="border-t border-line bg-card/30 backdrop-blur-sm">
       <div className="section-container grid gap-12 py-16 md:grid-cols-3">
         <div>
           <Link href="/" className="flex items-center gap-2.5 font-medium text-primary">

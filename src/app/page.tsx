@@ -14,6 +14,15 @@ import { socials } from "@/content/social";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+const stats = [
+  { value: "2+", label: "Years of Experience" },
+  { value: "3", label: "Featured Projects" },
+  { value: "15+", label: "Technologies" },
+  { value: "Electrical", label: "Engineer" },
+  { value: "IoT", label: "Embedded Systems" },
+  { value: "AI", label: "Integration" },
+];
+
 export default function HomePage() {
   const [first, ...rest] = projects;
   const contactLinks = socials.filter((s) => s.icon === "mail" || s.icon === "linkedin");
@@ -21,6 +30,21 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+
+      <section className="section-container pb-4">
+        <div className="grid grid-cols-3 gap-3 sm:gap-4">
+          {stats.map((stat) => (
+            <Reveal key={stat.label}>
+              <div className="flex flex-col items-center justify-center rounded-2xl border border-line bg-card/80 backdrop-blur-sm px-3 py-5 text-center transition-all duration-300 hover:border-accent/15 hover:shadow-glow sm:py-7">
+                <span className="text-xl font-bold text-primary sm:text-2xl">{stat.value}</span>
+                <span className="mt-1 text-[10px] leading-tight text-secondary/70 sm:text-xs">
+                  {stat.label}
+                </span>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
 
       <section className="section-container section-padding">
         <div className="flex items-end justify-between gap-4">
@@ -106,7 +130,7 @@ export default function HomePage() {
         <Reveal>
           <Card className="overflow-hidden border-accent/10">
             <div className="relative px-8 py-16 text-center sm:px-16 sm:py-20">
-              <div className="absolute inset-0 -z-10 bg-radial-glow" />
+              <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(139,92,246,0.08),transparent_60%)]" />
               <h2 className="font-serif text-3xl font-normal text-primary sm:text-4xl">
                 Let&apos;s build something solid
               </h2>
