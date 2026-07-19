@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Cpu } from "lucide-react";
 import { navLinks } from "@/content/site";
 import { cn } from "@/lib/utils";
 
@@ -40,11 +40,9 @@ export function Navbar() {
       )}
     >
       <nav className="section-container relative flex h-18 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2.5 text-primary font-sans tracking-tight">
-          <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-accent-gradient shadow-glow">
-            <span className="h-2.5 w-2.5 rounded-full bg-white/90" />
-          </span>
-          <span className="hidden sm:inline text-sm font-medium tracking-wide">Billy Shultan</span>
+        <Link href="/" className="flex items-center gap-2 font-sans">
+          <Cpu size={16} className="text-accent-soft/70" />
+          <span className="hidden sm:inline text-sm font-semibold text-white tracking-tight">Billy Shultan</span>
         </Link>
 
         <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
