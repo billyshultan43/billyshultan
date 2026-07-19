@@ -44,11 +44,6 @@ export function Hero() {
         animate="show"
         className="flex-1 text-center lg:text-left"
       >
-        <motion.div variants={item} className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-accent/15 bg-accent/[0.04] px-4 py-1.5 text-xs font-medium text-accent/90">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent/70" />
-          {profile.roles[0]} &middot; {profile.roles[1]}
-        </motion.div>
-
         <motion.h1
           variants={item}
           className="font-serif text-4xl font-normal leading-[1.08] tracking-tight text-primary sm:text-5xl lg:text-6xl"
@@ -135,7 +130,7 @@ export function Hero() {
         <motion.div
           animate={{ y: [0, -5, 0] }}
           transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
-          className="relative h-full w-full overflow-hidden rounded-[2rem] shadow-[0_0_40px_-8px_rgba(214,185,140,0.15),0_20px_60px_-12px_rgba(0,0,0,0.5)] ring-1 ring-white/[0.06]"
+          className="relative h-full w-full overflow-hidden rounded-[2rem] shadow-[0_0_40px_-8px_rgba(214,185,140,0.15),0_20px_60px_-12px_rgba(0,0,0,0.5)] ring-1 ring-accent/15"
         >
           <Image
             src={profile.profileImage}
@@ -145,6 +140,9 @@ export function Hero() {
             sizes="(max-width: 1024px) 256px, 288px"
             className="object-cover"
           />
+          <div className="absolute inset-0 bg-gradient-to-br from-background/30 via-transparent to-background/60" />
+          <div className="absolute inset-0 rounded-[2rem] shadow-[inset_0_0_40px_rgba(0,0,0,0.35)]" />
+          <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(ellipse_at_30%_30%,transparent_40%,rgba(214,185,140,0.06)_70%,transparent_80%)] opacity-60" />
         </motion.div>
       </motion.div>
     </section>
