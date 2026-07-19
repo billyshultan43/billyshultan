@@ -107,16 +107,17 @@ export function Hero() {
 
         <div className="absolute inset-0 z-10 rounded-full border border-accent/20 shadow-[0_0_30px_-8px_rgba(139,92,246,0.15)]" />
 
-        <div className="absolute -inset-x-20 -top-28 bottom-4 z-20 overflow-visible">
+        <div className="absolute -inset-x-24 -top-24 bottom-4 z-20 overflow-visible">
           <div className="relative h-full w-full">
             <Image
               src={profile.profileImage}
               alt={profile.name}
               fill
               priority
-              sizes="(max-width: 1024px) 440px, 580px"
-              className="object-cover object-top"
+              sizes="(max-width: 640px) 480px, (max-width: 1024px) 576px, 608px"
+              className="object-cover object-top scale-90"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/15 via-transparent to-30% pointer-events-none" />
           </div>
         </div>
       </motion.div>
