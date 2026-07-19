@@ -108,16 +108,32 @@ export function Hero() {
         <div className="absolute inset-0 z-10 rounded-full border border-accent/20 shadow-[0_0_30px_-8px_rgba(139,92,246,0.15)]" />
 
         <div className="absolute -inset-x-24 -top-24 bottom-4 z-20 overflow-visible">
+          <div className="absolute -inset-16 -bottom-20 rounded-full bg-black/25 blur-3xl pointer-events-none" />
+          <div className="absolute -inset-8 rounded-full bg-black/15 blur-2xl pointer-events-none" />
+
           <div className="relative h-full w-full">
-            <Image
-              src={profile.profileImage}
-              alt={profile.name}
-              fill
-              priority
-              sizes="(max-width: 640px) 480px, (max-width: 1024px) 576px, 608px"
-              className="object-cover object-top scale-90"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/15 via-transparent to-30% pointer-events-none" />
+            <div className="absolute inset-0 overflow-hidden" style={{ maskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)' }}>
+              <div className="relative h-full w-full">
+                <Image
+                  src={profile.profileImage}
+                  alt={profile.name}
+                  fill
+                  priority
+                  sizes="(max-width: 640px) 480px, (max-width: 1024px) 576px, 608px"
+                  className="object-cover object-top scale-90"
+                />
+              </div>
+            </div>
+
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(139,92,246,0.1),transparent_50%)] pointer-events-none" />
+
+            <div className="absolute top-[30%] left-0 w-[35%] h-[45%] bg-gradient-to-r from-accent/20 via-accent/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-[30%] right-0 w-[35%] h-[45%] bg-gradient-to-l from-accent/20 via-accent/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-[35%] bg-gradient-to-b from-accent/10 to-transparent rounded-full blur-2xl pointer-events-none" />
+
+            <div className="absolute top-[12%] left-1/2 -translate-x-1/2 w-[45%] h-[35%] bg-[radial-gradient(ellipse_at_center,rgba(255,220,180,0.08),transparent_60%)] rounded-full blur-2xl pointer-events-none" />
+
+            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background via-background/70 via-40% to-transparent pointer-events-none" />
           </div>
         </div>
       </motion.div>
