@@ -90,14 +90,14 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         className="relative h-72 w-72 sm:h-[24rem] sm:w-[24rem] lg:h-[26rem] lg:w-[26rem]"
       >
-        <div className="animate-pulse-slow absolute -inset-32 rounded-full border border-accent/5" style={{ animationDelay: "-5s" }} />
-        <div className="animate-pulse-slow absolute -inset-24 rounded-full border border-accent/[0.06]" style={{ animationDelay: "-3s" }} />
-        <div className="absolute -inset-16 rounded-full border border-accent/8" />
-        <div className="absolute -inset-10 rounded-full border border-accent/10" />
-        <div className="absolute -inset-4 rounded-full border border-accent/[0.14]" />
+        <div className="animate-pulse-slow absolute -inset-36 rounded-full border border-accent/[0.04]" style={{ animationDelay: "-6s" }} />
+        <div className="animate-pulse-slow absolute -inset-28 rounded-full border border-accent/[0.05]" style={{ animationDelay: "-4s" }} />
+        <div className="animate-pulse-slow absolute -inset-20 rounded-full border border-accent/[0.06]" style={{ animationDelay: "-2s" }} />
+        <div className="absolute -inset-12 rounded-full border border-accent/8" />
+        <div className="absolute -inset-5 rounded-full border border-accent/10" />
 
-        <div className="absolute -inset-12 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.2),transparent_60%)] blur-3xl" />
-        <div className="absolute -inset-6 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.1),transparent_50%)] blur-2xl" />
+        <div className="absolute -inset-16 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.12),transparent_60%)] blur-[100px]" />
+        <div className="absolute -inset-8 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.08),transparent_50%)] blur-[60px]" />
 
         <div className="absolute -top-5 right-2 h-3 w-3 rounded-full bg-accent/40" />
         <div className="absolute -bottom-4 left-16 h-2 w-2 rounded-full bg-accent/25" />
@@ -107,19 +107,18 @@ export function Hero() {
 
         <div className="absolute inset-0 z-10 rounded-full border border-accent/20 shadow-[0_0_30px_-8px_rgba(139,92,246,0.15)]" />
 
-        <div className="absolute -inset-12 z-20 overflow-visible">
-          <div className="relative h-full w-full">
+        <div className="absolute -inset-20 z-20 overflow-visible">
+          <div className="relative h-full w-full flex items-start justify-center">
             <Image
               src={profile.profileImage}
               alt={profile.name}
               fill
               priority
-              sizes="(max-width: 1024px) 384px, 520px"
-              className="object-cover object-top scale-105"
+              sizes="(max-width: 1024px) 440px, 580px"
+              className="object-contain object-top"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/50 pointer-events-none" />
           </div>
-          <div className="absolute -bottom-6 left-1/2 h-6 w-4/5 -translate-x-1/2 rounded-full bg-black/40 blur-2xl" />
+          <div className="absolute -bottom-8 left-1/2 h-8 w-3/4 -translate-x-1/2 rounded-full bg-black/40 blur-2xl" />
         </div>
       </motion.div>
     </section>
