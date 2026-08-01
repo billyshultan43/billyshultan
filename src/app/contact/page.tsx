@@ -1,5 +1,6 @@
 import { Linkedin, Mail, Phone } from "lucide-react";
 import { PageIntro } from "@/components/page-intro";
+import { ParallaxWord } from "@/components/parallax-word";
 import { Reveal } from "@/components/reveal";
 import { ContactForm } from "@/components/contact-form";
 import { contact } from "@/content/social";
@@ -23,10 +24,15 @@ export default function ContactPage() {
         title="Contact"
         description="Reach out for engineering, IoT, or full stack opportunities."
         meta="Contact / Jakarta Barat, DKI Jakarta"
+        number="04"
       />
 
-      <section className="section-container section-padding pt-2">
-        <div className="grid grid-cols-1 gap-16 md:grid-cols-12 md:gap-10">
+      <section className="section-container relative overflow-hidden section-padding pt-2">
+        <ParallaxWord
+          text="Let's Talk"
+          className="-translate-x-1/2 -translate-y-1/2 text-[clamp(120px,15vw,230px)] opacity-50"
+        />
+        <div className="relative z-10 grid grid-cols-1 gap-16 md:grid-cols-12 md:gap-10">
           <div className="md:col-span-5">
             <Reveal>
               <div className="flex items-start justify-center gap-10 sm:gap-14">

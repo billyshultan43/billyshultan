@@ -1,5 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
+import { Folio } from "@/components/folio";
 import { Hairline } from "@/components/hairline";
+import { ParallaxWord } from "@/components/parallax-word";
 import { Reveal } from "@/components/reveal";
 import { experience } from "@/content/experience";
 import { education } from "@/content/education";
@@ -21,7 +23,8 @@ const stats = [
 export default function ResumePage() {
   return (
     <>
-      <section className="section-container overflow-hidden pt-20 sm:pt-24">
+      <section className="section-container relative overflow-hidden pt-20 sm:pt-24">
+        <Folio number="03" />
         <Reveal>
           <h1 className="max-w-4xl font-serif text-4xl leading-[1.05] tracking-tight text-primary sm:text-5xl lg:text-6xl">
             Experience & Credentials
@@ -44,7 +47,12 @@ export default function ResumePage() {
         </Reveal>
       </section>
 
-      <section className="section-container pb-24 pt-16">
+      <section className="section-container relative overflow-hidden pb-24 pt-16">
+        <ParallaxWord
+          text="Resume"
+          className="-translate-x-1/2 -translate-y-1/2 text-[clamp(170px,20vw,260px)] opacity-50"
+        />
+        <div className="relative z-10">
         <Reveal>
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-6">
             <h2 className="font-serif text-3xl tracking-tight text-primary lg:col-span-4 sm:text-4xl">
@@ -66,6 +74,10 @@ export default function ResumePage() {
                     </div>
                     <p className="mt-1 text-sm text-secondary">{item.company}</p>
                     <p className="mt-1 font-mono text-xs text-muted">
+                      <span
+                        aria-hidden="true"
+                        className="mr-2 inline-block h-2 w-2 border border-accent/60"
+                      />
                       {item.period}
                     </p>
                     <ul className="mt-6 max-w-3xl space-y-3">
@@ -111,6 +123,10 @@ export default function ResumePage() {
                         {ach.title}
                       </h3>
                       <span className="font-mono text-xs text-muted">
+                        <span
+                          aria-hidden="true"
+                          className="mr-2 inline-block h-2 w-2 border border-accent/60"
+                        />
                         {ach.date}
                       </span>
                     </div>
@@ -149,7 +165,7 @@ export default function ResumePage() {
             <div className="lg:col-span-8">
               {certificates.map((cert, i) => (
                 <Reveal key={cert.id} delay={i * 0.05}>
-                  <div className="flex flex-col justify-between gap-3 border-t border-line py-9 sm:flex-row sm:items-baseline sm:gap-6">
+                  <div className="flex flex-col justify-between gap-3 border-t border-line py-10 sm:flex-row sm:items-baseline sm:gap-6">
                     <div>
                       <h3 className="font-serif text-xl leading-snug text-primary">
                         {cert.name}
@@ -159,7 +175,13 @@ export default function ResumePage() {
                       </p>
                     </div>
                     <div className="flex shrink-0 items-center justify-between gap-8 sm:flex-col sm:items-end sm:gap-2">
-                      <p className="font-mono text-xs text-muted">{cert.date}</p>
+                      <p className="font-mono text-xs text-muted">
+                        <span
+                          aria-hidden="true"
+                          className="mr-2 inline-block h-2 w-2 border border-accent/60"
+                        />
+                        {cert.date}
+                      </p>
                       {cert.file && (
                         <a
                           href={cert.file}
@@ -196,7 +218,13 @@ export default function ResumePage() {
                     <h3 className="font-serif text-2xl leading-tight text-primary">
                       {item.degree}
                     </h3>
-                    <p className="font-mono text-xs text-muted">{item.period}</p>
+                    <p className="font-mono text-xs text-muted">
+                      <span
+                        aria-hidden="true"
+                        className="mr-2 inline-block h-2 w-2 border border-accent/60"
+                      />
+                      {item.period}
+                    </p>
                   </div>
                   <p className="mt-1 text-sm text-secondary">
                     {item.institution}
@@ -237,6 +265,7 @@ export default function ResumePage() {
             </div>
           </div>
         </Reveal>
+        </div>
       </section>
     </>
   );

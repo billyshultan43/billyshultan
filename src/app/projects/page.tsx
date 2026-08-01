@@ -14,6 +14,7 @@ export default function ProjectsPage() {
         title="Engineering & Software Work"
         description="Each project below is documented from verified sources, the CV and project documentation."
         meta="Index / 2023-2026"
+        number="02"
       />
       <ProjectsIndex />
     </>
