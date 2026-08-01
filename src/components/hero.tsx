@@ -87,72 +87,74 @@ export function Hero() {
               initial={reduce ? false : "hidden"}
               animate="show"
             >
-              <motion.p variants={item} className="label">
-                Available for opportunities
-              </motion.p>
+            <motion.p variants={item} className="label">
+              Available for opportunities
+            </motion.p>
 
-              <motion.h1
-                variants={item}
-                className="mt-4 font-serif text-[clamp(44px,4.8vw,72px)] font-medium leading-[0.92] tracking-[-0.01em] text-primary"
-              >
-                Billy
-                <br />
-                Shultan
-                <br />
-                Al&nbsp;Hadiy
-              </motion.h1>
+            <motion.h1
+              variants={item}
+              className="mt-3 font-serif text-[clamp(38px,4.2vw,62px)] font-medium leading-[0.9] tracking-[-0.01em] text-primary"
+            >
+              Billy
+              <br />
+              Shultan
+              <br />
+              Al&nbsp;Hadiy
+            </motion.h1>
 
-              <motion.p
-                variants={item}
-                className="mt-3 text-[15px] font-medium text-primary"
-              >
-                Electrical Engineer
-              </motion.p>
-              <motion.p
-                variants={item}
-                className="mt-1 text-[15px] text-secondary"
-              >
-                IoT&ensp;•&ensp;Embedded Systems&ensp;•&ensp;AI Integration
-              </motion.p>
+            <motion.p
+              variants={item}
+              className="mt-2 text-[15px] font-medium text-primary"
+            >
+              Electrical Engineer
+            </motion.p>
+            <motion.p
+              variants={item}
+              className="mt-0.5 text-[15px] text-secondary"
+            >
+              IoT&ensp;•&ensp;Embedded Systems&ensp;•&ensp;AI Integration
+            </motion.p>
 
-              <motion.p
-                variants={item}
-                className="mt-4 max-w-[440px] text-[15px] leading-[1.65] text-secondary"
-              >
-                {profile.heroSummary}
-              </motion.p>
+            <motion.p
+              variants={item}
+              className="mt-3 max-w-[420px] text-[15px] leading-[1.65] text-secondary"
+            >
+              Electrical Engineer specializing in Industrial IoT, Embedded
+              Systems and AI Integration, building connected monitoring
+              solutions from hardware to cloud.
+            </motion.p>
 
-              <motion.div variants={item} className="mt-6 flex gap-10">
-                <div>
-                  <p className="label">Specialization</p>
-                  <ul className="mt-3 space-y-[7px]">
-                    {specialization.map((s) => (
-                      <li
-                        key={s}
-                        className="flex items-baseline gap-3 text-[12px] text-secondary"
-                      >
-                        <span
-                          aria-hidden="true"
-                          className="mt-1 h-1.5 w-1.5 shrink-0 bg-accent"
-                        />
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <p className="label">Experience</p>
-                  <p className="mt-3 flex items-baseline gap-3">
-                    <span className="font-serif text-[36px] font-medium leading-none text-primary">
-                      2+
-                    </span>
-                    <span className="text-[12px] uppercase tracking-[0.3em] text-secondary">
-                      Years
-                    </span>
-                  </p>
-                </div>
-              </motion.div>
+            <motion.div variants={item} className="mt-5 flex items-start gap-8">
+              <div>
+                <p className="label">Specialization</p>
+                <ul className="mt-3 space-y-[7px]">
+                  {specialization.map((s) => (
+                    <li
+                      key={s}
+                      className="flex items-baseline gap-3 text-[12px] text-secondary"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="mt-1 h-1.5 w-1.5 shrink-0 bg-accent"
+                      />
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="label">Experience</p>
+                <p className="mt-3 flex items-baseline gap-2">
+                  <span className="font-serif text-[32px] font-medium leading-none text-primary">
+                    2+
+                  </span>
+                  <span className="text-[11px] uppercase tracking-[0.3em] text-secondary">
+                    Years
+                  </span>
+                </p>
+              </div>
             </motion.div>
+          </motion.div>
           </div>
 
           {/* ——— CENTER COLUMN ——— */}
