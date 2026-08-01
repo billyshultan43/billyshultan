@@ -50,6 +50,6 @@ export const skills: SkillCategory[] = [
   {
     name: "Languages",
     icon: "globe",
-    skills: ["Indonesian — Native", "English — Working Proficiency"],
+    skills: ["Indonesian (Native)", "English (Working Proficiency)"],
   },
 ];

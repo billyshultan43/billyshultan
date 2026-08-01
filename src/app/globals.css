@@ -2,88 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #090909;
-  --foreground: #F5F5F5;
-  --card: #141414;
-  --accent: #8B5CF6;
-  --secondary: #A1A1AA;
-  --line: rgba(255, 255, 255, 0.08);
-}
-
-* {
-  border-color: var(--line);
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #F3EFE7;
+  color: #17140E;
   font-feature-settings: "rlig" 1, "calt" 1;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
+::selection {
+  background-color: #1D4A35;
+  color: #F3EFE7;
+}
+
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #090909;
+  background: #F3EFE7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
-  border-radius: 999px;
+  background: #CFC7B6;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a3a3a;
+  background: #B7AE99;
 }
 
 @layer components {
-  .glass {
-    @apply border border-line bg-white/[0.03] backdrop-blur-md;
-  }
-  .glass-strong {
-    @apply border border-line bg-card/80 backdrop-blur-xl;
-  }
-  .glass-card {
-    @apply border border-line bg-card/90 backdrop-blur-lg shadow-glass;
-  }
   .section-container {
-    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-10;
   }
   .section-padding {
-    @apply py-20 sm:py-28;
+    @apply py-24 sm:py-32 lg:py-36;
   }
 }
 
-.noise-overlay {
-  position: absolute;
-  inset: 0;
-  opacity: 0.03;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-.ambient-glow {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(120px);
-  will-change: transform;
-  pointer-events: none;
-}
-
-.floating-circle {
-  position: absolute;
-  border-radius: 9999px;
-  border: 1px solid rgba(139, 92, 246, 0.06);
-  pointer-events: none;
+.text-outline {
+  -webkit-text-stroke: 1px rgba(23, 20, 14, 0.22);
+  color: transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

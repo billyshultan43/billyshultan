@@ -21,12 +21,12 @@ export function Gallery({ images, alt }: { images: string[]; alt: string }) {
             key={src}
             type="button"
             onClick={() => setActive(src)}
-            className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-line"
+            className="group relative aspect-[4/3] overflow-hidden border border-line"
             aria-label={`Open image ${i + 1}`}
           >
             <Image
               src={src}
-              alt={`${alt} — image ${i + 1}`}
+              alt={`${alt}, image ${i + 1}`}
               fill
               sizes="(max-width: 640px) 50vw, 33vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -37,7 +37,7 @@ export function Gallery({ images, alt }: { images: string[]; alt: string }) {
 
       {active && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-primary/90 p-4"
           onClick={() => setActive(null)}
           role="dialog"
           aria-modal="true"
@@ -45,7 +45,7 @@ export function Gallery({ images, alt }: { images: string[]; alt: string }) {
           <button
             type="button"
             aria-label="Close"
-            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center border border-background/30 text-background transition-colors hover:bg-background/10"
           >
             <X size={20} />
           </button>

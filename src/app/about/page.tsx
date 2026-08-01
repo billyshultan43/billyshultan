@@ -1,6 +1,5 @@
 import { Target, Cpu, Wrench, Sparkles } from "lucide-react";
 import { PageIntro } from "@/components/page-intro";
-import { SectionHeading } from "@/components/section-heading";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/reveal";
@@ -39,7 +38,6 @@ export default function AboutPage() {
   return (
     <>
       <PageIntro
-        eyebrow="About Me"
         title="Billy Shultan Al Hadiy"
         description="Electrical Engineer and IoT developer with a practical, hands-on engineering background."
       />
@@ -57,12 +55,12 @@ export default function AboutPage() {
               <p className="mt-3 text-base leading-relaxed text-secondary">
                 My work centers on Electrical Engineering, the Internet of Things (IoT),
                 Embedded Systems, AI Integration, Software Development, and Full Stack
-                Development — with a consistent focus on environmental and industrial
+                Development, with a consistent focus on environmental and industrial
                 monitoring applications.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {profile.roles.map((r) => (
-                  <Badge key={r} className="border-accent/20 bg-accent/10 text-accent">
+                  <Badge key={r} className="border-accent/30 bg-accent/5 text-accent">
                     {r}
                   </Badge>
                 ))}
@@ -73,7 +71,7 @@ export default function AboutPage() {
               <h3 className="mt-10 text-xl font-semibold text-primary">Career Objective</h3>
               <p className="mt-3 text-base leading-relaxed text-secondary">
                 Committed to supporting operational and engineering system development
-                across the energy, environmental, and manufacturing industries — combining
+                across the energy, environmental, and manufacturing industries, combining
                 field-proven instrumentation skills with modern software and connectivity.
               </p>
             </Reveal>
@@ -88,7 +86,7 @@ export default function AboutPage() {
                 <ul className="mt-5 space-y-5">
                   {interests.map((item) => (
                     <li key={item.title} className="flex gap-3">
-                      <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent shadow-sm">
+                      <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center border border-accent/25 bg-accent/5 text-accent">
                         <item.icon size={18} />
                       </span>
                       <div>
@@ -104,7 +102,9 @@ export default function AboutPage() {
         </div>
 
         <div className="mt-16">
-          <SectionHeading eyebrow="Capabilities" title="Verified skill domains" />
+          <h2 className="font-serif text-3xl tracking-tight text-primary sm:text-4xl">
+            Verified skill domains
+          </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {skills.map((cat, i) => (
               <Reveal key={cat.name} delay={i * 0.06}>

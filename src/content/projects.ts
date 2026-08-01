@@ -4,9 +4,9 @@ export const projects: Project[] = [
   {
     slug: "ambient-particulate-monitoring",
     title: "Ambient Environmental Particulate Monitoring System",
-    year: "2023 – 2024",
-    category: "IoT · Environmental Monitoring",
-    role: "IoT & Embedded Developer — Team Project",
+    year: "2023-2024",
+    category: "IoT / Environmental Monitoring",
+    role: "IoT & Embedded Developer, Team Project",
     summary:
       "An Internet of Things (IoT)-based environmental monitoring system that measures ambient air quality by monitoring PM2.5 particulate concentration and ambient temperature in real time.",
     overview:
@@ -95,7 +95,7 @@ Temperature      ESP8266 NodeMCU
       "Historical data analytics",
       "Automatic alert notifications",
     ],
-    academic: "Perancangan Aplikasi dan Sistem Teknik Elektro (PASTEL) — Universitas Mercu Buana, Faculty of Engineering, 2023.",
+    academic: "Perancangan Aplikasi dan Sistem Teknik Elektro (PASTEL), Universitas Mercu Buana, Faculty of Engineering, 2023.",
     documents: [
       { label: "Project Report (PASTEL)", file: "/assets/images/projects/ambient-particulate/Laporan_PASTEL_AGIF-TEAM_FIX.pdf" },
     ],
@@ -104,7 +104,7 @@ Temperature      ESP8266 NodeMCU
     slug: "dimsio-smart-pos",
     title: "Dimsio Web-Based Cashier Application with AI Assistant",
     year: "2026",
-    category: "Web Application · Full Stack",
+    category: "Web Application / Full Stack",
     role: "Full Stack Developer",
     summary:
       "A web-based cashier application designed to support business operations, integrated with an AI Assistant to help users with information and daily management.",
@@ -146,7 +146,7 @@ Temperature      ESP8266 NodeMCU
     slug: "vehicle-emission-fuzzy-mamdani",
     title: "IoT-Based Vehicle Exhaust Emission Monitoring System Using Fuzzy Mamdani",
     year: "2024",
-    category: "IoT · AI · Embedded Systems",
+    category: "IoT / AI / Embedded Systems",
     role: "Embedded & AI Developer (Thesis)",
     summary:
       "A portable IoT-based vehicle exhaust emission monitoring system that measures Carbon Monoxide (CO) and Hydrocarbon (HC) in real time and classifies emission levels using the Fuzzy Mamdani method via the Blynk application.",
@@ -253,7 +253,7 @@ Smartphone Dashboard`,
       "PDF report generator",
       "Multi-vehicle monitoring",
     ],
-    academic: "Bachelor Final Project (Thesis) — Universitas Mercu Buana, Faculty of Engineering, 2024.",
+    academic: "Bachelor Final Project (Thesis), Universitas Mercu Buana, Faculty of Engineering, 2024.",
     documents: [
       { label: "Final Thesis Poster", file: "/assets/images/projects/vehicle-emission/Poster-Tugas-Akhir-Billy.pdf" },
     ],

@@ -23,19 +23,22 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <span className="mb-4 inline-block text-xs font-medium uppercase tracking-[0.2em] text-accent">
+        <span className="mb-4 inline-block text-xs font-medium uppercase tracking-[0.2em] text-muted">
           {eyebrow}
         </span>
       )}
-      <h2 className="font-serif text-3xl font-normal leading-[1.15] tracking-tight text-primary sm:text-4xl">{title}</h2>
-      <div
-        className={cn(
-          "mt-5 h-1 w-8 rounded-full bg-accent-gradient",
-          align === "center" && "mx-auto"
-        )}
-      />
+      <h2 className="font-serif text-3xl font-normal leading-[1.15] tracking-tight text-primary sm:text-4xl">
+        {title}
+      </h2>
       {description && (
-        <p className="mt-6 text-base leading-relaxed text-secondary">{description}</p>
+        <p
+          className={cn(
+            "mt-6 text-base leading-relaxed text-secondary",
+            align === "center" && "mx-auto max-w-2xl"
+          )}
+        >
+          {description}
+        </p>
       )}
     </Reveal>
   );

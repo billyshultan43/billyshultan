@@ -1,28 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Instrument_Serif } from "next/font/google";
+import { Playfair_Display, Schibsted_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { ImmersiveBackground } from "@/components/immersive-background";
 import { site } from "@/content/site";
 
-const inter = Inter({
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const grotesk = Schibsted_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  display: "swap",
-  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -65,7 +58,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A0A0F",
+  themeColor: "#F3EFE7",
   width: "device-width",
   initialScale: 1,
 };
@@ -76,14 +69,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} dark`}>
+    <html lang="en" className={`${playfair.variable} ${grotesk.variable}`}>
       <body className="font-sans antialiased">
-        <div className="relative min-h-screen overflow-hidden">
-          <ImmersiveBackground />
-          <Navbar />
-          <main className="pt-16">{children}</main>
-          <Footer />
-        </div>
+        <Navbar />
+        <main className="pt-16">{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -22,7 +22,10 @@ export function SocialIcon({
 }) {
   const Icon = iconMap[social.icon];
   if (!Icon) return null;
-  const isLink = social.href.startsWith("http") || social.href.startsWith("mailto") || social.href.startsWith("tel");
+  const isLink =
+    social.href.startsWith("http") ||
+    social.href.startsWith("mailto") ||
+    social.href.startsWith("tel");
   const Tag = isLink ? "a" : "span";
   return (
     <Tag
@@ -31,7 +34,7 @@ export function SocialIcon({
       rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
       aria-label={social.name}
       className={cn(
-        "inline-flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white/[0.02] text-secondary/60 transition-all duration-300 hover:border-accent/30 hover:bg-accent/5 hover:text-accent",
+        "inline-flex h-10 w-10 items-center justify-center border border-line text-secondary transition-colors duration-300 hover:border-accent hover:text-accent",
         className
       )}
     >

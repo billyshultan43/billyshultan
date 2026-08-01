@@ -1,10 +1,9 @@
 "use client";
 
-import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { profile } from "@/content/profile";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -15,128 +14,78 @@ const container: Variants = {
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
 };
 
-function highlightAIIntegration(text: string) {
-  const parts = text.split("AI Integration");
-  if (parts.length < 2) return text;
-  return (
-    <>
-      {parts[0]}
-      <span className="relative inline-flex items-center">
-        <span className="relative z-10 text-accent">
-          AI Integration
-        </span>
-      </span>
-      {parts.slice(1).join("AI Integration")}
-    </>
-  );
-}
-
 export function Hero() {
+  const reduce = useReducedMotion();
   return (
-    <section className="section-container relative flex flex-col-reverse items-center gap-14 pb-16 pt-24 sm:pt-32 lg:flex-row lg:gap-20">
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -right-24 top-1/2 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.15)_0%,transparent_70%)] blur-[100px]" />
-        <div className="absolute -left-32 top-1/4 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.08)_0%,transparent_70%)] blur-[80px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-transparent to-background/60" />
-      </div>
-
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="flex-1 text-center lg:text-left"
-      >
-        <motion.h1
-          variants={item}
-          className="font-serif text-4xl font-normal leading-[1.08] tracking-tight text-primary sm:text-5xl lg:text-6xl"
+    <section className="section-container pb-0 pt-10 lg:pt-12">
+      <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-8">
+        <motion.div
+          variants={container}
+          initial={reduce ? false : "hidden"}
+          animate="show"
+          className="relative z-10 lg:col-span-8"
         >
-          {profile.name}
-        </motion.h1>
+          <motion.p
+            variants={item}
+            className="text-xs font-medium uppercase tracking-[0.24em] text-secondary"
+          >
+            {profile.roles.slice(0, 4).join(" / ")}
+          </motion.p>
 
-        <motion.p
-          variants={item}
-          className="mt-4 text-lg font-medium text-accent sm:text-xl"
-        >
-          {highlightAIIntegration(profile.role)}
-        </motion.p>
+          <motion.h1
+            variants={item}
+            className="mt-8 font-serif text-[3.4rem] leading-[1.06] tracking-tight text-primary sm:text-7xl lg:text-6xl xl:text-[6.25rem]"
+          >
+            Billy Shultan
+            <span className="block pb-2 italic text-accent">Al Hadiy</span>
+          </motion.h1>
 
-        <motion.p
-          variants={item}
-          className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-secondary lg:mx-0"
-        >
-          {profile.heroSummary}
-        </motion.p>
+          <motion.p
+            variants={item}
+            className="mt-8 max-w-xl text-base leading-relaxed text-secondary lg:text-lg"
+          >
+            {profile.tagline}
+          </motion.p>
+
+          <motion.div variants={item} className="mt-12">
+            <Link href="/contact" className={cn(buttonVariants({ size: "lg" }), "group")}>
+              Contact
+              <ArrowRight
+                size={16}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </Link>
+          </motion.div>
+        </motion.div>
 
         <motion.div
-          variants={item}
-          className="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
+          initial={reduce ? false : { opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="relative lg:col-span-4 lg:mt-24"
         >
-          <Link
-            href="/contact"
-            className={cn(buttonVariants({ variant: "outline", size: "lg" }), "rounded-full")}
+          <span
+            aria-hidden="true"
+            className="text-outline pointer-events-none absolute -bottom-8 right-0 hidden select-none font-serif italic leading-none lg:block lg:text-8xl xl:text-9xl"
           >
-            Contact <ArrowUpRight size={16} />
-          </Link>
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.92 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-        className="relative h-72 w-72 sm:h-[24rem] sm:w-[24rem] lg:h-[26rem] lg:w-[26rem]"
-      >
-        <div className="animate-pulse-slow absolute -inset-36 rounded-full border border-accent/[0.04]" style={{ animationDelay: "-6s" }} />
-        <div className="animate-pulse-slow absolute -inset-28 rounded-full border border-accent/[0.05]" style={{ animationDelay: "-4s" }} />
-        <div className="animate-pulse-slow absolute -inset-20 rounded-full border border-accent/[0.06]" style={{ animationDelay: "-2s" }} />
-        <div className="absolute -inset-12 rounded-full border border-accent/8" />
-        <div className="absolute -inset-5 rounded-full border border-accent/10" />
-
-        <div className="absolute -inset-16 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.12),transparent_60%)] blur-[100px]" />
-        <div className="absolute -inset-8 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.08),transparent_50%)] blur-[60px]" />
-
-        <div className="absolute -top-5 right-2 h-3 w-3 rounded-full bg-accent/40" />
-        <div className="absolute -bottom-4 left-16 h-2 w-2 rounded-full bg-accent/25" />
-        <div className="absolute left-0 top-1/3 h-1.5 w-1.5 rounded-full bg-accent/40" />
-        <div className="absolute right-0 top-1/2 h-2 w-2 rounded-full bg-accent/20" />
-        <div className="absolute bottom-16 -right-5 h-1 w-1 rounded-full bg-accent/50" />
-
-        <div className="absolute inset-0 z-10 rounded-full border border-accent/20 shadow-[0_0_30px_-8px_rgba(139,92,246,0.15)]" />
-
-        <div className="absolute -inset-x-24 -top-24 bottom-4 z-20 overflow-visible">
-          <div className="absolute -inset-16 -bottom-20 rounded-full bg-black/25 blur-3xl pointer-events-none" />
-          <div className="absolute -inset-8 rounded-full bg-black/15 blur-2xl pointer-events-none" />
-
-          <div className="relative h-full w-full">
-            <div className="absolute inset-0 overflow-hidden" style={{ maskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)' }}>
-              <div className="relative h-full w-full">
-                <Image
-                  src={profile.profileImage}
-                  alt={profile.name}
-                  fill
-                  priority
-                  sizes="(max-width: 640px) 480px, (max-width: 1024px) 576px, 608px"
-                  className="object-cover object-top scale-90"
-                />
-              </div>
-            </div>
-
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(139,92,246,0.1),transparent_50%)] pointer-events-none" />
-
-            <div className="absolute top-[30%] left-0 w-[35%] h-[45%] bg-gradient-to-r from-accent/20 via-accent/5 to-transparent rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute top-[30%] right-0 w-[35%] h-[45%] bg-gradient-to-l from-accent/20 via-accent/5 to-transparent rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[70%] h-[35%] bg-gradient-to-b from-accent/10 to-transparent rounded-full blur-2xl pointer-events-none" />
-
-            <div className="absolute top-[12%] left-1/2 -translate-x-1/2 w-[45%] h-[35%] bg-[radial-gradient(ellipse_at_center,rgba(255,220,180,0.08),transparent_60%)] rounded-full blur-2xl pointer-events-none" />
-
-            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background via-background/70 via-40% to-transparent pointer-events-none" />
+            engineer
+          </span>
+          <div className="relative mx-auto aspect-[3/4] w-full max-w-[420px] overflow-hidden border border-line lg:max-w-none">
+            <Image
+              src={profile.profileImage}
+              alt={profile.name}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 420px"
+              className="object-cover object-top"
+            />
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }

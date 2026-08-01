@@ -1,5 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ArrowLeft, ArrowRight, Download, Github, ExternalLink, User, Cpu, Wrench, Code2, Check } from "lucide-react";
@@ -63,11 +64,14 @@ export default async function ProjectDetailPage({
 
       <header className="section-container mt-6">
         <Reveal>
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-line shadow-glass">
-            <img
+          <div className="relative aspect-[16/9] w-full overflow-hidden border border-line">
+            <Image
               src={project.gallery[0]}
               alt={project.title}
-              className="h-full w-full object-cover"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 1400px"
+              className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
           </div>
@@ -100,15 +104,17 @@ export default async function ProjectDetailPage({
           {project.architectureImage && (
             <Section title="Architecture">
               {project.architectureText && (
-                <pre className="mb-5 overflow-x-auto rounded-xl border border-line bg-white/[0.02] p-4 text-xs leading-relaxed text-accent/80">
+                <pre className="mb-5 overflow-x-auto border border-line bg-surface/60 p-4 text-xs leading-relaxed text-accent">
                   {project.architectureText}
                 </pre>
               )}
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-line shadow-glass">
-                <img
+              <div className="relative aspect-[16/10] w-full overflow-hidden border border-line">
+                <Image
                   src={project.architectureImage}
                   alt={`${project.title} architecture`}
-                  className="h-full w-full object-contain"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  className="object-contain"
                 />
               </div>
             </Section>
@@ -138,7 +144,7 @@ export default async function ProjectDetailPage({
               <ul className="space-y-2">
                 {project.challenges.map((c) => (
                   <li key={c} className="flex gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/50" />
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-accent/50" />
                     <span>{c}</span>
                   </li>
                 ))}
@@ -169,8 +175,7 @@ export default async function ProjectDetailPage({
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
-                      buttonVariants({ variant: "outline", size: "sm" }),
-                      "rounded-full"
+                      buttonVariants({ variant: "outline", size: "sm" })
                     )}
                   >
                     <Download size={15} /> {doc.label}
@@ -211,7 +216,7 @@ export default async function ProjectDetailPage({
                 {project.hardware.map((h) => (
                   <li key={h.name}>
                     <span className="font-medium text-primary">{h.name}</span>
-                    <span className="text-secondary"> — {h.description}</span>
+                    <span className="text-secondary">, {h.description}</span>
                   </li>
                 ))}
               </ul>
@@ -237,7 +242,7 @@ export default async function ProjectDetailPage({
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn(buttonVariants({ variant: "outline" }), "w-full rounded-full")}
+                className={cn(buttonVariants({ variant: "outline" }), "w-full")}
               >
                 <Github size={16} /> GitHub Repository
               </a>
@@ -247,12 +252,12 @@ export default async function ProjectDetailPage({
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn(buttonVariants({ variant: "outline" }), "w-full rounded-full")}
+                className={cn(buttonVariants({ variant: "outline" }), "w-full")}
               >
                 <ExternalLink size={16} /> Live Demo
               </a>
             )}
-            <Link href="/projects" className={cn(buttonVariants({ variant: "ghost" }), "w-full rounded-full")}>
+            <Link href="/projects" className={cn(buttonVariants({ variant: "ghost" }), "w-full")}>
               <ArrowLeft size={16} /> Back to Projects
             </Link>
           </div>
@@ -263,7 +268,7 @@ export default async function ProjectDetailPage({
         {prev ? (
           <Link
             href={`/projects/${prev.slug}`}
-            className="group flex flex-col rounded-2xl border border-line bg-card/80 backdrop-blur-sm p-5 transition-colors hover:border-accent/25 hover:shadow-glow"
+            className="group flex flex-col border border-line bg-card/80 p-5 transition-colors hover:border-accent"
           >
             <span className="flex items-center gap-1.5 text-xs text-secondary">
               <ArrowLeft size={14} /> Previous
@@ -276,7 +281,7 @@ export default async function ProjectDetailPage({
         {next && (
           <Link
             href={`/projects/${next.slug}`}
-            className="group flex flex-col rounded-2xl border border-line bg-card/80 backdrop-blur-sm p-5 text-right transition-colors hover:border-accent/25 hover:shadow-glow sm:items-end"
+            className="group flex flex-col border border-line bg-card/80 p-5 text-right transition-colors hover:border-accent sm:items-end"
           >
             <span className="flex items-center gap-1.5 text-xs text-secondary">
               Next <ArrowRight size={14} />

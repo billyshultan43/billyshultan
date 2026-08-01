@@ -5,7 +5,7 @@ export const education: EducationItem[] = [
     id: "s1-teknik-elektro",
     degree: "Bachelor of Electrical Engineering (S1 Teknik Elektro)",
     institution: "Universitas Mercu Buana",
-    period: "Sep 2020 – Aug 2026",
+    period: "Sep 2020 - Aug 2026",
     gpa: "3.50 / 4.00",
     thesis:
       "Design of a Vehicle Exhaust Emission Monitoring System Using the Fuzzy Mamdani Method Based on the Blynk Application (Perancangan Sistem Monitoring Emisi Gas Buang Kendaraan Menggunakan Metode Fuzzy Mamdani Berbasis Aplikasi Blynk)",
@@ -20,8 +20,8 @@ export const education: EducationItem[] = [
 export const organization = [
   {
     id: "gmni",
-    organization: "Gerakan Mahasiswa Nasional Indonesia (GMNI) — Faculty of Engineering, Universitas Mercu Buana",
-    period: "2021 – 2022",
+    organization: "Gerakan Mahasiswa Nasional Indonesia (GMNI), Faculty of Engineering, Universitas Mercu Buana",
+    period: "2021 - 2022",
     role: "Deputy Chairperson for Organization (Wakil Ketua Bidang Organisasi)",
     responsibilities: [
       "Planned and coordinated organizational work programs throughout one management period.",
@@ -32,7 +32,7 @@ export const organization = [
   {
     id: "hme",
     organization: "Himpunan Mahasiswa Elektro (HME), Universitas Mercu Buana",
-    period: "2022 – 2023",
+    period: "2022 - 2023",
     role: "Member, External Division",
     responsibilities: [
       "Built communication and collaboration with Electrical Engineering student associations from various universities across the Jabodetabek and Banten regions.",
