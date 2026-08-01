@@ -53,11 +53,10 @@ const techStack = [
   { name: "Filament", icon: Boxes },
 ];
 
-const expertise = [
-  "Environmental Monitoring",
-  "Embedded Systems",
-  "AI Integration",
-  "System Integration",
+const openTo = [
+  "Engineering Roles",
+  "IoT Projects",
+  "Freelance Consulting",
 ];
 
 const contacts = [
@@ -189,8 +188,17 @@ export function Hero() {
             <motion.div variants={item} className="border-t border-line/50 pt-4">
               <p className="label">Current Role</p>
               <p className="mt-2 text-[12px] text-primary">Electrical Engineer</p>
-              <p className="mt-1 text-[12px] text-secondary">
-                Instrumentation &amp; IoT Development
+            </motion.div>
+
+            <motion.div variants={item} className="mt-5 border-t border-line/50 pt-4">
+              <p className="label">Experience</p>
+              <p className="mt-2 flex items-baseline gap-2">
+                <span className="font-serif text-[24px] font-medium leading-none text-primary">
+                  2+
+                </span>
+                <span className="text-[11px] uppercase tracking-[0.3em] text-secondary">
+                  Years
+                </span>
               </p>
             </motion.div>
 
@@ -200,11 +208,11 @@ export function Hero() {
             </motion.div>
 
             <motion.div variants={item} className="mt-5 border-t border-line/50 pt-4">
-              <p className="label">Expertise</p>
+              <p className="label">Open To</p>
               <ul className="mt-2 space-y-1">
-                {expertise.map((e) => (
-                  <li key={e} className="text-[12px] text-secondary">
-                    {e}
+                {openTo.map((o) => (
+                  <li key={o} className="text-[12px] text-secondary">
+                    {o}
                   </li>
                 ))}
               </ul>
