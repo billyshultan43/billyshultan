@@ -3,22 +3,21 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap border text-sm font-medium tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 active:translate-y-[1px]",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap border text-sm leading-none tracking-wide transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 active:translate-y-[1px]",
   {
     variants: {
       variant: {
         default:
-          "border-accent bg-accent text-background hover:bg-accent-hover hover:border-accent-hover",
-        outline:
-          "border-line bg-transparent text-primary hover:border-primary",
+          "border-primary bg-primary text-background hover:border-accent hover:bg-accent",
+        outline: "border-line bg-transparent text-primary hover:border-primary",
         ghost: "border-transparent text-secondary hover:text-primary",
-        secondary:
-          "border-accent/30 bg-accent/10 text-accent hover:bg-accent/15",
+        onDark:
+          "border-charcoal-text/40 bg-transparent text-charcoal-text hover:border-charcoal-text hover:text-charcoal-text",
       },
       size: {
-        default: "h-11 px-6",
+        default: "h-10 px-5",
         sm: "h-9 px-4",
-        lg: "h-12 px-8 text-base",
+        lg: "h-11 px-6",
         icon: "h-10 w-10",
       },
     },

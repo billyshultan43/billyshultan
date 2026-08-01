@@ -3,11 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ArrowLeft, ArrowRight, Download, Github, ExternalLink, User, Cpu, Wrench, Code2, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download } from "lucide-react";
 import { getProject, projects } from "@/content/projects";
 import { Reveal } from "@/components/reveal";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Gallery } from "@/components/gallery";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -31,10 +29,30 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return (
     <Reveal>
       <div>
-        <h2 className="text-xl font-semibold text-primary">{title}</h2>
-        <div className="mt-3 text-sm leading-relaxed text-secondary">{children}</div>
+        <h2 className="font-serif text-2xl leading-tight text-primary lg:text-3xl">
+          {title}
+        </h2>
+        <div className="mt-6 max-w-[68ch] text-base leading-relaxed text-secondary">
+          {children}
+        </div>
       </div>
     </Reveal>
+  );
+}
+
+function MarkerList({ items }: { items: string[] }) {
+  return (
+    <ul className="grid gap-x-10 gap-y-3 sm:grid-cols-2">
+      {items.map((item) => (
+        <li key={item} className="flex gap-3 text-sm leading-relaxed">
+          <span
+            aria-hidden="true"
+            className="mt-1.5 h-2.5 w-2.5 shrink-0 border border-accent/70"
+          />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -52,19 +70,40 @@ export default async function ProjectDetailPage({
   const next = index < projects.length - 1 ? projects[index + 1] : null;
 
   return (
-    <article className="pt-16">
+    <article>
       <div className="section-container">
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 pt-8 text-sm text-secondary transition-colors hover:text-primary"
+          className="group mt-10 inline-flex items-center gap-2 text-sm text-secondary transition-colors hover:text-primary"
         >
-          <ArrowLeft size={16} /> All projects
+          <ArrowLeft
+            size={15}
+            className="transition-transform duration-300 group-hover:-translate-x-0.5"
+          />
+          All projects
         </Link>
       </div>
 
-      <header className="section-container mt-6">
+      <header className="section-container mt-8">
         <Reveal>
-          <div className="relative aspect-[16/9] w-full overflow-hidden border border-line">
+          <p className="font-mono text-xs text-secondary">
+            {project.category} / {project.year}
+          </p>
+          <h1 className="mt-5 max-w-4xl font-serif text-3xl leading-[1.08] tracking-tight text-primary sm:text-4xl lg:text-5xl">
+            {project.title}
+          </h1>
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-secondary">
+            {project.summary}
+          </p>
+          <p className="mt-6 font-mono text-[11px] leading-loose text-muted">
+            {project.technologies.join(" / ")}
+          </p>
+        </Reveal>
+      </header>
+
+      <Reveal delay={0.1}>
+        <div className="section-container mt-12">
+          <div className="relative aspect-[16/9] w-full overflow-hidden border border-line bg-card">
             <Image
               src={project.gallery[0]}
               alt={project.title}
@@ -73,29 +112,12 @@ export default async function ProjectDetailPage({
               sizes="(max-width: 768px) 100vw, 1400px"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
           </div>
-          <div className="mt-8">
-            <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-accent/60">
-              {project.category} &middot; {project.year}
-            </span>
-            <h1 className="mt-3 max-w-4xl font-serif text-3xl font-normal leading-tight text-primary sm:text-4xl">
-              {project.title}
-            </h1>
-            <p className="mt-4 max-w-3xl text-base leading-relaxed text-secondary">
-              {project.summary}
-            </p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {project.technologies.map((t) => (
-                <Badge key={t}>{t}</Badge>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-      </header>
+        </div>
+      </Reveal>
 
-      <div className="section-container grid gap-12 py-16 lg:grid-cols-3">
-        <div className="space-y-12 lg:col-span-2">
+      <div className="section-container grid gap-14 py-20 lg:grid-cols-12 lg:gap-8">
+        <div className="space-y-14 lg:col-span-8">
           <Section title="Overview">{project.overview}</Section>
 
           {project.problem && <Section title="Problem">{project.problem}</Section>}
@@ -104,11 +126,11 @@ export default async function ProjectDetailPage({
           {project.architectureImage && (
             <Section title="Architecture">
               {project.architectureText && (
-                <pre className="mb-5 overflow-x-auto border border-line bg-surface/60 p-4 text-xs leading-relaxed text-accent">
+                <pre className="mb-6 overflow-x-auto border border-line bg-surface/60 p-5 font-mono text-[11px] leading-relaxed text-primary">
                   {project.architectureText}
                 </pre>
               )}
-              <div className="relative aspect-[16/10] w-full overflow-hidden border border-line">
+              <div className="relative aspect-[16/10] w-full overflow-hidden border border-line bg-card">
                 <Image
                   src={project.architectureImage}
                   alt={`${project.title} architecture`}
@@ -128,23 +150,19 @@ export default async function ProjectDetailPage({
 
           {project.contributions && (
             <Section title="My Contributions">
-              <ul className="grid gap-2 sm:grid-cols-2">
-                {project.contributions.map((c) => (
-                  <li key={c} className="flex gap-2">
-                    <Check size={16} className="mt-0.5 shrink-0 text-accent/70" />
-                    <span>{c}</span>
-                  </li>
-                ))}
-              </ul>
+              <MarkerList items={project.contributions} />
             </Section>
           )}
 
           {project.challenges && (
             <Section title="Challenges">
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {project.challenges.map((c) => (
-                  <li key={c} className="flex gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-accent/50" />
+                  <li key={c} className="flex gap-3 text-sm leading-relaxed">
+                    <span
+                      aria-hidden="true"
+                      className="mt-1.5 h-2.5 w-2.5 shrink-0 border border-accent/70"
+                    />
                     <span>{c}</span>
                   </li>
                 ))}
@@ -154,14 +172,7 @@ export default async function ProjectDetailPage({
 
           {project.lessons && (
             <Section title="Results & Lessons Learned">
-              <ul className="space-y-2">
-                {project.lessons.map((l) => (
-                  <li key={l} className="flex gap-2">
-                    <Check size={16} className="mt-0.5 shrink-0 text-accent/70" />
-                    <span>{l}</span>
-                  </li>
-                ))}
-              </ul>
+              <MarkerList items={project.lessons} />
             </Section>
           )}
 
@@ -174,11 +185,9 @@ export default async function ProjectDetailPage({
                     href={doc.file}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={cn(
-                      buttonVariants({ variant: "outline", size: "sm" })
-                    )}
+                    className={cn(buttonVariants({ variant: "outline", size: "sm" }))}
                   >
-                    <Download size={15} /> {doc.label}
+                    <Download size={14} /> {doc.label}
                   </a>
                 ))}
               </div>
@@ -186,94 +195,64 @@ export default async function ProjectDetailPage({
           )}
         </div>
 
-        <aside className="space-y-5">
+        <aside className="space-y-10 lg:col-span-3 lg:col-start-10">
           {project.role && (
-            <Card className="p-5">
-              <h3 className="flex items-center gap-2 text-sm font-semibold text-primary">
-                <User size={16} className="text-accent/70" /> Role
-              </h3>
-              <p className="mt-2 text-sm text-secondary">{project.role}</p>
-            </Card>
+            <div className="border-t border-line pt-6">
+              <h3 className="text-sm font-medium text-primary">Role</h3>
+              <p className="mt-3 text-sm leading-relaxed text-secondary">
+                {project.role}
+              </p>
+            </div>
           )}
 
-          <Card className="p-5">
-            <h3 className="flex items-center gap-2 text-sm font-semibold text-primary">
-              <Code2 size={16} className="text-accent/70" /> Technologies
-            </h3>
-            <div className="mt-3 flex flex-wrap gap-1.5">
-              {project.technologies.map((t) => (
-                <Badge key={t}>{t}</Badge>
-              ))}
-            </div>
-          </Card>
-
           {project.hardware && (
-            <Card className="p-5">
-              <h3 className="flex items-center gap-2 text-sm font-semibold text-primary">
-                <Cpu size={16} className="text-accent/70" /> Hardware
-              </h3>
-              <ul className="mt-3 space-y-2 text-sm">
+            <div className="border-t border-line pt-6">
+              <h3 className="text-sm font-medium text-primary">Hardware</h3>
+              <ul className="mt-4 space-y-2.5">
                 {project.hardware.map((h) => (
-                  <li key={h.name}>
-                    <span className="font-medium text-primary">{h.name}</span>
-                    <span className="text-secondary">, {h.description}</span>
+                  <li key={h.name} className="flex flex-col">
+                    <span className="font-mono text-[11px] text-primary">
+                      {h.name}
+                    </span>
+                    <span className="text-xs text-secondary">{h.description}</span>
                   </li>
                 ))}
               </ul>
-            </Card>
+            </div>
           )}
 
           {project.software && (
-            <Card className="p-5">
-              <h3 className="flex items-center gap-2 text-sm font-semibold text-primary">
-                <Wrench size={16} className="text-accent/70" /> Software
-              </h3>
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {project.software.map((s) => (
-                  <Badge key={s}>{s}</Badge>
-                ))}
-              </div>
-            </Card>
+            <div className="border-t border-line pt-6">
+              <h3 className="text-sm font-medium text-primary">Software</h3>
+              <p className="mt-3 font-mono text-[11px] leading-loose text-secondary">
+                {project.software.join(" / ")}
+              </p>
+            </div>
           )}
 
-          <div className="flex flex-col gap-2">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(buttonVariants({ variant: "outline" }), "w-full")}
-              >
-                <Github size={16} /> GitHub Repository
-              </a>
-            )}
-            {project.demo && (
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(buttonVariants({ variant: "outline" }), "w-full")}
-              >
-                <ExternalLink size={16} /> Live Demo
-              </a>
-            )}
-            <Link href="/projects" className={cn(buttonVariants({ variant: "ghost" }), "w-full")}>
-              <ArrowLeft size={16} /> Back to Projects
-            </Link>
-          </div>
+          {project.academic && (
+            <div className="border-t border-line pt-6">
+              <h3 className="text-sm font-medium text-primary">Context</h3>
+              <p className="mt-3 text-sm leading-relaxed text-secondary">
+                {project.academic}
+              </p>
+            </div>
+          )}
         </aside>
       </div>
 
-      <nav className="section-container grid gap-4 border-t border-line py-10 sm:grid-cols-2">
+      <nav className="section-container grid gap-4 border-t border-line py-12 sm:grid-cols-2">
         {prev ? (
           <Link
             href={`/projects/${prev.slug}`}
-            className="group flex flex-col border border-line bg-card/80 p-5 transition-colors hover:border-accent"
+            className="group flex flex-col gap-1 border-t border-line pt-6 transition-colors duration-300 hover:border-accent"
           >
-            <span className="flex items-center gap-1.5 text-xs text-secondary">
-              <ArrowLeft size={14} /> Previous
+            <span className="flex items-center gap-1.5 font-mono text-xs text-muted">
+              <ArrowLeft size={13} /> Previous
             </span>
-            <span className="mt-1 font-medium text-primary group-hover:text-accent">{prev.title}</span>
+            <span className="mt-2 font-serif text-xl leading-snug text-primary transition-colors duration-300 group-hover:text-accent">
+              {prev.title}
+            </span>
           </Link>
         ) : (
           <span />
@@ -281,12 +260,14 @@ export default async function ProjectDetailPage({
         {next && (
           <Link
             href={`/projects/${next.slug}`}
-            className="group flex flex-col border border-line bg-card/80 p-5 text-right transition-colors hover:border-accent sm:items-end"
+            className="group flex flex-col items-end gap-1 border-t border-line pt-6 text-right transition-colors duration-300 hover:border-accent"
           >
-            <span className="flex items-center gap-1.5 text-xs text-secondary">
-              Next <ArrowRight size={14} />
+            <span className="flex items-center gap-1.5 font-mono text-xs text-muted">
+              Next <ArrowRight size={13} />
             </span>
-            <span className="mt-1 font-medium text-primary group-hover:text-accent">{next.title}</span>
+            <span className="mt-2 font-serif text-xl leading-snug text-primary transition-colors duration-300 group-hover:text-accent">
+              {next.title}
+            </span>
           </Link>
         )}
       </nav>

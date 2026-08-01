@@ -1,22 +1,27 @@
 import Link from "next/link";
-import { Home, Compass } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export default function NotFound() {
   return (
-    <section className="section-container flex min-h-[70vh] flex-col items-center justify-center text-center">
-      <p className="font-serif text-7xl italic text-accent">404</p>
-      <h1 className="mt-4 font-serif text-2xl text-primary">Page not found</h1>
-      <p className="mt-2 max-w-md text-sm text-secondary">
+    <section className="section-container flex min-h-[calc(100dvh-72px)] flex-col items-start justify-center">
+      <p className="font-mono text-xs text-secondary">404 / Signal lost</p>
+      <h1 className="mt-6 font-serif text-5xl leading-[1.05] tracking-tight text-primary sm:text-6xl">
+        Page not found
+      </h1>
+      <p className="mt-6 max-w-md text-base leading-relaxed text-secondary">
         The page you are looking for doesn&apos;t exist or has been moved.
       </p>
-      <div className="mt-8 flex flex-wrap justify-center gap-3">
-        <Link href="/" className={cn(buttonVariants())}>
-          <Home size={16} /> Back home
+      <div className="mt-10 flex flex-wrap gap-3">
+        <Link href="/" className={cn(buttonVariants({ size: "lg" }))}>
+          <ArrowLeft size={15} /> Back home
         </Link>
-        <Link href="/projects" className={cn(buttonVariants({ variant: "outline" }))}>
-          <Compass size={16} /> View projects
+        <Link
+          href="/projects"
+          className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+        >
+          View projects
         </Link>
       </div>
     </section>

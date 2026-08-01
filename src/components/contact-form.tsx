@@ -40,13 +40,13 @@ export function ContactForm() {
         <CheckCircle2 size={36} className="text-accent" />
         <h3 className="mt-4 font-serif text-xl text-primary">Message ready</h3>
         <p className="mt-2 max-w-sm text-sm text-secondary">
-          This is a local demo form, no message was actually sent. Please reach out via
-          the contact details provided.
+          This is a local demo form, no message was actually sent. Please reach
+          out via the contact details provided.
         </p>
         <button
           type="button"
           onClick={() => setSent(false)}
-          className="mt-6 border border-line px-5 py-2 text-sm font-medium text-primary transition-colors hover:border-primary"
+          className="mt-6 h-10 border border-line px-5 text-sm font-medium text-primary transition-colors hover:border-primary"
         >
           Send another
         </button>
@@ -118,9 +118,9 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="inline-flex h-12 w-full items-center justify-center gap-2 border border-accent bg-accent text-sm font-medium tracking-wide text-background transition-colors duration-300 hover:bg-accent-hover hover:border-accent-hover disabled:opacity-60 active:translate-y-[1px]"
+        className="inline-flex h-11 w-full items-center justify-center gap-2 border border-primary bg-primary text-sm tracking-wide text-background transition-colors duration-300 hover:border-accent hover:bg-accent disabled:opacity-60 active:translate-y-[1px]"
       >
-        <Send size={16} /> {isSubmitting ? "Sending..." : "Send Message"}
+        <Send size={15} /> {isSubmitting ? "Sending..." : "Send message"}
       </button>
     </form>
   );

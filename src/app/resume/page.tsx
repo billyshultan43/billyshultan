@@ -1,7 +1,5 @@
-import { Download, GraduationCap, BadgeCheck, Award, ArrowUpRight, Star } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
 import { Reveal } from "@/components/reveal";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { experience } from "@/content/experience";
 import { education } from "@/content/education";
 import { certificates } from "@/content/certificates";
@@ -17,117 +15,110 @@ export const metadata = {
 };
 
 const stats = [
-  { value: "2+", label: "Years of Experience" },
-  { value: "3", label: "Featured Projects" },
-  { value: "15+", label: "Technologies" },
-  { value: "Electrical", label: "Engineer" },
-  { value: "IoT", label: "Embedded Systems" },
-  { value: "AI", label: "Integration" },
+  { value: "2+", label: "years experience" },
+  { value: "3", label: "systems delivered" },
+  { value: "15+", label: "technologies" },
 ];
 
 export default function ResumePage() {
   return (
     <>
-      <section className="section-container overflow-hidden pt-24 sm:pt-28">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <Reveal>
-            <h1 className="font-serif text-4xl font-normal leading-[1.1] tracking-tight text-primary sm:text-5xl lg:text-6xl">
-              Experience & Credentials
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-secondary">
-              Electrical Engineer with 2+ years of professional experience in IoT, Embedded
-              Systems, Full Stack Development, AI Integration, and Industrial Instrumentation.
-            </p>
-            <div className="mt-8" />
-          </Reveal>
-
-          <div className="relative">
-            <div className="-ml-px -mt-px grid grid-cols-3 border-b border-r border-line">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="flex flex-col justify-between gap-4 border-l border-t border-line px-4 py-6"
-                >
-                  <span className="font-serif text-3xl italic text-primary sm:text-4xl">{stat.value}</span>
-                  <span className="text-[11px] leading-tight uppercase tracking-[0.16em] text-muted">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-container space-y-20 pb-24 pt-20 sm:pt-28">
-        <div>
-          <h2 className="font-serif text-3xl tracking-tight text-primary sm:text-4xl">
-            Experience
-          </h2>
-          <div className="mt-10 border-l border-line pl-8">
-            {experience.map((item, i) => (
-              <Reveal as="li" key={item.id} delay={i * 0.06} className="relative pb-12 last:pb-0">
-                <span className="absolute -left-[33px] top-1.5 h-2 w-2 bg-accent" />
-                <Card className="p-6 sm:p-7">
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div>
-                      <h3 className="font-serif text-lg text-primary">{item.role}</h3>
-                      <p className="mt-1 text-sm text-secondary">{item.company}</p>
-                    </div>
-                    <span className="inline-flex items-center gap-2 text-xs font-medium text-muted">
-                      {item.current && (
-                        <span className="text-[11px] uppercase tracking-[0.16em] text-accent">
-                          Current
-                        </span>
-                      )}
-                      {item.period}
-                    </span>
-                  </div>
-
-                  <p className="mt-4 text-sm leading-relaxed text-secondary">
-                    {item.responsibilities[0]}
-                  </p>
-
-                  <ul className="mt-4 space-y-2">
-                    {item.responsibilities.slice(1).map((r, idx) => (
-                      <li key={idx} className="flex gap-2 text-sm leading-relaxed text-secondary/80">
-                        <span className="mt-1.5 h-1 w-1 shrink-0 bg-accent/50" />
-                        <span>{r}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {item.technologies && item.technologies.length > 0 && (
-                    <div className="mt-5 flex flex-wrap gap-1.5">
-                      {item.technologies.map((tech) => (
-                        <Badge key={tech}>{tech}</Badge>
-                      ))}
-                    </div>
-                  )}
-                </Card>
-              </Reveal>
+      <section className="section-container overflow-hidden pt-20 sm:pt-24">
+        <Reveal>
+          <h1 className="max-w-4xl font-serif text-4xl leading-[1.05] tracking-tight text-primary sm:text-5xl lg:text-6xl">
+            Experience & Credentials
+          </h1>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-secondary">
+            Electrical Engineer with professional experience in IoT, Embedded
+            Systems, Full Stack Development, AI Integration, and Industrial
+            Instrumentation.
+          </p>
+          <div className="mt-10 flex flex-wrap items-baseline gap-x-12 gap-y-3 border-t border-line pt-7">
+            {stats.map((stat) => (
+              <p key={stat.label} className="font-mono text-xs text-secondary">
+                <span className="font-serif text-2xl italic text-primary">
+                  {stat.value}
+                </span>{" "}
+                {stat.label}
+              </p>
             ))}
           </div>
-        </div>
+        </Reveal>
+      </section>
+
+      <section className="section-container pb-24 pt-16">
+        <Reveal>
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-6">
+            <h2 className="font-serif text-3xl tracking-tight text-primary lg:col-span-4 sm:text-4xl">
+              Experience
+            </h2>
+            <div className="lg:col-span-8">
+              {experience.map((item, i) => (
+                <Reveal key={item.id} delay={i * 0.05}>
+                  <div className="border-t border-line py-10">
+                    <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                      <h3 className="font-serif text-2xl leading-tight text-primary">
+                        {item.role}
+                      </h3>
+                      {item.current && (
+                        <span className="font-mono text-[11px] text-accent">
+                          current
+                        </span>
+                      )}
+                    </div>
+                    <p className="mt-1 text-sm text-secondary">{item.company}</p>
+                    <p className="mt-1 font-mono text-xs text-muted">
+                      {item.period}
+                    </p>
+                    <ul className="mt-6 max-w-3xl space-y-3">
+                      {item.responsibilities.map((r, idx) => (
+                        <li
+                          key={idx}
+                          className="flex gap-3 text-sm leading-relaxed text-secondary"
+                        >
+                          <span
+                            aria-hidden="true"
+                            className="mt-1.5 h-2.5 w-2.5 shrink-0 border border-accent/60"
+                          />
+                          <span>{r}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    {item.technologies && item.technologies.length > 0 && (
+                      <p className="mt-5 font-mono text-[11px] leading-loose text-muted">
+                        {item.technologies.join(" / ")}
+                      </p>
+                    )}
+                  </div>
+                </Reveal>
+              ))}
+              <Reveal delay={0.15}>
+                <div className="border-t border-line" />
+              </Reveal>
+            </div>
+          </div>
+        </Reveal>
 
         {achievements.length > 0 && (
-          <div>
-            <h2 className="font-serif text-3xl tracking-tight text-primary sm:text-4xl">
-              Achievements
-            </h2>
-            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {achievements.map((ach) => (
-                <Reveal key={ach.id}>
-                  <Card className="flex h-full flex-col p-6">
-                    <span className="inline-flex w-fit items-center gap-2 border border-accent/25 bg-accent/5 px-3 py-1 text-xs font-medium text-accent">
-                      <Award size={14} /> {ach.title}
-                    </span>
-                    <h3 className="mt-4 font-serif text-base leading-snug text-primary">
-                      {ach.event}
-                    </h3>
-                    <p className="mt-1 text-sm text-secondary">{ach.organizer}</p>
-                    <p className="mt-1 text-xs text-muted">{ach.date}</p>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-secondary">
+          <Reveal>
+            <div className="mt-20 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-6">
+              <h2 className="font-serif text-3xl tracking-tight text-primary lg:col-span-4 sm:text-4xl">
+                Achievements
+              </h2>
+              <div className="lg:col-span-8">
+                {achievements.map((ach) => (
+                  <div key={ach.id} className="border-t border-line py-10">
+                    <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                      <h3 className="font-serif text-2xl leading-tight text-primary">
+                        {ach.title}
+                      </h3>
+                      <span className="font-mono text-xs text-muted">
+                        {ach.date}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm text-secondary">{ach.event}</p>
+                    <p className="mt-1 text-xs text-muted">{ach.organizer}</p>
+                    <p className="mt-5 max-w-3xl text-sm leading-relaxed text-secondary">
                       {ach.description}
                     </p>
                     {ach.file && (
@@ -135,106 +126,136 @@ export default function ResumePage() {
                         href={ach.file}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-4 inline-flex w-fit items-center gap-2 border border-line px-4 py-2 text-sm font-medium text-primary transition-colors hover:border-accent"
+                        className="group mt-6 inline-flex items-center gap-1.5 text-sm text-accent-deep transition-colors duration-300 hover:text-primary"
                       >
-                        <Download size={15} /> View certificate
+                        View certificate
+                        <ArrowUpRight
+                          size={14}
+                          className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                        />
                       </a>
                     )}
-                  </Card>
-                </Reveal>
-              ))}
+                  </div>
+                ))}
+                <div className="border-t border-line" />
+              </div>
             </div>
-          </div>
+          </Reveal>
         )}
 
-        <div>
-          <h2 className="font-serif text-3xl tracking-tight text-primary sm:text-4xl">
-            Certificates & Training
-          </h2>
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
-            {certificates.map((cert, i) => (
-              <Reveal key={cert.id} delay={i * 0.06}>
-                <Card className="flex h-full flex-col p-6">
-                  <div className="flex items-start gap-3">
-                    <BadgeCheck size={20} className="mt-0.5 shrink-0 text-accent" />
+        <Reveal>
+          <div className="mt-20 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-6">
+            <h2 className="font-serif text-3xl tracking-tight text-primary lg:col-span-4 sm:text-4xl">
+              Certificates & Training
+            </h2>
+            <div className="lg:col-span-8">
+              {certificates.map((cert, i) => (
+                <Reveal key={cert.id} delay={i * 0.05}>
+                  <div className="flex flex-col justify-between gap-3 border-t border-line py-9 sm:flex-row sm:items-baseline sm:gap-6">
                     <div>
-                      <Badge className="border-accent/30 bg-accent/5 text-accent">{cert.category}</Badge>
-                      <h3 className="mt-2 font-serif text-base leading-snug text-primary">{cert.name}</h3>
-                    </div>
-                  </div>
-                  <div className="mt-5 flex-1 space-y-1">
-                    <p className="text-sm text-secondary">
-                      <span className="text-primary">Issuer:</span> {cert.issuer}
-                    </p>
-                    <p className="text-sm text-secondary">
-                      <span className="text-primary">Date:</span> {cert.date}
-                    </p>
-                  </div>
-                  {cert.file && (
-                    <a
-                      href={cert.file}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex w-fit items-center gap-2 border border-line px-4 py-2 text-sm font-medium text-primary transition-colors hover:border-accent"
-                    >
-                      <Download size={15} /> Preview
-                    </a>
-                  )}
-                </Card>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h2 className="font-serif text-3xl tracking-tight text-primary sm:text-4xl">
-            Education
-          </h2>
-          <div className="mt-10">
-            {education.map((item) => (
-              <Reveal key={item.id}>
-                <Card className="p-7">
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div className="flex items-start gap-3">
-                      <GraduationCap size={20} className="mt-0.5 shrink-0 text-accent" />
-                      <div>
-                        <h3 className="font-serif text-lg text-primary">{item.degree}</h3>
-                        <p className="text-sm text-secondary">{item.institution}</p>
-                      </div>
-                    </div>
-                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-muted">
-                      {item.period}
-                    </span>
-                  </div>
-                  {item.gpa && (
-                    <div className="mt-5 flex items-center gap-2">
-                      <Star size={14} className="text-accent" />
-                      <p className="text-sm text-secondary">
-                        GPA: <span className="font-medium text-primary">{item.gpa}</span>
+                      <h3 className="font-serif text-xl leading-snug text-primary">
+                        {cert.name}
+                      </h3>
+                      <p className="mt-2 text-sm text-secondary">
+                        {cert.category} / {cert.issuer}
                       </p>
                     </div>
+                    <div className="flex shrink-0 items-center justify-between gap-8 sm:flex-col sm:items-end sm:gap-2">
+                      <p className="font-mono text-xs text-muted">{cert.date}</p>
+                      {cert.file && (
+                        <a
+                          href={cert.file}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Open ${cert.name}`}
+                          className="group inline-flex items-center gap-1 font-mono text-xs text-accent-deep transition-colors duration-300 hover:text-primary"
+                        >
+                          PDF
+                          <ArrowUpRight
+                            size={13}
+                            className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                          />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+              <div className="border-t border-line" />
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div className="mt-20 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-6">
+            <h2 className="font-serif text-3xl tracking-tight text-primary lg:col-span-4 sm:text-4xl">
+              Education
+            </h2>
+            <div className="lg:col-span-8">
+              {education.map((item) => (
+                <div key={item.id} className="border-t border-line py-10">
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                    <h3 className="font-serif text-2xl leading-tight text-primary">
+                      {item.degree}
+                    </h3>
+                    <p className="font-mono text-xs text-muted">{item.period}</p>
+                  </div>
+                  <p className="mt-1 text-sm text-secondary">
+                    {item.institution}
+                  </p>
+                  {item.gpa && (
+                    <p className="mt-4 text-sm text-secondary">
+                      GPA:{" "}
+                      <span className="font-serif text-lg italic text-primary">
+                        {item.gpa}
+                      </span>
+                    </p>
                   )}
                   {item.thesis && (
-                    <p className="mt-3 text-sm leading-relaxed text-secondary">
+                    <p className="mt-4 max-w-3xl text-sm leading-relaxed text-secondary">
                       <span className="font-medium text-primary">Thesis: </span>
                       {item.thesis}
                     </p>
                   )}
                   {item.details && (
-                    <ul className="mt-5 space-y-2">
+                    <ul className="mt-6 max-w-3xl space-y-3">
                       {item.details.map((d, idx) => (
-                        <li key={idx} className="flex gap-2 text-sm leading-relaxed text-secondary/80">
-                          <span className="mt-1.5 h-1 w-1 shrink-0 bg-accent/50" />
+                        <li
+                          key={idx}
+                          className="flex gap-3 text-sm leading-relaxed text-secondary"
+                        >
+                          <span
+                            aria-hidden="true"
+                            className="mt-1.5 h-2.5 w-2.5 shrink-0 border border-accent/60"
+                          />
                           <span>{d}</span>
                         </li>
                       ))}
                     </ul>
                   )}
-                </Card>
-              </Reveal>
-            ))}
+                </div>
+              ))}
+              <div className="border-t border-line" />
+            </div>
           </div>
-        </div>
+        </Reveal>
+
+        <Reveal>
+          <div className="mt-16 flex flex-wrap gap-4">
+            <a
+              href={profile.cvFile}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(buttonVariants({ size: "lg" }), "group")}
+            >
+              Download CV
+              <Download
+                size={15}
+                className="transition-transform duration-300 group-hover:translate-y-0.5"
+              />
+            </a>
+          </div>
+        </Reveal>
       </section>
     </>
   );

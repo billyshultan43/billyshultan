@@ -1,6 +1,5 @@
 import { PageIntro } from "@/components/page-intro";
-import { ProjectCard } from "@/components/project-card";
-import { projects } from "@/content/projects";
+import { ProjectsIndex } from "@/components/projects-index";
 
 export const metadata = {
   title: "Projects",
@@ -14,15 +13,9 @@ export default function ProjectsPage() {
       <PageIntro
         title="Engineering & Software Work"
         description="Each project below is documented from verified sources, the CV and project documentation."
+        meta="Index / 2023-2026"
       />
-
-      <section className="section-container section-padding">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} index={i} />
-          ))}
-        </div>
-      </section>
+      <ProjectsIndex />
     </>
   );
 }

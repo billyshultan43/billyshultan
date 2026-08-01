@@ -1,13 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Schibsted_Grotesk } from "next/font/google";
+import {
+  EB_Garamond,
+  IBM_Plex_Mono,
+  Schibsted_Grotesk,
+} from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { site } from "@/content/site";
 
-const playfair = Playfair_Display({
+const serif = EB_Garamond({
   subsets: ["latin"],
   style: ["normal", "italic"],
+  weight: ["400", "500", "600"],
   variable: "--font-serif",
   display: "swap",
 });
@@ -15,6 +20,13 @@ const playfair = Playfair_Display({
 const grotesk = Schibsted_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -58,7 +70,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F3EFE7",
+  themeColor: "#F3EFE6",
   width: "device-width",
   initialScale: 1,
 };
@@ -69,10 +81,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${grotesk.variable}`}>
+    <html
+      lang="en"
+      className={`${serif.variable} ${grotesk.variable} ${mono.variable}`}
+    >
       <body className="font-sans antialiased">
         <Navbar />
-        <main className="pt-16">{children}</main>
+        <main className="pt-[72px]">{children}</main>
         <Footer />
       </body>
     </html>

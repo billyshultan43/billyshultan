@@ -2,25 +2,23 @@ import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/utils";
 
 export function PageIntro({
-  eyebrow,
   title,
   description,
+  meta,
   className,
 }: {
-  eyebrow?: string;
   title: string;
   description?: string;
+  meta?: string;
   className?: string;
 }) {
   return (
-    <section className={cn("section-container pb-10 pt-24 sm:pt-28", className)}>
+    <section className={cn("section-container pb-14 pt-20 sm:pt-24", className)}>
       <Reveal>
-        {eyebrow && (
-          <span className="mb-4 inline-block text-xs font-medium uppercase tracking-[0.2em] text-muted">
-            {eyebrow}
-          </span>
+        {meta && (
+          <p className="mb-6 font-mono text-xs text-secondary">{meta}</p>
         )}
-        <h1 className="font-serif text-4xl font-normal leading-[1.1] tracking-tight text-primary sm:text-5xl lg:text-6xl">
+        <h1 className="max-w-4xl font-serif text-4xl leading-[1.05] tracking-tight text-primary sm:text-5xl lg:text-6xl">
           {title}
         </h1>
         {description && (

@@ -19,13 +19,13 @@ export function Navbar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-background/95">
-      <nav className="section-container flex h-16 items-center justify-between">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-background/95 backdrop-blur-sm">
+      <nav className="section-container flex h-[72px] items-center justify-between">
         <Link
           href="/"
-          className="font-serif text-lg leading-none tracking-tight text-primary"
+          className="text-[15px] font-medium leading-none tracking-tight text-primary"
         >
-          Billy Shultan<span className="italic text-accent">.</span>
+          Billy Shultan Al Hadiy
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -33,10 +33,11 @@ export function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
+                aria-current={isActive(link.href) ? "page" : undefined}
                 className={cn(
-                  "text-sm transition-colors duration-300",
+                  "link-underline text-sm transition-colors duration-300",
                   isActive(link.href)
-                    ? "text-accent"
+                    ? "text-accent-deep"
                     : "text-secondary hover:text-primary"
                 )}
               >
@@ -61,12 +62,12 @@ export function Navbar() {
         <div className="border-t border-line bg-background md:hidden">
           <ul className="section-container flex flex-col py-4">
             {navLinks.map((link) => (
-              <li key={link.href}>
+              <li key={link.href} className="border-b border-line last:border-b-0">
                 <Link
                   href={link.href}
                   className={cn(
-                    "block border-b border-line py-4 font-serif text-3xl transition-colors",
-                    isActive(link.href) ? "text-accent" : "text-primary"
+                    "block py-5 font-serif text-3xl transition-colors duration-300",
+                    isActive(link.href) ? "italic text-accent" : "text-primary"
                   )}
                 >
                   {link.label}
