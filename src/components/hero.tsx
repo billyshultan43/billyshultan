@@ -144,7 +144,7 @@ export function Hero() {
           <div className="relative flex items-center justify-center lg:-translate-y-6 lg:min-h-0">
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-1/2 h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#EADCC6] sm:h-[290px] sm:w-[290px] xl:h-[330px] xl:w-[330px]"
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[272px] w-[272px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#EADCC6] sm:h-[316px] sm:w-[316px] xl:h-[360px] xl:w-[360px]"
             />
             <ParallaxWord
               text="Engineer"
@@ -152,9 +152,26 @@ export function Hero() {
             />
 
             <motion.div
-              initial={reduce ? false : { opacity: 0, y: 24, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+              initial={reduce ? false : { opacity: 0, scale: 0.96 }}
+              animate={
+                reduce
+                  ? { opacity: 1, scale: 1 }
+                  : { opacity: 1, scale: 1, y: [0, -6, 0] }
+              }
+              transition={
+                reduce
+                  ? { duration: 0.9, ease: "easeOut" }
+                  : {
+                      opacity: { duration: 0.9, ease: "easeOut", delay: 0.55 },
+                      scale: { duration: 0.9, ease: "easeOut", delay: 0.55 },
+                      y: {
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 1.45,
+                      },
+                    }
+              }
               className="relative z-10 -rotate-1 py-6"
             >
               <Image
@@ -164,7 +181,7 @@ export function Hero() {
                 height={990}
                 priority
                 sizes="(max-width: 1024px) 70vw, 36vw"
-                className="h-[min(300px,40vh)] w-auto object-contain lg:h-[min(340px,46vh)]"
+                className="h-[min(327px,44vh)] w-auto object-contain lg:h-[min(371px,50vh)]"
               />
             </motion.div>
           </div>
