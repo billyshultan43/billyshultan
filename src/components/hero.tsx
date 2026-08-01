@@ -71,7 +71,7 @@ export function Hero() {
       <div className="mx-auto flex w-full max-w-[1920px] flex-col px-6 sm:px-10 xl:px-[72px]">
         <div className="grid flex-1 grid-cols-1 gap-12 pb-10 pt-12 lg:min-h-[calc(80dvh-72px)] lg:grid-cols-[42fr_33fr_25fr] lg:gap-x-12 lg:pb-0 lg:pt-16">
           {/* ——— LEFT COLUMN ——— */}
-          <div className="relative z-10 flex flex-col justify-center lg:-translate-y-[min(84px,8vh)]">
+          <div className="relative z-10 flex flex-col justify-center pl-5 lg:-translate-y-[min(84px,8vh)]">
             <motion.div
               variants={container}
               initial={reduce ? false : "hidden"}
@@ -159,35 +159,18 @@ export function Hero() {
                   Download CV
                 </a>
               </motion.div>
-
-              <motion.div variants={item} className="mt-6 flex max-w-[420px] flex-wrap items-center gap-2">
-                {techStack.map((tech) => {
-                  const Icon = tech.icon;
-                  return (
-                    <span
-                      key={tech.name}
-                      className="flex h-11 w-11 flex-col items-center justify-center gap-[2px] border border-line text-secondary transition-colors duration-300 hover:border-accent hover:text-accent"
-                    >
-                      <Icon size={15} strokeWidth={1.25} />
-                      <span className="text-[7px] uppercase tracking-[0.06em]">
-                        {tech.name}
-                      </span>
-                    </span>
-                  );
-                })}
-              </motion.div>
             </motion.div>
           </div>
 
           {/* ——— CENTER COLUMN ——— */}
-          <div className="relative flex items-center justify-center lg:min-h-0">
+          <div className="relative flex items-center justify-center lg:-translate-y-6 lg:min-h-0">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute left-1/2 top-1/2 h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#EADCC6] sm:h-[290px] sm:w-[290px] xl:h-[330px] xl:w-[330px]"
             />
             <span
               aria-hidden="true"
-              className="text-outline pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-[50%] -translate-y-[30%] select-none whitespace-nowrap font-serif text-[clamp(96px,11vw,170px)] font-medium uppercase leading-none tracking-[0.02em] opacity-60"
+              className="text-outline pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-[50%] -translate-y-[30%] select-none whitespace-nowrap font-serif text-[clamp(96px,11vw,170px)] font-medium uppercase leading-none tracking-[0.02em] opacity-80"
             >
               Engineer
             </span>
@@ -271,6 +254,24 @@ export function Hero() {
               <p className="mt-2 text-[12px] text-primary">Jakarta, Indonesia</p>
             </motion.div>
           </motion.div>
+        </div>
+
+        {/* ——— TECHNOLOGY ROW ——— */}
+        <div className="flex flex-wrap items-center gap-1.5 pb-12 pt-10">
+          {techStack.map((tech) => {
+            const Icon = tech.icon;
+            return (
+              <span
+                key={tech.name}
+                className="flex h-10 w-10 flex-col items-center justify-center gap-[2px] border border-line text-secondary transition-colors duration-300 hover:border-accent hover:text-accent"
+              >
+                <Icon size={14} strokeWidth={1.25} />
+                <span className="text-[6.5px] uppercase tracking-[0.06em]">
+                  {tech.name}
+                </span>
+              </span>
+            );
+          })}
         </div>
       </div>
     </section>
