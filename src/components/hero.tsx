@@ -72,9 +72,9 @@ export function Hero() {
   return (
     <section className="bg-background text-primary">
       <div className="mx-auto flex w-full max-w-[1920px] flex-col px-6 sm:px-10 xl:px-[72px]">
-        <div className="grid flex-1 grid-cols-1 gap-12 pb-10 pt-12 lg:min-h-[calc(80dvh-72px)] lg:grid-cols-[35fr_40fr_25fr] lg:gap-x-12 lg:pb-0 lg:pt-16">
+        <div className="grid flex-1 grid-cols-1 gap-12 pb-10 pt-12 lg:min-h-[calc(80dvh-72px)] lg:grid-cols-[42fr_33fr_25fr] lg:gap-x-12 lg:pb-0 lg:pt-16">
           {/* ——— LEFT COLUMN ——— */}
-          <div className="relative z-10 flex flex-col justify-between">
+          <div className="relative z-10 flex flex-col justify-center">
             <motion.div
               variants={container}
               initial={reduce ? false : "hidden"}
@@ -86,7 +86,7 @@ export function Hero() {
 
               <motion.h1
                 variants={item}
-                className="mt-7 font-serif text-[clamp(50px,5.4vw,84px)] font-medium leading-[0.95] tracking-[-0.01em] text-primary"
+                className="mt-4 font-serif text-[clamp(44px,4.8vw,72px)] font-medium leading-[0.92] tracking-[-0.01em] text-primary"
               >
                 Billy
                 <br />
@@ -97,7 +97,7 @@ export function Hero() {
 
               <motion.p
                 variants={item}
-                className="mt-6 text-[15px] font-medium text-primary"
+                className="mt-3 text-[15px] font-medium text-primary"
               >
                 Electrical Engineer
               </motion.p>
@@ -110,19 +110,19 @@ export function Hero() {
 
               <motion.p
                 variants={item}
-                className="mt-6 max-w-[440px] text-[15px] leading-[1.65] text-secondary"
+                className="mt-4 max-w-[440px] text-[15px] leading-[1.65] text-secondary"
               >
                 {profile.heroSummary}
               </motion.p>
 
-              <motion.div variants={item} className="mt-9 flex gap-12">
+              <motion.div variants={item} className="mt-6 flex gap-10">
                 <div>
                   <p className="label">Specialization</p>
-                  <ul className="mt-5 space-y-[9px]">
+                  <ul className="mt-3 space-y-[7px]">
                     {specialization.map((s) => (
                       <li
                         key={s}
-                        className="flex items-baseline gap-3 text-[13px] text-secondary"
+                        className="flex items-baseline gap-3 text-[12px] text-secondary"
                       >
                         <span
                           aria-hidden="true"
@@ -135,11 +135,11 @@ export function Hero() {
                 </div>
                 <div>
                   <p className="label">Experience</p>
-                  <p className="mt-5 flex items-baseline gap-3">
-                    <span className="font-serif text-[44px] font-medium leading-none text-primary">
+                  <p className="mt-3 flex items-baseline gap-3">
+                    <span className="font-serif text-[36px] font-medium leading-none text-primary">
                       2+
                     </span>
-                    <span className="text-[13px] uppercase tracking-[0.3em] text-secondary">
+                    <span className="text-[12px] uppercase tracking-[0.3em] text-secondary">
                       Years
                     </span>
                   </p>
@@ -152,11 +152,11 @@ export function Hero() {
           <div className="relative flex items-center justify-center lg:min-h-0">
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-[52%] -translate-y-1/2 rounded-full bg-[#EADCC6] sm:h-[400px] sm:w-[400px] xl:h-[460px] xl:w-[460px]"
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#EADCC6] sm:h-[290px] sm:w-[290px] xl:h-[330px] xl:w-[330px]"
             />
             <span
               aria-hidden="true"
-              className="text-outline pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-[50%] -translate-y-[62%] select-none whitespace-nowrap font-serif text-[clamp(110px,13vw,200px)] font-medium uppercase leading-none tracking-[0.02em]"
+              className="text-outline pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-[50%] -translate-y-[30%] select-none whitespace-nowrap font-serif text-[clamp(96px,11vw,170px)] font-medium uppercase leading-none tracking-[0.02em] opacity-60"
             >
               Engineer
             </span>
@@ -165,7 +165,7 @@ export function Hero() {
               initial={reduce ? false : { opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="relative z-10 -rotate-2 py-6 xl:translate-x-[3%]"
+              className="relative z-10 -rotate-1 py-6"
             >
               <Image
                 src={profile.profileImage}
@@ -174,7 +174,7 @@ export function Hero() {
                 height={990}
                 priority
                 sizes="(max-width: 1024px) 70vw, 36vw"
-                className="h-[min(400px,46vh)] w-auto object-contain lg:h-[min(470px,54vh)]"
+                className="h-[min(300px,40vh)] w-auto object-contain lg:h-[min(340px,46vh)]"
               />
             </motion.div>
           </div>
@@ -184,35 +184,35 @@ export function Hero() {
             variants={container}
             initial={reduce ? false : "hidden"}
             animate="show"
-            className="relative z-10 flex flex-col lg:pt-1"
+            className="relative z-10 flex flex-col justify-center"
           >
-            <motion.div variants={item} className="border-t border-line pt-5">
+            <motion.div variants={item} className="border-t border-line/50 pt-4">
               <p className="label">Current Role</p>
-              <p className="mt-3 text-[13px] text-primary">Electrical Engineer</p>
-              <p className="mt-1 text-[13px] text-secondary">
+              <p className="mt-2 text-[12px] text-primary">Electrical Engineer</p>
+              <p className="mt-1 text-[12px] text-secondary">
                 Instrumentation &amp; IoT Development
               </p>
             </motion.div>
 
-            <motion.div variants={item} className="mt-7 border-t border-line pt-5">
+            <motion.div variants={item} className="mt-5 border-t border-line/50 pt-4">
               <p className="label">Location</p>
-              <p className="mt-3 text-[13px] text-primary">Indonesia</p>
+              <p className="mt-2 text-[12px] text-primary">Indonesia</p>
             </motion.div>
 
-            <motion.div variants={item} className="mt-7 border-t border-line pt-5">
+            <motion.div variants={item} className="mt-5 border-t border-line/50 pt-4">
               <p className="label">Expertise</p>
-              <ul className="mt-3 space-y-[7px]">
+              <ul className="mt-2 space-y-1">
                 {expertise.map((e) => (
-                  <li key={e} className="text-[13px] text-secondary">
+                  <li key={e} className="text-[12px] text-secondary">
                     {e}
                   </li>
                 ))}
               </ul>
             </motion.div>
 
-            <motion.div variants={item} className="mt-7 border-t border-line pt-5">
+            <motion.div variants={item} className="mt-5 border-t border-line/50 pt-4">
               <p className="label">Contact</p>
-              <ul className="mt-3 space-y-[7px]">
+              <ul className="mt-2 space-y-1">
                 {contacts.map((c) => (
                   <li key={c.label}>
                     <a
@@ -223,7 +223,7 @@ export function Hero() {
                           ? "noopener noreferrer"
                           : undefined
                       }
-                      className="link-underline text-[13px] text-primary"
+                      className="link-underline text-[12px] text-primary"
                     >
                       {c.label}
                     </a>

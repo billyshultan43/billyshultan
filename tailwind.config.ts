@@ -15,8 +15,8 @@ const config: Config = {
         accent: "rgb(var(--accent) / <alpha-value>)",
         "accent-deep": "rgb(var(--accent-deep) / <alpha-value>)",
         "accent-light": "rgb(var(--accent-light) / <alpha-value>)",
-        line: "rgb(var(--line))",
-        "line-strong": "rgb(var(--line-strong))",
+        line: "rgb(var(--line) / <alpha-value>)",
+        "line-strong": "rgb(var(--line-strong) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
