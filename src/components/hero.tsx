@@ -2,82 +2,89 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import {
-  motion,
-  useReducedMotion,
-  type Variants,
-} from "framer-motion";
-import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+  ArrowDownRight,
+  ArrowUpRight,
+  Boxes,
+  Braces,
+  CircuitBoard,
+  Cpu,
+  Database,
+  GitBranch,
+  Layers,
+  Smartphone,
+  Table,
+  Terminal,
+} from "lucide-react";
 import { profile } from "@/content/profile";
 
 const container: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.08 } },
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 22 },
+  hidden: { opacity: 0, y: 16 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
-const roles = [
-  "Electrical Engineer",
-  "IoT",
-  "Embedded Systems",
-  "AI Integration",
-];
-
-const specifications = [
-  "Electrical Engineering",
+const specialization = [
   "Environmental Monitoring",
-  "Instrumentation",
-  "Embedded Development",
-  "Cloud Integration",
-  "AI Automation",
+  "Embedded Systems",
+  "IoT Development",
+  "AI Integration",
 ];
 
 const coreSkills = [
   "ESP32",
   "STM32",
-  "Embedded",
-  "IoT",
-  "Firmware",
   "Python",
   "Laravel",
   "Flutter",
+  "Supabase",
+  "REST API",
+  "Git",
 ];
 
 const techStack = [
-  { name: "ESP32", color: "#A98568" },
-  { name: "Python", color: "#8F8B84" },
-  { name: "Laravel", color: "#111111" },
-  { name: "Supabase", color: "#E9E2D5" },
-  { name: "Git", color: "#A98568" },
-  { name: "PostgreSQL", color: "#8F8B84" },
-  { name: "REST API", color: "#111111" },
-  { name: "Filament", color: "#E9E2D5" },
+  { name: "ESP32", icon: Cpu },
+  { name: "STM32", icon: CircuitBoard },
+  { name: "Python", icon: Terminal },
+  { name: "Laravel", icon: Layers },
+  { name: "Flutter", icon: Smartphone },
+  { name: "Supabase", icon: Database },
+  { name: "Git", icon: GitBranch },
+  { name: "PostgreSQL", icon: Table },
+  { name: "REST API", icon: Braces },
+  { name: "Filament", icon: Boxes },
 ];
 
-const mainStack = ["ESP32", "STM32", "Laravel", "Flutter", "Supabase", "AI"];
+const expertise = [
+  "Environmental Monitoring",
+  "Embedded Systems",
+  "AI Integration",
+  "System Integration",
+];
 
 const contacts = [
   { label: "Email", href: "mailto:billyshultan00@email.com" },
   { label: "LinkedIn", href: "https://linkedin.com/in/billyshultan" },
-  { label: "Github", href: "https://github.com/billyshultan43" },
+  { label: "GitHub", href: "https://github.com/billyshultan43" },
 ];
 
 export function Hero() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-background text-primary">
-      <div className="mx-auto flex min-h-[calc(100dvh-72px)] w-full max-w-[1920px] flex-col px-6 pb-12 pt-14 sm:px-10 xl:px-[72px] xl:pb-14 xl:pt-[140px]">
-        <div className="grid flex-1 grid-cols-1 gap-20 lg:grid-cols-[30fr_40fr_30fr] xl:gap-0">
-          {/* ——— LEFT ZONE ——— */}
+    <section className="bg-background text-primary">
+      <div className="mx-auto flex w-full max-w-[1920px] flex-col px-6 sm:px-10 xl:px-[72px]">
+        <div className="grid flex-1 grid-cols-1 gap-12 pb-10 pt-12 lg:min-h-[calc(80dvh-72px)] lg:grid-cols-[35fr_40fr_25fr] lg:gap-x-12 lg:pb-0 lg:pt-16">
+          {/* ——— LEFT COLUMN ——— */}
           <div className="relative z-10 flex flex-col justify-between">
             <motion.div
               variants={container}
@@ -85,12 +92,12 @@ export function Hero() {
               animate="show"
             >
               <motion.p variants={item} className="label">
-                Available for work
+                Available for opportunities
               </motion.p>
 
               <motion.h1
                 variants={item}
-                className="mt-8 font-serif text-[clamp(56px,7vw,96px)] font-medium leading-[0.9] tracking-[-0.01em] text-primary"
+                className="mt-7 font-serif text-[clamp(50px,5.4vw,84px)] font-medium leading-[0.95] tracking-[-0.01em] text-primary"
               >
                 Billy
                 <br />
@@ -101,58 +108,69 @@ export function Hero() {
 
               <motion.p
                 variants={item}
-                className="mt-7 max-w-[420px] text-[18px] leading-snug text-secondary"
+                className="mt-6 text-[15px] font-medium text-primary"
               >
-                {roles.join("  /  ")}
+                Electrical Engineer
+              </motion.p>
+              <motion.p
+                variants={item}
+                className="mt-1 text-[15px] text-secondary"
+              >
+                IoT&ensp;•&ensp;Embedded Systems&ensp;•&ensp;AI Integration
               </motion.p>
 
               <motion.p
                 variants={item}
-                className="mt-7 max-w-[420px] text-[17px] leading-[1.55] text-secondary"
+                className="mt-6 max-w-[440px] text-[15px] leading-[1.65] text-secondary"
               >
                 {profile.heroSummary}
               </motion.p>
 
-              <motion.div variants={item} className="mt-10">
-                <p className="label">Specifications</p>
-                <ul className="mt-5 space-y-[10px]">
-                  {specifications.map((s) => (
-                    <li
-                      key={s}
-                      className="text-[13px] font-normal uppercase tracking-[0.18em] text-secondary"
-                    >
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div variants={item} className="mt-10">
-                <p className="label">Experience</p>
-                <p className="mt-4 flex items-baseline gap-3">
-                  <span className="font-serif text-[44px] font-medium leading-none text-primary">
-                    2+
-                  </span>
-                  <span className="text-[13px] font-normal uppercase tracking-[0.35em] text-secondary">
-                    Years
-                  </span>
-                </p>
+              <motion.div variants={item} className="mt-9 flex gap-12">
+                <div>
+                  <p className="label">Specialization</p>
+                  <ul className="mt-5 space-y-[9px]">
+                    {specialization.map((s) => (
+                      <li
+                        key={s}
+                        className="flex items-baseline gap-3 text-[13px] text-secondary"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="mt-1 h-1.5 w-1.5 shrink-0 bg-accent"
+                        />
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="label">Experience</p>
+                  <p className="mt-5 flex items-baseline gap-3">
+                    <span className="font-serif text-[44px] font-medium leading-none text-primary">
+                      2+
+                    </span>
+                    <span className="text-[13px] uppercase tracking-[0.3em] text-secondary">
+                      Years
+                    </span>
+                  </p>
+                </div>
               </motion.div>
             </motion.div>
 
             <motion.div
               variants={item}
-              initial={reduce ? false : { opacity: 0, y: 22 }}
+              initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-16"
+              transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-12"
             >
               <p className="label">Core Skills</p>
-              <div className="mt-5 grid max-w-[320px] grid-cols-4 gap-3">
+              <div className="mt-5 flex max-w-[430px] flex-wrap gap-2.5">
                 {coreSkills.map((skill) => (
                   <span
                     key={skill}
-                    className="flex h-12 w-12 items-center justify-center border border-line-strong text-center text-[8.5px] font-normal uppercase tracking-[0.08em] text-secondary transition-colors duration-300 hover:border-primary hover:text-primary"
+                    className="flex h-11 w-11 items-center justify-center border border-line text-[8.5px] font-normal uppercase tracking-[0.06em] text-secondary transition-colors duration-300 hover:border-accent hover:text-accent"
                   >
                     {skill}
                   </span>
@@ -161,173 +179,140 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* ——— CENTER ZONE ——— */}
-          <div className="relative flex flex-col items-center justify-between">
-            <div className="relative flex w-full items-center justify-center xl:translate-x-[3%]">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute h-[320px] w-[320px] rounded-full bg-[#B89B84] opacity-[0.18] blur-[120px] sm:h-[420px] sm:w-[420px] xl:h-[560px] xl:w-[560px]"
+          {/* ——— CENTER COLUMN ——— */}
+          <div className="relative flex items-center justify-center lg:min-h-0">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-[52%] -translate-y-1/2 rounded-full bg-[#EADCC6] sm:h-[400px] sm:w-[400px] xl:h-[460px] xl:w-[460px]"
+            />
+            <span
+              aria-hidden="true"
+              className="text-outline pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-[50%] -translate-y-[62%] select-none whitespace-nowrap font-serif text-[clamp(110px,13vw,200px)] font-medium uppercase leading-none tracking-[0.02em]"
+            >
+              Engineer
+            </span>
+
+            <motion.div
+              initial={reduce ? false : { opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10 -rotate-2 py-6 xl:translate-x-[3%]"
+            >
+              <Image
+                src={profile.profileImage}
+                alt={profile.name}
+                width={810}
+                height={990}
+                priority
+                sizes="(max-width: 1024px) 70vw, 36vw"
+                className="h-[min(400px,46vh)] w-auto object-contain lg:h-[min(470px,54vh)]"
               />
-              <span
-                aria-hidden="true"
-                className="text-outline pointer-events-none absolute left-1/2 top-[4%] z-0 -translate-x-[42%] select-none whitespace-nowrap font-serif text-[clamp(110px,15vw,220px)] font-medium uppercase leading-none tracking-[0.02em]"
-              >
-                Engineer
-              </span>
+            </motion.div>
+          </div>
 
-              <motion.div
-                animate={
-                  reduce
-                    ? undefined
-                    : { y: [0, -12, 0] }
-                }
-                transition={
-                  reduce
-                    ? undefined
-                    : { duration: 7, repeat: Infinity, ease: "easeInOut" }
-                }
-                className="relative z-10 mt-8 xl:mt-0"
-              >
-                <motion.div
-                  initial={reduce ? false : { opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 1.2,
-                    delay: 0.25,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className="-rotate-3"
-                >
-                  <Image
-                    src={profile.profileImage}
-                    alt={profile.name}
-                    width={810}
-                    height={990}
-                    priority
-                    sizes="(max-width: 1024px) 70vw, 40vw"
-                    className="h-[min(420px,48vh)] w-auto object-contain xl:h-[min(650px,62vh)] [filter:drop-shadow(0_44px_60px_rgba(17,17,17,0.16))]"
-                  />
-                </motion.div>
-              </motion.div>
-            </div>
+          {/* ——— RIGHT COLUMN ——— */}
+          <motion.div
+            variants={container}
+            initial={reduce ? false : "hidden"}
+            animate="show"
+            className="relative z-10 flex flex-col lg:pt-1"
+          >
+            <motion.div variants={item} className="border-t border-line pt-5">
+              <p className="label">Current Role</p>
+              <p className="mt-3 text-[13px] text-primary">Electrical Engineer</p>
+              <p className="mt-1 text-[13px] text-secondary">
+                Instrumentation &amp; IoT Development
+              </p>
+            </motion.div>
 
-            <motion.div
-              variants={item}
-              initial={reduce ? false : { opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-14 flex flex-col items-center xl:mt-0"
-            >
-              <p className="label">Tech Stack</p>
-              <div className="mt-5 flex flex-wrap items-start justify-center gap-x-7 gap-y-5">
-                {techStack.map((tech) => (
-                  <span
-                    key={tech.name}
-                    className="flex flex-col items-center gap-2"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="h-3.5 w-3.5 border border-line-strong"
-                      style={{ backgroundColor: tech.color }}
-                    />
-                    <span className="text-[9px] font-normal uppercase tracking-[0.14em] text-secondary">
-                      {tech.name}
-                    </span>
-                  </span>
+            <motion.div variants={item} className="mt-7 border-t border-line pt-5">
+              <p className="label">Location</p>
+              <p className="mt-3 text-[13px] text-primary">Indonesia</p>
+            </motion.div>
+
+            <motion.div variants={item} className="mt-7 border-t border-line pt-5">
+              <p className="label">Expertise</p>
+              <ul className="mt-3 space-y-[7px]">
+                {expertise.map((e) => (
+                  <li key={e} className="text-[13px] text-secondary">
+                    {e}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </motion.div>
+
+            <motion.div variants={item} className="mt-7 border-t border-line pt-5">
+              <p className="label">Contact</p>
+              <ul className="mt-3 space-y-[7px]">
+                {contacts.map((c) => (
+                  <li key={c.label}>
+                    <a
+                      href={c.href}
+                      target={c.href.startsWith("http") ? "_blank" : undefined}
+                      rel={
+                        c.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                      className="link-underline text-[13px] text-primary"
+                    >
+                      {c.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* ——— BOTTOM ROW ——— */}
+        <div className="flex flex-col gap-6 border-t border-line py-6 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-wrap items-center gap-2.5">
+            {techStack.map((tech) => {
+              const Icon = tech.icon;
+              return (
+                <span
+                  key={tech.name}
+                  className="group flex h-12 w-12 flex-col items-center justify-center gap-[3px] border border-line text-secondary transition-colors duration-300 hover:border-accent hover:text-accent"
+                >
+                  <Icon size={16} strokeWidth={1.25} />
+                  <span className="text-[7.5px] uppercase tracking-[0.06em]">
+                    {tech.name}
+                  </span>
+                </span>
+              );
+            })}
           </div>
 
-          {/* ——— RIGHT ZONE ——— */}
-          <div className="relative z-10 flex flex-col justify-between xl:items-end">
-            <motion.div
-              variants={container}
-              initial={reduce ? false : "hidden"}
-              animate="show"
-              className="xl:text-right"
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap items-center gap-3"
+          >
+            <Link
+              href="/projects"
+              className="group inline-flex h-10 items-center gap-2 border border-primary bg-primary px-5 text-[13px] tracking-wide text-background transition-colors duration-300 hover:border-accent hover:bg-accent"
             >
-              <motion.div variants={item}>
-                <p className="label">Current Role</p>
-                <p className="mt-3 text-[13px] font-normal text-primary">
-                  Electrical Engineer
-                </p>
-              </motion.div>
-
-              <motion.div variants={item} className="mt-8">
-                <p className="label">Location</p>
-                <p className="mt-3 text-[13px] font-normal text-primary">
-                  Indonesia
-                </p>
-              </motion.div>
-
-              <motion.div variants={item} className="mt-8">
-                <p className="label">Main Stack</p>
-                <ul className="mt-3 space-y-[7px]">
-                  {mainStack.map((s) => (
-                    <li key={s} className="text-[13px] font-normal text-primary">
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div variants={item} className="mt-8">
-                <p className="label">Contact</p>
-                <ul className="mt-3 space-y-[7px]">
-                  {contacts.map((c) => (
-                    <li key={c.label}>
-                      <a
-                        href={c.href}
-                        target={
-                          c.href.startsWith("http") ? "_blank" : undefined
-                        }
-                        rel={
-                          c.href.startsWith("http")
-                            ? "noopener noreferrer"
-                            : undefined
-                        }
-                        className="link-underline text-[13px] font-normal text-primary"
-                      >
-                        {c.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </motion.div>
-
-            <motion.div
-              variants={item}
-              initial={reduce ? false : { opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-16 xl:mt-0 xl:text-right"
+              View Projects
+              <ArrowUpRight
+                size={14}
+                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </Link>
+            <a
+              href={profile.cvFile}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex h-10 items-center gap-2 border border-line px-5 text-[13px] tracking-wide text-primary transition-colors duration-300 hover:border-primary"
             >
-              <Link
-                href="/projects"
-                className="group inline-flex items-center gap-3 font-serif text-4xl font-medium leading-none text-primary transition-colors duration-300 hover:text-accent sm:text-5xl"
-              >
-                View Projects
-                <ArrowUpRight
-                  size={28}
-                  className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                />
-              </Link>
-              <a
-                href={profile.cvFile}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group mt-6 inline-flex items-center gap-2 text-[13px] font-normal uppercase tracking-[0.2em] text-secondary transition-colors duration-300 hover:text-primary"
-              >
-                Download CV
-                <ArrowDownRight
-                  size={13}
-                  className="transition-transform duration-300 group-hover:translate-y-0.5 group-hover:translate-x-0.5"
-                />
-              </a>
-            </motion.div>
-          </div>
+              Download CV
+              <ArrowDownRight
+                size={14}
+                className="transition-transform duration-300 group-hover:translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </a>
+          </motion.div>
         </div>
       </div>
     </section>

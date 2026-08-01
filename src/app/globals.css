@@ -3,16 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --bg: 245 241 234; /* #F5F1EA */
-  --surface: 239 234 224;
-  --card: 250 247 241;
-  --primary: 17 17 17; /* #111111 */
+  --bg: 248 244 237; /* #F8F4ED */
+  --surface: 240 234 223;
+  --card: 253 250 245;
+  --primary: 21 21 21; /* #151515 */
   --secondary: 102 102 102; /* #666666 */
-  --muted: 153 153 153;
-  --accent: 169 133 104; /* #A98568 */
-  --accent-deep: 138 106 80;
-  --accent-light: 201 169 142;
-  --line: 17 17 17;
+  --muted: 148 139 128;
+  --accent: 166 106 69; /* #A66A45 */
+  --accent-deep: 138 84 54;
+  --accent-light: 198 145 112;
+  --line: 217 206 194; /* #D9CEC2 */
+  --line-strong: 196 180 162;
   color-scheme: light;
 }
 
@@ -23,10 +24,11 @@
   --primary: 245 241 234;
   --secondary: 158 151 141;
   --muted: 122 116 108;
-  --accent: 190 157 132;
-  --accent-deep: 211 187 162;
-  --accent-light: 148 122 100;
-  --line: 245 241 234;
+  --accent: 195 143 100;
+  --accent-deep: 216 170 130;
+  --accent-light: 148 110 80;
+  --line: 72 66 58;
+  --line-strong: 96 88 77;
   color-scheme: dark;
 }
 
@@ -95,7 +97,7 @@ body {
 }
 
 .text-outline {
-  -webkit-text-stroke: 1px rgb(var(--line) / 0.08);
+  -webkit-text-stroke: 1px rgb(var(--primary) / 0.08);
   color: transparent;
 }
 

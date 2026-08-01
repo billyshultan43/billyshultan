@@ -118,7 +118,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-[12px] border border-primary bg-primary text-[13px] tracking-wide text-background transition-colors duration-300 hover:border-accent hover:bg-accent disabled:opacity-60 active:translate-y-[1px]"
+        className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-[8px] border border-primary bg-primary text-[13px] tracking-wide text-background transition-colors duration-300 hover:border-accent hover:bg-accent disabled:opacity-60 active:translate-y-[1px]"
       >
         <Send size={15} /> {isSubmitting ? "Sending..." : "Send message"}
       </button>
