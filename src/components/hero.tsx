@@ -4,10 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import {
-  ArrowDownRight,
   ArrowRight,
-  ArrowUpRight,
-  Boxes,
   Braces,
   CircuitBoard,
   Cpu,
@@ -44,7 +41,6 @@ const techStack = [
   { name: "Git", icon: GitBranch },
   { name: "PostgreSQL", icon: Table },
   { name: "REST API", icon: Braces },
-  { name: "Filament", icon: Boxes },
 ];
 
 const panelSpecialization = [
@@ -278,36 +274,6 @@ export function Hero() {
               );
             })}
           </div>
-
-          <motion.div
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center gap-3"
-          >
-            <Link
-              href="/projects"
-              className="group inline-flex h-10 items-center gap-2 border border-primary bg-primary px-5 text-[13px] tracking-wide text-background transition-colors duration-300 hover:border-accent hover:bg-accent"
-            >
-              View Projects
-              <ArrowUpRight
-                size={14}
-                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              />
-            </Link>
-            <a
-              href={profile.cvFile}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex h-10 items-center gap-2 border border-line px-5 text-[13px] tracking-wide text-primary transition-colors duration-300 hover:border-primary"
-            >
-              Download CV
-              <ArrowDownRight
-                size={14}
-                className="transition-transform duration-300 group-hover:translate-y-0.5 group-hover:translate-x-0.5"
-              />
-            </a>
-          </motion.div>
         </div>
       </div>
     </section>
