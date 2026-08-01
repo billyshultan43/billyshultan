@@ -53,10 +53,18 @@ const techStack = [
   { name: "Filament", icon: Boxes },
 ];
 
-const openTo = [
-  "Engineering Roles",
-  "IoT Projects",
-  "Freelance Consulting",
+const panelSpecialization = [
+  "Environmental Monitoring",
+  "Industrial IoT",
+  "Embedded Systems",
+  "AI Integration",
+];
+
+const services = [
+  "Website Development",
+  "IoT Dashboard Development",
+  "Embedded Systems Development",
+  "Technical Consulting",
 ];
 
 const contacts = [
@@ -191,28 +199,22 @@ export function Hero() {
             </motion.div>
 
             <motion.div variants={item} className="mt-5 border-t border-line/50 pt-4">
-              <p className="label">Experience</p>
-              <p className="mt-2 flex items-baseline gap-2">
-                <span className="font-serif text-[24px] font-medium leading-none text-primary">
-                  2+
-                </span>
-                <span className="text-[11px] uppercase tracking-[0.3em] text-secondary">
-                  Years
-                </span>
-              </p>
-            </motion.div>
-
-            <motion.div variants={item} className="mt-5 border-t border-line/50 pt-4">
-              <p className="label">Location</p>
-              <p className="mt-2 text-[12px] text-primary">Indonesia</p>
-            </motion.div>
-
-            <motion.div variants={item} className="mt-5 border-t border-line/50 pt-4">
-              <p className="label">Open To</p>
+              <p className="label">Specialization</p>
               <ul className="mt-2 space-y-1">
-                {openTo.map((o) => (
-                  <li key={o} className="text-[12px] text-secondary">
-                    {o}
+                {panelSpecialization.map((s) => (
+                  <li key={s} className="text-[12px] text-secondary">
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div variants={item} className="mt-5 border-t border-line/50 pt-4">
+              <p className="label">Services</p>
+              <ul className="mt-2 space-y-1">
+                {services.map((s) => (
+                  <li key={s} className="text-[12px] text-secondary">
+                    {s}
                   </li>
                 ))}
               </ul>
@@ -238,6 +240,11 @@ export function Hero() {
                   </li>
                 ))}
               </ul>
+            </motion.div>
+
+            <motion.div variants={item} className="mt-5 border-t border-line/50 pt-4">
+              <p className="label">Location</p>
+              <p className="mt-2 text-[12px] text-primary">Jakarta, Indonesia</p>
             </motion.div>
           </motion.div>
         </div>
