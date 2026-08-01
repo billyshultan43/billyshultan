@@ -1,13 +1,10 @@
-import { ArrowUpRight, Download } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Hairline } from "@/components/hairline";
 import { Reveal } from "@/components/reveal";
 import { experience } from "@/content/experience";
 import { education } from "@/content/education";
 import { certificates } from "@/content/certificates";
 import { achievements } from "@/content/achievements";
-import { profile } from "@/content/profile";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 export const metadata = {
   title: "Resume",
@@ -238,23 +235,6 @@ export default function ResumePage() {
               ))}
               <Hairline />
             </div>
-          </div>
-        </Reveal>
-
-        <Reveal>
-          <div className="mt-16 flex flex-wrap gap-4">
-            <a
-              href={profile.cvFile}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(buttonVariants({ size: "lg" }), "group")}
-            >
-              Download CV
-              <Download
-                size={15}
-                className="transition-transform duration-300 group-hover:translate-y-0.5"
-              />
-            </a>
           </div>
         </Reveal>
       </section>
