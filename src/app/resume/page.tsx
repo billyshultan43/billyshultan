@@ -1,5 +1,4 @@
 import { ArrowUpRight } from "lucide-react";
-import { Folio } from "@/components/folio";
 import { Hairline } from "@/components/hairline";
 import { ParallaxWord } from "@/components/parallax-word";
 import { Reveal } from "@/components/reveal";
@@ -24,7 +23,6 @@ export default function ResumePage() {
   return (
     <>
       <section className="section-container relative overflow-hidden pt-20 sm:pt-24">
-        <Folio number="03" />
         <Reveal>
           <h1 className="max-w-4xl font-serif text-4xl leading-[1.05] tracking-tight text-primary sm:text-5xl lg:text-6xl">
             Experience & Credentials
@@ -50,7 +48,7 @@ export default function ResumePage() {
       <section className="section-container relative overflow-hidden pb-24 pt-16">
         <ParallaxWord
           text="Resume"
-          className="-translate-x-1/2 -translate-y-1/2 text-[clamp(170px,20vw,260px)] opacity-50"
+          className="left-auto right-0 -translate-y-1/2 text-[clamp(170px,20vw,260px)] opacity-50"
         />
         <div className="relative z-10">
         <Reveal>

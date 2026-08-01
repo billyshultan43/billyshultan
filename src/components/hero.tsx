@@ -148,7 +148,7 @@ export function Hero() {
             />
             <ParallaxWord
               text="Engineer"
-              className="-translate-x-[50%] -translate-y-[30%] text-[clamp(96px,11vw,170px)] opacity-80"
+              className="-translate-x-[50%] -translate-y-[30%] text-[clamp(96px,11vw,170px)] opacity-50"
             />
 
             <motion.div

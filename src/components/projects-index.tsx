@@ -11,7 +11,7 @@ export function ProjectsIndex() {
     <section className="section-container relative overflow-hidden section-padding pt-4">
       <ParallaxWord
         text="Projects"
-        className="-translate-x-1/2 -translate-y-1/2 text-[clamp(130px,16vw,250px)] opacity-50"
+        className="left-0 -translate-y-1/2 text-[clamp(130px,16vw,250px)] opacity-50"
       />
       <div className="relative z-10">
         {projects.map((project, i) => (

@@ -39,7 +39,7 @@ export function TechStack() {
 
       <ParallaxWord
         text="Stack"
-        className="-translate-x-1/2 -translate-y-1/2 text-[clamp(200px,24vw,280px)] opacity-50"
+        className="left-0 -translate-y-1/2 text-[clamp(200px,24vw,280px)] opacity-50"
       />
 
       <BlueprintLines />

@@ -24,13 +24,12 @@ export default function ContactPage() {
         title="Contact"
         description="Reach out for engineering, IoT, or full stack opportunities."
         meta="Contact / Jakarta Barat, DKI Jakarta"
-        number="04"
       />
 
       <section className="section-container relative overflow-hidden section-padding pt-2">
         <ParallaxWord
           text="Let's Talk"
-          className="-translate-x-1/2 -translate-y-1/2 text-[clamp(120px,15vw,230px)] opacity-50"
+          className="left-auto right-0 -translate-y-1/2 text-[clamp(120px,15vw,230px)] opacity-50"
         />
         <div className="relative z-10 grid grid-cols-1 gap-16 md:grid-cols-12 md:gap-10">
           <div className="md:col-span-5">
