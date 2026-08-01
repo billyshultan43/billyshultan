@@ -1,15 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import {
-  EB_Garamond,
-  IBM_Plex_Mono,
-  Schibsted_Grotesk,
-} from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { site } from "@/content/site";
 
-const serif = EB_Garamond({
+const serif = Cormorant_Garamond({
   subsets: ["latin"],
   style: ["normal", "italic"],
   weight: ["400", "500", "600"],
@@ -17,18 +13,20 @@ const serif = EB_Garamond({
   display: "swap",
 });
 
-const grotesk = Schibsted_Grotesk({
+const sans = Inter({
   subsets: ["latin"],
+  weight: ["400", "500"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const mono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
-  display: "swap",
-});
+const themeScript = `
+try {
+  const stored = localStorage.getItem("theme");
+  const dark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  if (dark) document.documentElement.classList.add("dark");
+} catch (e) {}
+`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -70,7 +68,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F3EFE6",
+  themeColor: "#F5F1EA",
   width: "device-width",
   initialScale: 1,
 };
@@ -83,8 +81,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${serif.variable} ${grotesk.variable} ${mono.variable}`}
+      className={`${serif.variable} ${sans.variable}`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="font-sans antialiased">
         <Navbar />
         <main className="pt-[72px]">{children}</main>

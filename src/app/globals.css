@@ -2,34 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg: 245 241 234; /* #F5F1EA */
+  --surface: 239 234 224;
+  --card: 250 247 241;
+  --primary: 17 17 17; /* #111111 */
+  --secondary: 102 102 102; /* #666666 */
+  --muted: 153 153 153;
+  --accent: 169 133 104; /* #A98568 */
+  --accent-deep: 138 106 80;
+  --accent-light: 201 169 142;
+  --line: 17 17 17;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: 20 19 17;
+  --surface: 27 25 22;
+  --card: 32 29 25;
+  --primary: 245 241 234;
+  --secondary: 158 151 141;
+  --muted: 122 116 108;
+  --accent: 190 157 132;
+  --accent-deep: 211 187 162;
+  --accent-light: 148 122 100;
+  --line: 245 241 234;
+  color-scheme: dark;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #F3EFE6;
-  color: #201D17;
+  background-color: rgb(var(--bg));
+  color: rgb(var(--primary));
   font-feature-settings: "rlig" 1, "calt" 1;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background-color: #9C5B33;
-  color: #F3EFE6;
+  background-color: rgb(var(--accent));
+  color: rgb(var(--bg));
 }
 
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F3EFE6;
+  background: rgb(var(--bg));
 }
 ::-webkit-scrollbar-thumb {
-  background: #C6BEB0;
+  background: rgb(var(--line) / 0.3);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #A99F8D;
+  background: rgb(var(--line) / 0.5);
 }
 
 @layer components {
@@ -39,9 +67,12 @@ body {
   .section-padding {
     @apply py-20 sm:py-28 lg:py-32;
   }
+  .label {
+    @apply text-[13px] font-normal uppercase tracking-[0.35em] text-secondary;
+  }
 }
 
-/* Editorial link underline, copper */
+/* Editorial link underline, ink */
 .link-underline {
   position: relative;
 }
@@ -49,7 +80,7 @@ body {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -2px;
+  bottom: -3px;
   height: 1px;
   width: 100%;
   background-color: currentColor;
@@ -64,7 +95,7 @@ body {
 }
 
 .text-outline {
-  -webkit-text-stroke: 1px rgba(32, 29, 23, 0.16);
+  -webkit-text-stroke: 1px rgb(var(--line) / 0.08);
   color: transparent;
 }
 

@@ -9,17 +9,14 @@ import {
 } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { profile } from "@/content/profile";
-import { projects } from "@/content/projects";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 const container: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.08 } },
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 26 },
+  hidden: { opacity: 0, y: 22 },
   show: {
     opacity: 1,
     y: 0,
@@ -27,138 +24,311 @@ const item: Variants = {
   },
 };
 
-const featured = projects[0];
+const roles = [
+  "Electrical Engineer",
+  "IoT",
+  "Embedded Systems",
+  "AI Integration",
+];
+
+const specifications = [
+  "Electrical Engineering",
+  "Environmental Monitoring",
+  "Instrumentation",
+  "Embedded Development",
+  "Cloud Integration",
+  "AI Automation",
+];
+
+const coreSkills = [
+  "ESP32",
+  "STM32",
+  "Embedded",
+  "IoT",
+  "Firmware",
+  "Python",
+  "Laravel",
+  "Flutter",
+];
+
+const techStack = [
+  { name: "ESP32", color: "#A98568" },
+  { name: "Python", color: "#8F8B84" },
+  { name: "Laravel", color: "#111111" },
+  { name: "Supabase", color: "#E9E2D5" },
+  { name: "Git", color: "#A98568" },
+  { name: "PostgreSQL", color: "#8F8B84" },
+  { name: "REST API", color: "#111111" },
+  { name: "Filament", color: "#E9E2D5" },
+];
+
+const mainStack = ["ESP32", "STM32", "Laravel", "Flutter", "Supabase", "AI"];
+
+const contacts = [
+  { label: "Email", href: "mailto:billyshultan00@email.com" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/billyshultan" },
+  { label: "Github", href: "https://github.com/billyshultan43" },
+];
 
 export function Hero() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden border-b border-line bg-background">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <span className="absolute left-[5%] top-[16%] h-44 w-44 rounded-full bg-[#E4DAC8] opacity-70" />
-        <span className="absolute bottom-[8%] right-[3%] h-72 w-72 rounded-[2.5rem] bg-[#E9E0CF] opacity-60" />
-      </div>
-
-      <div className="section-container relative grid grid-cols-1 items-center gap-16 pb-28 pt-24 lg:grid-cols-[42%_58%] lg:gap-14 lg:pb-36">
-        <motion.div
-          variants={container}
-          initial={reduce ? false : "hidden"}
-          animate="show"
-        >
-          <motion.p
-            variants={item}
-            className="font-mono text-[11px] uppercase tracking-[0.3em] text-secondary"
-          >
-            Electrical Engineer / IoT / Embedded
-          </motion.p>
-
-          <motion.h1
-            variants={item}
-            className="mt-8 font-serif text-6xl leading-[0.95] tracking-tight text-primary sm:text-7xl xl:text-8xl"
-          >
-            Engineering a{" "}
-            <span className="italic text-accent">measurable</span> world.
-          </motion.h1>
-
-          <motion.p
-            variants={item}
-            className="mt-8 max-w-md text-base leading-relaxed text-secondary lg:text-lg"
-          >
-            IoT and embedded systems engineer building environmental
-            monitoring instruments, from sensor to cloud.
-          </motion.p>
-
-          <motion.div variants={item} className="mt-12 flex flex-wrap items-center gap-4">
-            <Link
-              href="#work"
-              className={cn(buttonVariants({ size: "sm" }), "group")}
+    <section className="relative overflow-hidden bg-background text-primary">
+      <div className="mx-auto flex min-h-[calc(100dvh-72px)] w-full max-w-[1920px] flex-col px-6 pb-12 pt-14 sm:px-10 xl:px-[72px] xl:pb-14 xl:pt-[140px]">
+        <div className="grid flex-1 grid-cols-1 gap-20 lg:grid-cols-[30fr_40fr_30fr] xl:gap-0">
+          {/* ——— LEFT ZONE ——— */}
+          <div className="relative z-10 flex flex-col justify-between">
+            <motion.div
+              variants={container}
+              initial={reduce ? false : "hidden"}
+              animate="show"
             >
-              View selected work
-              <ArrowDownRight
-                size={14}
-                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5"
-              />
-            </Link>
-            <Link
-              href={profile.cvFile}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                buttonVariants({ variant: "outline", size: "sm" }),
-                "group"
-              )}
-            >
-              Download CV
-            </Link>
-          </motion.div>
-        </motion.div>
+              <motion.p variants={item} className="label">
+                Available for work
+              </motion.p>
 
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative"
-        >
-          <div className="relative mx-auto w-full max-w-[560px]">
-            <span
-              aria-hidden="true"
-              className="text-outline pointer-events-none absolute -right-4 top-0 z-0 select-none whitespace-nowrap font-serif uppercase leading-none text-[7rem] sm:text-[10rem] xl:text-[12rem]"
-            >
-              Engineering
-            </span>
-
-            <div className="absolute right-0 top-14 z-10 w-[84%] overflow-hidden rounded-2xl border border-line bg-card">
-              <div className="relative aspect-[4/5]">
-                <Image
-                  src="/assets/images/projects/ambient-particulate/3D-Design-Tampak-Luar.png"
-                  alt="CAD render of the ambient particulate monitoring system"
-                  fill
-                  sizes="(max-width: 1024px) 84vw, 44vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-
-            <div className="relative z-20 ml-[2%] w-[68%] overflow-hidden rounded-2xl border border-line bg-card shadow-[0_28px_60px_-32px_rgba(32,29,23,0.4)]">
-              <div className="relative aspect-[3/4]">
-                <Image
-                  src={profile.profileImage}
-                  alt={profile.name}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 68vw, 34vw"
-                  className="object-cover object-top"
-                />
-              </div>
-            </div>
-
-            <div className="absolute left-0 top-[4%] z-30 w-[250px] -translate-x-[6%] rounded-2xl border border-line bg-card p-5 shadow-[0_18px_45px_-18px_rgba(32,29,23,0.35)]">
-              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-secondary">
-                Featured Project
-              </p>
-              <h3 className="mt-3 font-serif text-xl leading-tight text-primary">
-                Ambient Particulate Monitor
-              </h3>
-              <p className="mt-2 font-mono text-[10px] text-accent-deep">
-                IoT / ESP8266 / Blynk
-              </p>
-              <p className="mt-3 text-[13px] leading-relaxed text-secondary">
-                Real-time PM2.5 and temperature monitoring, from sensor to
-                cloud.
-              </p>
-              <Link
-                href={`/projects/${featured.slug}`}
-                className="group mt-4 inline-flex h-9 items-center gap-1.5 rounded-md border border-line px-4 text-[13px] font-medium text-primary transition-colors duration-300 hover:border-primary"
+              <motion.h1
+                variants={item}
+                className="mt-8 font-serif text-[clamp(56px,7vw,96px)] font-medium leading-[0.9] tracking-[-0.01em] text-primary"
               >
-                View case study
+                Billy
+                <br />
+                Shultan
+                <br />
+                Al&nbsp;Hadiy
+              </motion.h1>
+
+              <motion.p
+                variants={item}
+                className="mt-7 max-w-[420px] text-[18px] leading-snug text-secondary"
+              >
+                {roles.join("  /  ")}
+              </motion.p>
+
+              <motion.p
+                variants={item}
+                className="mt-7 max-w-[420px] text-[17px] leading-[1.55] text-secondary"
+              >
+                {profile.heroSummary}
+              </motion.p>
+
+              <motion.div variants={item} className="mt-10">
+                <p className="label">Specifications</p>
+                <ul className="mt-5 space-y-[10px]">
+                  {specifications.map((s) => (
+                    <li
+                      key={s}
+                      className="text-[13px] font-normal uppercase tracking-[0.18em] text-secondary"
+                    >
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <motion.div variants={item} className="mt-10">
+                <p className="label">Experience</p>
+                <p className="mt-4 flex items-baseline gap-3">
+                  <span className="font-serif text-[44px] font-medium leading-none text-primary">
+                    2+
+                  </span>
+                  <span className="text-[13px] font-normal uppercase tracking-[0.35em] text-secondary">
+                    Years
+                  </span>
+                </p>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              variants={item}
+              initial={reduce ? false : { opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-16"
+            >
+              <p className="label">Core Skills</p>
+              <div className="mt-5 grid max-w-[320px] grid-cols-4 gap-3">
+                {coreSkills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="flex h-12 w-12 items-center justify-center border border-line-strong text-center text-[8.5px] font-normal uppercase tracking-[0.08em] text-secondary transition-colors duration-300 hover:border-primary hover:text-primary"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* ——— CENTER ZONE ——— */}
+          <div className="relative flex flex-col items-center justify-between">
+            <div className="relative flex w-full items-center justify-center xl:translate-x-[3%]">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute h-[320px] w-[320px] rounded-full bg-[#B89B84] opacity-[0.18] blur-[120px] sm:h-[420px] sm:w-[420px] xl:h-[560px] xl:w-[560px]"
+              />
+              <span
+                aria-hidden="true"
+                className="text-outline pointer-events-none absolute left-1/2 top-[4%] z-0 -translate-x-[42%] select-none whitespace-nowrap font-serif text-[clamp(110px,15vw,220px)] font-medium uppercase leading-none tracking-[0.02em]"
+              >
+                Engineer
+              </span>
+
+              <motion.div
+                animate={
+                  reduce
+                    ? undefined
+                    : { y: [0, -12, 0] }
+                }
+                transition={
+                  reduce
+                    ? undefined
+                    : { duration: 7, repeat: Infinity, ease: "easeInOut" }
+                }
+                className="relative z-10 mt-8 xl:mt-0"
+              >
+                <motion.div
+                  initial={reduce ? false : { opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 1.2,
+                    delay: 0.25,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="-rotate-3"
+                >
+                  <Image
+                    src={profile.profileImage}
+                    alt={profile.name}
+                    width={810}
+                    height={990}
+                    priority
+                    sizes="(max-width: 1024px) 70vw, 40vw"
+                    className="h-[min(420px,48vh)] w-auto object-contain xl:h-[min(650px,62vh)] [filter:drop-shadow(0_44px_60px_rgba(17,17,17,0.16))]"
+                  />
+                </motion.div>
+              </motion.div>
+            </div>
+
+            <motion.div
+              variants={item}
+              initial={reduce ? false : { opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-14 flex flex-col items-center xl:mt-0"
+            >
+              <p className="label">Tech Stack</p>
+              <div className="mt-5 flex flex-wrap items-start justify-center gap-x-7 gap-y-5">
+                {techStack.map((tech) => (
+                  <span
+                    key={tech.name}
+                    className="flex flex-col items-center gap-2"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="h-3.5 w-3.5 border border-line-strong"
+                      style={{ backgroundColor: tech.color }}
+                    />
+                    <span className="text-[9px] font-normal uppercase tracking-[0.14em] text-secondary">
+                      {tech.name}
+                    </span>
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* ——— RIGHT ZONE ——— */}
+          <div className="relative z-10 flex flex-col justify-between xl:items-end">
+            <motion.div
+              variants={container}
+              initial={reduce ? false : "hidden"}
+              animate="show"
+              className="xl:text-right"
+            >
+              <motion.div variants={item}>
+                <p className="label">Current Role</p>
+                <p className="mt-3 text-[13px] font-normal text-primary">
+                  Electrical Engineer
+                </p>
+              </motion.div>
+
+              <motion.div variants={item} className="mt-8">
+                <p className="label">Location</p>
+                <p className="mt-3 text-[13px] font-normal text-primary">
+                  Indonesia
+                </p>
+              </motion.div>
+
+              <motion.div variants={item} className="mt-8">
+                <p className="label">Main Stack</p>
+                <ul className="mt-3 space-y-[7px]">
+                  {mainStack.map((s) => (
+                    <li key={s} className="text-[13px] font-normal text-primary">
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <motion.div variants={item} className="mt-8">
+                <p className="label">Contact</p>
+                <ul className="mt-3 space-y-[7px]">
+                  {contacts.map((c) => (
+                    <li key={c.label}>
+                      <a
+                        href={c.href}
+                        target={
+                          c.href.startsWith("http") ? "_blank" : undefined
+                        }
+                        rel={
+                          c.href.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        className="link-underline text-[13px] font-normal text-primary"
+                      >
+                        {c.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              variants={item}
+              initial={reduce ? false : { opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-16 xl:mt-0 xl:text-right"
+            >
+              <Link
+                href="/projects"
+                className="group inline-flex items-center gap-3 font-serif text-4xl font-medium leading-none text-primary transition-colors duration-300 hover:text-accent sm:text-5xl"
+              >
+                View Projects
                 <ArrowUpRight
-                  size={13}
-                  className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  size={28}
+                  className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
                 />
               </Link>
-            </div>
+              <a
+                href={profile.cvFile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-6 inline-flex items-center gap-2 text-[13px] font-normal uppercase tracking-[0.2em] text-secondary transition-colors duration-300 hover:text-primary"
+              >
+                Download CV
+                <ArrowDownRight
+                  size={13}
+                  className="transition-transform duration-300 group-hover:translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </a>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

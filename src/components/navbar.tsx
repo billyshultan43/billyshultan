@@ -3,13 +3,37 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Github, Linkedin, Menu, Moon, Sun, X } from "lucide-react";
 import { navLinks } from "@/content/site";
 import { cn } from "@/lib/utils";
+
+function useTheme() {
+  const [dark, setDark] = React.useState<boolean | null>(null);
+
+  React.useEffect(() => {
+    setDark(document.documentElement.classList.contains("dark"));
+  }, []);
+
+  const toggle = React.useCallback(() => {
+    setDark((prev) => {
+      const next = !(prev ?? false);
+      document.documentElement.classList.toggle("dark", next);
+      try {
+        localStorage.setItem("theme", next ? "dark" : "light");
+      } catch {
+        /* ignore */
+      }
+      return next;
+    });
+  }, []);
+
+  return { dark, toggle };
+}
 
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
+  const { dark, toggle } = useTheme();
 
   React.useEffect(() => {
     setOpen(false);
@@ -19,25 +43,25 @@ export function Navbar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line/60 bg-background/90 backdrop-blur-sm">
-      <nav className="section-container flex h-14 items-center justify-between">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-background">
+      <nav className="mx-auto flex h-[72px] w-full max-w-[1920px] items-center justify-between px-6 sm:px-10 xl:px-[72px]">
         <Link
           href="/"
-          className="text-[15px] font-medium leading-none tracking-tight text-primary"
+          className="text-[13px] font-normal tracking-[0.08em] text-primary"
         >
-          Billy Shultan Al Hadiy
+          Billy Shultan
         </Link>
 
-        <ul className="hidden items-center gap-7 md:flex xl:gap-9">
+        <ul className="hidden items-center gap-12 lg:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 aria-current={isActive(link.href) ? "page" : undefined}
                 className={cn(
-                  "link-underline text-[13px] transition-colors duration-300",
+                  "text-[13px] font-normal tracking-[0.08em] transition-colors duration-300",
                   isActive(link.href)
-                    ? "text-accent-deep"
+                    ? "text-primary"
                     : "text-secondary hover:text-primary"
                 )}
               >
@@ -47,27 +71,55 @@ export function Navbar() {
           ))}
         </ul>
 
-        <button
-          type="button"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center text-primary md:hidden"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex items-center gap-6">
+          <a
+            href="https://github.com/billyshultan43"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Github"
+            className="hidden text-[13px] font-normal tracking-[0.08em] text-secondary transition-colors duration-300 hover:text-primary md:inline-flex"
+          >
+            Github
+          </a>
+          <a
+            href="https://linkedin.com/in/billyshultan"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="hidden text-[13px] font-normal tracking-[0.08em] text-secondary transition-colors duration-300 hover:text-primary md:inline-flex"
+          >
+            LinkedIn
+          </a>
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
+            className="inline-flex h-6 w-6 items-center justify-center text-secondary transition-colors duration-300 hover:text-primary"
+          >
+            {dark ? <Sun size={15} /> : <Moon size={15} />}
+          </button>
+          <button
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex h-9 w-9 items-center justify-center text-primary lg:hidden"
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </nav>
 
       {open && (
-        <div className="border-t border-line bg-background md:hidden">
-          <ul className="section-container flex flex-col py-4">
+        <div className="border-t border-line bg-background lg:hidden">
+          <ul className="flex flex-col px-6 py-4 sm:px-10">
             {navLinks.map((link) => (
               <li key={link.href} className="border-b border-line last:border-b-0">
                 <Link
                   href={link.href}
                   className={cn(
-                    "block py-5 font-serif text-3xl transition-colors duration-300",
-                    isActive(link.href) ? "italic text-accent" : "text-primary"
+                    "block py-5 font-serif text-3xl font-normal transition-colors duration-300",
+                    isActive(link.href) ? "text-primary" : "text-secondary"
                   )}
                 >
                   {link.label}

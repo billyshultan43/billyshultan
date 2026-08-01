@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
 export default function NotFound() {
   return (
     <section className="section-container flex min-h-[calc(100dvh-72px)] flex-col items-start justify-center">
-      <p className="font-mono text-xs text-secondary">404 / Signal lost</p>
-      <h1 className="mt-6 font-serif text-5xl leading-[1.05] tracking-tight text-primary sm:text-6xl">
+      <p className="label">404 / Signal lost</p>
+      <h1 className="mt-7 font-serif text-5xl font-medium leading-[1.02] tracking-tight text-primary sm:text-6xl">
         Page not found
       </h1>
-      <p className="mt-6 max-w-md text-base leading-relaxed text-secondary">
+      <p className="mt-7 max-w-md text-[17px] leading-relaxed text-secondary">
         The page you are looking for doesn&apos;t exist or has been moved.
       </p>
       <div className="mt-10 flex flex-wrap gap-3">
