@@ -1,5 +1,6 @@
 import { Code2, Layers, Cpu, Wrench, Sparkles, Globe, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { Hairline } from "@/components/hairline";
 import { PageIntro } from "@/components/page-intro";
 import { Reveal } from "@/components/reveal";
 import { skills } from "@/content/skills";
@@ -86,7 +87,7 @@ export default function SkillsPage() {
               );
             })}
             <Reveal delay={0.2}>
-              <div className="border-t border-line" />
+              <Hairline />
             </Reveal>
           </div>
         </div>

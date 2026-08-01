@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { ParallaxWord } from "@/components/parallax-word";
 import { profile } from "@/content/profile";
 
 const container: Variants = {
@@ -145,17 +146,15 @@ export function Hero() {
               aria-hidden="true"
               className="pointer-events-none absolute left-1/2 top-1/2 h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#EADCC6] sm:h-[290px] sm:w-[290px] xl:h-[330px] xl:w-[330px]"
             />
-            <span
-              aria-hidden="true"
-              className="text-outline pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-[50%] -translate-y-[30%] select-none whitespace-nowrap font-serif text-[clamp(96px,11vw,170px)] font-medium uppercase leading-none tracking-[0.02em] opacity-80"
-            >
-              Engineer
-            </span>
+            <ParallaxWord
+              text="Engineer"
+              className="-translate-x-[50%] -translate-y-[30%] text-[clamp(96px,11vw,170px)] opacity-80"
+            />
 
             <motion.div
-              initial={reduce ? false : { opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              initial={reduce ? false : { opacity: 0, y: 24, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
               className="relative z-10 -rotate-1 py-6"
             >
               <Image

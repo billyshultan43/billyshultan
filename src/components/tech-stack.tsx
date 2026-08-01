@@ -1,3 +1,5 @@
+import { Hairline } from "@/components/hairline";
+import { ParallaxWord } from "@/components/parallax-word";
 import { Reveal } from "@/components/reveal";
 
 const categories = [
@@ -31,13 +33,13 @@ const categories = [
 
 export function TechStack() {
   return (
-    <section className="relative overflow-hidden border-t border-line py-14 lg:py-20">
-      <span
-        aria-hidden="true"
-        className="text-outline pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap font-serif text-[clamp(200px,24vw,280px)] font-medium uppercase leading-none tracking-[0.02em] opacity-50"
-      >
-        Stack
-      </span>
+    <section className="relative overflow-hidden py-14 lg:py-20">
+      <Hairline />
+
+      <ParallaxWord
+        text="Stack"
+        className="-translate-x-1/2 -translate-y-1/2 text-[clamp(200px,24vw,280px)] opacity-50"
+      />
 
       <div className="section-container relative z-10">
         <Reveal>
@@ -53,15 +55,18 @@ export function TechStack() {
         <div className="mx-auto mt-12 max-w-5xl">
           {categories.map((cat, i) => (
             <Reveal key={cat.title} delay={i * 0.04}>
-              <div className="border-t border-line py-5">
-                <h3 className="label">{cat.title}</h3>
-                <p className="mt-2.5 text-[15px] leading-relaxed text-secondary">
-                  {cat.items.join(" • ")}
-                </p>
+              <div>
+                <Hairline />
+                <div className="py-5">
+                  <h3 className="label">{cat.title}</h3>
+                  <p className="mt-2.5 text-[15px] leading-relaxed text-secondary">
+                    {cat.items.join(" • ")}
+                  </p>
+                </div>
               </div>
             </Reveal>
           ))}
-          <div className="border-t border-line" />
+          <Hairline />
         </div>
       </div>
     </section>

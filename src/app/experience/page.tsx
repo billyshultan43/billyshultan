@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { Hairline } from "@/components/hairline";
 import { PageIntro } from "@/components/page-intro";
 import { Reveal } from "@/components/reveal";
 import { experience } from "@/content/experience";
@@ -98,7 +99,7 @@ export default function ExperiencePage() {
               </Reveal>
             ))}
             <Reveal delay={0.15}>
-              <div className="border-t border-line" />
+              <Hairline />
             </Reveal>
           </div>
         </div>
@@ -167,7 +168,7 @@ export default function ExperiencePage() {
                   </div>
                 </Reveal>
               ))}
-              <div className="border-t border-line" />
+              <Hairline />
             </div>
           </div>
         </div>
@@ -220,7 +221,7 @@ export default function ExperiencePage() {
                   </div>
                 </Reveal>
               ))}
-              <div className="border-t border-line" />
+              <Hairline />
             </div>
           </div>
         </div>

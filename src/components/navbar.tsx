@@ -59,7 +59,7 @@ export function Navbar() {
                 href={link.href}
                 aria-current={isActive(link.href) ? "page" : undefined}
                 className={cn(
-                  "text-[13px] font-normal tracking-[0.08em] transition-colors duration-300",
+                  "link-underline text-[13px] font-normal tracking-[0.08em] transition-colors duration-300",
                   isActive(link.href)
                     ? "text-primary"
                     : "text-secondary hover:text-primary"
@@ -76,7 +76,7 @@ export function Navbar() {
             type="button"
             onClick={toggle}
             aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
-            className="inline-flex h-6 w-6 items-center justify-center text-secondary transition-colors duration-300 hover:text-primary"
+            className="inline-flex h-6 w-6 items-center justify-center text-secondary transition-transform duration-300 hover:scale-110 hover:text-primary"
           >
             {dark ? <Sun size={15} /> : <Moon size={15} />}
           </button>
