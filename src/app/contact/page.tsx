@@ -26,10 +26,10 @@ export default function ContactPage() {
       />
 
       <section className="section-container section-padding pt-2">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-5">
+        <div className="grid grid-cols-1 gap-16 md:grid-cols-12 md:gap-10">
+          <div className="md:col-span-5">
             <Reveal>
-              <div className="flex items-start gap-10 sm:gap-14">
+              <div className="flex items-start justify-center gap-10 sm:gap-14">
                 {contactItems.map((item) => (
                   <a
                     key={item.label}
@@ -42,7 +42,7 @@ export default function ContactPage() {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="link-underline group inline-flex flex-col gap-3 opacity-80 transition-all duration-300 hover:-translate-y-0.5 hover:opacity-100"
+                    className="link-underline group inline-flex flex-col items-center gap-3 opacity-80 transition-all duration-300 hover:-translate-y-0.5 hover:opacity-100"
                   >
                     <item.icon size={18} strokeWidth={1.5} className="text-primary" />
                     <span className="text-[11px] uppercase tracking-[0.28em] text-secondary">
@@ -54,18 +54,16 @@ export default function ContactPage() {
             </Reveal>
           </div>
 
-          <Reveal>
-            <div className="lg:col-span-7">
-              <div className="border border-line bg-card p-8 sm:p-10">
-                <h2 className="font-serif text-xl text-primary">
-                  Send a message
-                </h2>
-                <p className="mt-1 text-sm text-secondary">
-                  Fill the form below and I&apos;ll get back to you.
-                </p>
-                <div className="mt-8">
-                  <ContactForm />
-                </div>
+          <Reveal className="md:col-span-7">
+            <div className="border border-line bg-card p-8 sm:p-10">
+              <h2 className="font-serif text-xl text-primary">
+                Send a message
+              </h2>
+              <p className="mt-1 text-sm text-secondary">
+                Fill the form below and I&apos;ll get back to you.
+              </p>
+              <div className="mt-8">
+                <ContactForm />
               </div>
             </div>
           </Reveal>
