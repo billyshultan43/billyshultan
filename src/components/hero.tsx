@@ -94,36 +94,36 @@ export function Hero() {
 
               <motion.p
                 variants={item}
-                className="mt-2 text-[15px] font-medium text-primary"
+                className="mt-1.5 text-[15px] font-medium text-primary"
               >
                 Electrical Engineer
               </motion.p>
 
               <motion.p
                 variants={item}
-                className="mt-3 max-w-[420px] text-[15px] leading-[1.65] text-secondary"
+                className="mt-2.5 max-w-[420px] text-[15px] leading-[1.65] text-secondary"
               >
                 Electrical Engineer specializing in Industrial IoT, Embedded
                 Systems and AI Integration, building connected monitoring
                 solutions from hardware to cloud.
               </motion.p>
 
-              <motion.div variants={item} className="mt-6 grid max-w-[420px] grid-cols-3">
-                <div>
+              <motion.div variants={item} className="mt-5 grid max-w-[420px] grid-cols-3">
+                <div className="pr-6">
                   <p className="font-serif text-[30px] font-medium leading-none text-primary">
                     2+
                   </p>
-                  <p className="mt-2 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
+                  <p className="mt-1.5 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
                     Years
                     <br />
                     Experience
                   </p>
                 </div>
-                <div className="border-l border-line/50 pl-6">
+                <div className="border-l border-line/50 px-6">
                   <p className="font-serif text-[30px] font-medium leading-none text-primary">
                     3
                   </p>
-                  <p className="mt-2 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
+                  <p className="mt-1.5 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
                     Featured
                     <br />
                     Projects
@@ -133,13 +133,13 @@ export function Hero() {
                   <p className="font-serif text-[30px] font-medium leading-none text-primary">
                     15+
                   </p>
-                  <p className="mt-2 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
+                  <p className="mt-1.5 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
                     Technologies
                   </p>
                 </div>
               </motion.div>
 
-              <motion.div variants={item} className="mt-7 flex items-center gap-10">
+              <motion.div variants={item} className="mt-6 flex items-center gap-9">
                 <Link
                   href="/projects"
                   className="group link-underline inline-flex items-center gap-2 text-[13px] font-medium tracking-wide text-primary"
@@ -158,6 +158,23 @@ export function Hero() {
                 >
                   Download CV
                 </a>
+              </motion.div>
+
+              <motion.div variants={item} className="mt-6 flex max-w-[420px] flex-wrap items-center gap-2">
+                {techStack.map((tech) => {
+                  const Icon = tech.icon;
+                  return (
+                    <span
+                      key={tech.name}
+                      className="flex h-11 w-11 flex-col items-center justify-center gap-[2px] border border-line text-secondary transition-colors duration-300 hover:border-accent hover:text-accent"
+                    >
+                      <Icon size={15} strokeWidth={1.25} />
+                      <span className="text-[7px] uppercase tracking-[0.06em]">
+                        {tech.name}
+                      </span>
+                    </span>
+                  );
+                })}
               </motion.div>
             </motion.div>
           </div>
@@ -254,26 +271,6 @@ export function Hero() {
               <p className="mt-2 text-[12px] text-primary">Jakarta, Indonesia</p>
             </motion.div>
           </motion.div>
-        </div>
-
-        {/* ——— BOTTOM ROW ——— */}
-        <div className="flex flex-col gap-6 border-t border-line py-6 md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-wrap items-center gap-2.5">
-            {techStack.map((tech) => {
-              const Icon = tech.icon;
-              return (
-                <span
-                  key={tech.name}
-                  className="group flex h-12 w-12 flex-col items-center justify-center gap-[3px] border border-line text-secondary transition-colors duration-300 hover:border-accent hover:text-accent"
-                >
-                  <Icon size={16} strokeWidth={1.25} />
-                  <span className="text-[7.5px] uppercase tracking-[0.06em]">
-                    {tech.name}
-                  </span>
-                </span>
-              );
-            })}
-          </div>
         </div>
       </div>
     </section>
