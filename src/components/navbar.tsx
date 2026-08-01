@@ -19,8 +19,8 @@ export function Navbar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-background/95 backdrop-blur-sm">
-      <nav className="section-container flex h-[72px] items-center justify-between">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line/60 bg-background/90 backdrop-blur-sm">
+      <nav className="section-container flex h-14 items-center justify-between">
         <Link
           href="/"
           className="text-[15px] font-medium leading-none tracking-tight text-primary"
@@ -28,14 +28,14 @@ export function Navbar() {
           Billy Shultan Al Hadiy
         </Link>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-7 md:flex xl:gap-9">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 aria-current={isActive(link.href) ? "page" : undefined}
                 className={cn(
-                  "link-underline text-sm transition-colors duration-300",
+                  "link-underline text-[13px] transition-colors duration-300",
                   isActive(link.href)
                     ? "text-accent-deep"
                     : "text-secondary hover:text-primary"

@@ -1,6 +1,5 @@
 import { Hero } from "@/components/hero";
 import { ProjectsShowcase } from "@/components/projects-showcase";
-import { StatsStrip } from "@/components/sections/stats";
 import { AboutSection } from "@/components/sections/about";
 import { ExperienceSection } from "@/components/sections/experience";
 import { SkillsSection } from "@/components/sections/skills";
@@ -11,10 +10,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <StatsStrip />
       <AboutSection />
-      <ExperienceSection />
       <ProjectsShowcase />
+      <ExperienceSection />
       <SkillsSection />
       <CertificatesSection />
       <ContactSection />

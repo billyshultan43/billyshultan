@@ -63,6 +63,11 @@ body {
   transform-origin: left;
 }
 
+.text-outline {
+  -webkit-text-stroke: 1px rgba(32, 29, 23, 0.16);
+  color: transparent;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

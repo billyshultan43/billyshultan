@@ -1,27 +1,25 @@
 "use client";
 
-import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   motion,
   useReducedMotion,
-  useScroll,
-  useTransform,
   type Variants,
 } from "framer-motion";
-import { ArrowDownRight, FileDown } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { profile } from "@/content/profile";
+import { projects } from "@/content/projects";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const container: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.08 } },
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 26 },
   show: {
     opacity: 1,
     y: 0,
@@ -29,50 +27,34 @@ const item: Variants = {
   },
 };
 
-const cadRender =
-  "/assets/images/projects/ambient-particulate/3D-Design-Tampak-Luar.png";
-const blynkShot =
-  "/assets/images/projects/ambient-particulate/Screenshot_20231205_230018_cloud.blynk.jpg";
-
-const bom = [
-  "NODEMCU ESP8266 / MAIN CONTROLLER",
-  "SHARP GP2Y1014AU0F / PM2.5 SENSOR",
-  "DS18B20 / TEMPERATURE SENSOR",
-];
+const featured = projects[0];
 
 export function Hero() {
   const reduce = useReducedMotion();
-  const ref = React.useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const slowY = useTransform(scrollYProgress, [0, 1], [0, -30]);
-  const fastY = useTransform(scrollYProgress, [0, 1], [0, 40]);
-  const midY = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
   return (
-    <section
-      ref={ref}
-      className="relative overflow-hidden border-b border-line"
-    >
-      <div className="section-container grid min-h-[calc(100dvh-72px)] grid-cols-1 items-center gap-14 pb-16 pt-24 lg:grid-cols-12 lg:gap-6">
+    <section className="relative overflow-hidden border-b border-line bg-background">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <span className="absolute left-[5%] top-[16%] h-44 w-44 rounded-full bg-[#E4DAC8] opacity-70" />
+        <span className="absolute bottom-[8%] right-[3%] h-72 w-72 rounded-[2.5rem] bg-[#E9E0CF] opacity-60" />
+      </div>
+
+      <div className="section-container relative grid grid-cols-1 items-center gap-16 pb-28 pt-24 lg:grid-cols-[42%_58%] lg:gap-14 lg:pb-36">
         <motion.div
           variants={container}
           initial={reduce ? false : "hidden"}
           animate="show"
-          className="relative z-20 lg:col-span-5"
         >
           <motion.p
             variants={item}
-            className="font-mono text-xs leading-relaxed text-secondary"
+            className="font-mono text-[11px] uppercase tracking-[0.3em] text-secondary"
           >
-            Billy Shultan Al Hadiy / Electrical Engineer
+            Electrical Engineer / IoT / Embedded
           </motion.p>
 
           <motion.h1
             variants={item}
-            className="mt-7 font-serif text-6xl leading-[0.98] tracking-tight text-primary sm:text-7xl xl:text-[5.5rem]"
+            className="mt-8 font-serif text-6xl leading-[0.95] tracking-tight text-primary sm:text-7xl xl:text-8xl"
           >
             Engineering a{" "}
             <span className="italic text-accent">measurable</span> world.
@@ -80,23 +62,20 @@ export function Hero() {
 
           <motion.p
             variants={item}
-            className="mt-7 max-w-md text-base leading-relaxed text-secondary lg:text-lg"
+            className="mt-8 max-w-md text-base leading-relaxed text-secondary lg:text-lg"
           >
             IoT and embedded systems engineer building environmental
             monitoring instruments, from sensor to cloud.
           </motion.p>
 
-          <motion.div
-            variants={item}
-            className="mt-10 flex flex-wrap items-center gap-3"
-          >
+          <motion.div variants={item} className="mt-12 flex flex-wrap items-center gap-4">
             <Link
               href="#work"
-              className={cn(buttonVariants({ size: "lg" }), "group")}
+              className={cn(buttonVariants({ size: "sm" }), "group")}
             >
               View selected work
               <ArrowDownRight
-                size={15}
+                size={14}
                 className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:translate-y-0.5"
               />
             </Link>
@@ -105,106 +84,82 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                buttonVariants({ variant: "outline", size: "lg" }),
+                buttonVariants({ variant: "outline", size: "sm" }),
                 "group"
               )}
             >
               Download CV
-              <FileDown
-                size={15}
-                className="transition-transform duration-300 group-hover:translate-y-0.5"
-              />
             </Link>
           </motion.div>
         </motion.div>
 
-        <div className="relative lg:col-span-7">
-          <div className="relative h-[440px] sm:h-[540px] lg:h-[640px]">
-            <motion.div
-              style={reduce ? undefined : { y: slowY }}
-              className="absolute right-0 top-0 z-10 w-[64%] lg:w-[60%]"
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="relative"
+        >
+          <div className="relative mx-auto w-full max-w-[560px]">
+            <span
+              aria-hidden="true"
+              className="text-outline pointer-events-none absolute -right-4 top-0 z-0 select-none whitespace-nowrap font-serif uppercase leading-none text-[7rem] sm:text-[10rem] xl:text-[12rem]"
             >
-              <Frame className="aspect-[4/3]">
+              Engineering
+            </span>
+
+            <div className="absolute right-0 top-14 z-10 w-[84%] overflow-hidden rounded-2xl border border-line bg-card">
+              <div className="relative aspect-[4/5]">
                 <Image
-                  src={cadRender}
-                  alt="CAD render of the ambient particulate monitoring system enclosure"
+                  src="/assets/images/projects/ambient-particulate/3D-Design-Tampak-Luar.png"
+                  alt="CAD render of the ambient particulate monitoring system"
+                  fill
+                  sizes="(max-width: 1024px) 84vw, 44vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="relative z-20 ml-[2%] w-[68%] overflow-hidden rounded-2xl border border-line bg-card shadow-[0_28px_60px_-32px_rgba(32,29,23,0.4)]">
+              <div className="relative aspect-[3/4]">
+                <Image
+                  src={profile.profileImage}
+                  alt={profile.name}
                   fill
                   priority
-                  sizes="(max-width: 1024px) 64vw, 34vw"
-                  className="object-cover"
+                  sizes="(max-width: 1024px) 68vw, 34vw"
+                  className="object-cover object-top"
                 />
-              </Frame>
-            </motion.div>
-
-            <motion.div
-              style={reduce ? undefined : { y: fastY }}
-              className="absolute bottom-0 left-0 z-20 w-[34%] lg:w-[30%]"
-            >
-              <Frame className="aspect-[3/4]">
-                <Image
-                  src={blynkShot}
-                  alt="Live Blynk dashboard showing PM2.5 and temperature readings"
-                  fill
-                  sizes="(max-width: 1024px) 34vw, 15vw"
-                  className="object-cover"
-                />
-              </Frame>
-            </motion.div>
-
-            <motion.div
-              style={reduce ? undefined : { y: midY }}
-              className="absolute left-[26%] top-[4%] z-10 hidden w-[22%] sm:block lg:left-[24%]"
-            >
-              <div className="relative">
-                <span
-                  aria-hidden="true"
-                  className="absolute -left-3 -top-3 h-full w-full border border-line-strong"
-                />
-                <Frame className="relative aspect-[3/4]">
-                  <Image
-                    src={profile.profileImage}
-                    alt={profile.name}
-                    fill
-                    sizes="22vw"
-                    className="object-cover object-top"
-                  />
-                </Frame>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              style={reduce ? undefined : { y: midY }}
-              className="absolute bottom-[8%] right-[6%] z-30 hidden sm:block lg:right-[10%]"
-            >
-              <div className="border border-line-strong bg-background p-4 font-mono text-[11px] leading-relaxed text-primary">
-                <p className="mb-2 text-secondary">AMBIENT PARTICULATE MONITOR</p>
-                {bom.map((line) => (
-                  <p key={line}>{line}</p>
-                ))}
-              </div>
-            </motion.div>
+            <div className="absolute left-0 top-[4%] z-30 w-[250px] -translate-x-[6%] rounded-2xl border border-line bg-card p-5 shadow-[0_18px_45px_-18px_rgba(32,29,23,0.35)]">
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-secondary">
+                Featured Project
+              </p>
+              <h3 className="mt-3 font-serif text-xl leading-tight text-primary">
+                Ambient Particulate Monitor
+              </h3>
+              <p className="mt-2 font-mono text-[10px] text-accent-deep">
+                IoT / ESP8266 / Blynk
+              </p>
+              <p className="mt-3 text-[13px] leading-relaxed text-secondary">
+                Real-time PM2.5 and temperature monitoring, from sensor to
+                cloud.
+              </p>
+              <Link
+                href={`/projects/${featured.slug}`}
+                className="group mt-4 inline-flex h-9 items-center gap-1.5 rounded-md border border-line px-4 text-[13px] font-medium text-primary transition-colors duration-300 hover:border-primary"
+              >
+                View case study
+                <ArrowUpRight
+                  size={13}
+                  className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </Link>
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
-  );
-}
-
-function Frame({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "relative overflow-hidden border border-line bg-card",
-        className
-      )}
-    >
-      {children}
-    </div>
   );
 }
