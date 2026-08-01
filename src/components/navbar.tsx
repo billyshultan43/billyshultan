@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Github, Linkedin, Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { navLinks } from "@/content/site";
 import { cn } from "@/lib/utils";
 
@@ -72,24 +72,6 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-6">
-          <a
-            href="https://github.com/billyshultan43"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Github"
-            className="hidden text-[13px] font-normal tracking-[0.08em] text-secondary transition-colors duration-300 hover:text-primary md:inline-flex"
-          >
-            Github
-          </a>
-          <a
-            href="https://linkedin.com/in/billyshultan"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="hidden text-[13px] font-normal tracking-[0.08em] text-secondary transition-colors duration-300 hover:text-primary md:inline-flex"
-          >
-            LinkedIn
-          </a>
           <button
             type="button"
             onClick={toggle}
