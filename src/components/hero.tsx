@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import {
   ArrowDownRight,
+  ArrowRight,
   ArrowUpRight,
   Boxes,
   Braces,
@@ -111,16 +112,56 @@ export function Hero() {
                 solutions from hardware to cloud.
               </motion.p>
 
-              <motion.div variants={item} className="mt-4">
-                <p className="label">Experience</p>
-                <p className="mt-3 flex items-baseline gap-2">
-                  <span className="font-serif text-[32px] font-medium leading-none text-primary">
+              <motion.div variants={item} className="mt-6 grid max-w-[420px] grid-cols-3">
+                <div>
+                  <p className="font-serif text-[30px] font-medium leading-none text-primary">
                     2+
-                  </span>
-                  <span className="text-[11px] uppercase tracking-[0.3em] text-secondary">
+                  </p>
+                  <p className="mt-2 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
                     Years
-                  </span>
-                </p>
+                    <br />
+                    Experience
+                  </p>
+                </div>
+                <div className="border-l border-line/50 pl-6">
+                  <p className="font-serif text-[30px] font-medium leading-none text-primary">
+                    3
+                  </p>
+                  <p className="mt-2 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
+                    Featured
+                    <br />
+                    Projects
+                  </p>
+                </div>
+                <div className="border-l border-line/50 pl-6">
+                  <p className="font-serif text-[30px] font-medium leading-none text-primary">
+                    15+
+                  </p>
+                  <p className="mt-2 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
+                    Technologies
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div variants={item} className="mt-7 flex items-center gap-10">
+                <Link
+                  href="/projects"
+                  className="group link-underline inline-flex items-center gap-2 text-[13px] font-medium tracking-wide text-primary"
+                >
+                  View Projects
+                  <ArrowRight
+                    size={14}
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  />
+                </Link>
+                <a
+                  href={profile.cvFile}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline inline-flex items-center text-[13px] font-medium tracking-wide text-primary"
+                >
+                  Download CV
+                </a>
               </motion.div>
             </motion.div>
           </div>
