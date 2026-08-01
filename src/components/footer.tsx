@@ -1,13 +1,18 @@
 import Link from "next/link";
-import { navLinks, secondaryLinks } from "@/content/site";
 import { contact } from "@/content/social";
+
+const links = [
+  { label: "GitHub", href: "https://github.com/billyshultan43" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/billyshultan" },
+  { label: "Email", href: "mailto:billyshultan00@email.com" },
+];
 
 export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="border-t border-line bg-background">
       <div className="mx-auto w-full max-w-[1920px] px-6 pb-10 pt-12 sm:px-10 xl:px-[72px]">
-        <div className="flex flex-col justify-between gap-10 lg:flex-row lg:items-start">
+        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-start">
           <div>
             <Link
               href="/"
@@ -15,34 +20,29 @@ export function Footer() {
             >
               Billy Shultan
             </Link>
-            <p className="mt-4 max-w-xs text-[13px] leading-relaxed text-secondary">
+            <p className="mt-3 max-w-xs text-[13px] leading-relaxed text-secondary">
               Electrical Engineer / IoT / Embedded Systems / AI Integration
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-x-12 gap-y-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
+          <div className="flex gap-8">
+            {links.map((link) => (
+              <a
+                key={link.label}
                 href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={
+                  link.href.startsWith("http") ? "noopener noreferrer" : undefined
+                }
                 className="link-underline text-[13px] font-normal tracking-[0.08em] text-secondary transition-colors duration-300 hover:text-primary"
               >
                 {link.label}
-              </Link>
-            ))}
-            {secondaryLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="link-underline text-[13px] font-normal tracking-[0.08em] text-secondary transition-colors duration-300 hover:text-primary"
-              >
-                {link.label}
-              </Link>
+              </a>
             ))}
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-3 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[13px] text-secondary">
             &copy; {year} Billy Shultan Al Hadiy. All rights reserved.
           </p>

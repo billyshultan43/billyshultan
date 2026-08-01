@@ -40,17 +40,6 @@ const specialization = [
   "AI Integration",
 ];
 
-const coreSkills = [
-  "ESP32",
-  "STM32",
-  "Python",
-  "Laravel",
-  "Flutter",
-  "Supabase",
-  "REST API",
-  "Git",
-];
-
 const techStack = [
   { name: "ESP32", icon: Cpu },
   { name: "STM32", icon: CircuitBoard },
@@ -156,26 +145,6 @@ export function Hero() {
                   </p>
                 </div>
               </motion.div>
-            </motion.div>
-
-            <motion.div
-              variants={item}
-              initial={reduce ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-12"
-            >
-              <p className="label">Core Skills</p>
-              <div className="mt-5 flex max-w-[430px] flex-wrap gap-2.5">
-                {coreSkills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="flex h-11 w-11 items-center justify-center border border-line text-[8.5px] font-normal uppercase tracking-[0.06em] text-secondary transition-colors duration-300 hover:border-accent hover:text-accent"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
             </motion.div>
           </div>
 
