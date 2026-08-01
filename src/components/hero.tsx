@@ -3,18 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
-import {
-  ArrowRight,
-  Braces,
-  CircuitBoard,
-  Cpu,
-  Database,
-  GitBranch,
-  Layers,
-  Smartphone,
-  Table,
-  Terminal,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { profile } from "@/content/profile";
 
 const container: Variants = {
@@ -30,18 +19,6 @@ const item: Variants = {
     transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
   },
 };
-
-const techStack = [
-  { name: "ESP32", icon: Cpu },
-  { name: "STM32", icon: CircuitBoard },
-  { name: "Python", icon: Terminal },
-  { name: "Laravel", icon: Layers },
-  { name: "Flutter", icon: Smartphone },
-  { name: "Supabase", icon: Database },
-  { name: "Git", icon: GitBranch },
-  { name: "PostgreSQL", icon: Table },
-  { name: "REST API", icon: Braces },
-];
 
 const panelSpecialization = [
   "Environmental Monitoring",
@@ -254,24 +231,6 @@ export function Hero() {
               <p className="mt-2 text-[12px] text-primary">Jakarta, Indonesia</p>
             </motion.div>
           </motion.div>
-        </div>
-
-        {/* ——— TECHNOLOGY ROW ——— */}
-        <div className="flex flex-wrap items-center gap-1.5 pb-12 pt-10">
-          {techStack.map((tech) => {
-            const Icon = tech.icon;
-            return (
-              <span
-                key={tech.name}
-                className="flex h-10 w-10 flex-col items-center justify-center gap-[2px] border border-line text-secondary transition-colors duration-300 hover:border-accent hover:text-accent"
-              >
-                <Icon size={14} strokeWidth={1.25} />
-                <span className="text-[6.5px] uppercase tracking-[0.06em]">
-                  {tech.name}
-                </span>
-              </span>
-            );
-          })}
         </div>
       </div>
     </section>
