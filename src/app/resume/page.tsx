@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
+import { BackgroundWord } from "@/components/background-word";
 import { Hairline } from "@/components/hairline";
-import { ParallaxWord } from "@/components/parallax-word";
 import { Reveal } from "@/components/reveal";
 import { experience } from "@/content/experience";
 import { education } from "@/content/education";
@@ -46,9 +46,9 @@ export default function ResumePage() {
       </section>
 
       <section className="section-container relative overflow-hidden pb-24 pt-16">
-        <ParallaxWord
+        <BackgroundWord
           text="Resume"
-          className="left-auto right-0 -translate-y-1/2 text-[clamp(170px,20vw,260px)] opacity-50"
+          className="left-auto right-0 -translate-y-1/2 text-[clamp(170px,20vw,260px)]"
         />
         <div className="relative z-10">
         <Reveal>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { ParallaxWord } from "@/components/parallax-word";
+import { BackgroundWord } from "@/components/background-word";
 import { profile } from "@/content/profile";
 
 const container: Variants = {
@@ -146,9 +146,9 @@ export function Hero() {
               aria-hidden="true"
               className="pointer-events-none absolute left-1/2 top-1/2 h-[272px] w-[272px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#EADCC6] sm:h-[316px] sm:w-[316px] xl:h-[360px] xl:w-[360px]"
             />
-            <ParallaxWord
+            <BackgroundWord
               text="Engineer"
-              className="-translate-x-[50%] -translate-y-[30%] text-[clamp(96px,11vw,170px)] opacity-50"
+              className="-translate-x-[50%] -translate-y-[30%] text-[clamp(96px,11vw,170px)]"
             />
 
             <motion.div

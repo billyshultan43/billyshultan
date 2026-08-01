@@ -1,6 +1,6 @@
 import { Linkedin, Mail, Phone } from "lucide-react";
 import { PageIntro } from "@/components/page-intro";
-import { ParallaxWord } from "@/components/parallax-word";
+import { BackgroundWord } from "@/components/background-word";
 import { Reveal } from "@/components/reveal";
 import { ContactForm } from "@/components/contact-form";
 import { contact } from "@/content/social";
@@ -27,9 +27,9 @@ export default function ContactPage() {
       />
 
       <section className="section-container relative overflow-hidden section-padding pt-2">
-        <ParallaxWord
+        <BackgroundWord
           text="Let's Talk"
-          className="left-auto right-0 -translate-y-1/2 text-[clamp(120px,15vw,230px)] opacity-50"
+          className="left-auto right-0 -translate-y-1/2 text-[clamp(120px,15vw,230px)]"
         />
         <div className="relative z-10 grid grid-cols-1 gap-16 md:grid-cols-12 md:gap-10">
           <div className="md:col-span-5">

@@ -2,16 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Hairline } from "@/components/hairline";
-import { ParallaxWord } from "@/components/parallax-word";
+import { BackgroundWord } from "@/components/background-word";
 import { Reveal } from "@/components/reveal";
 import { projects } from "@/content/projects";
 
 export function ProjectsIndex() {
   return (
     <section className="section-container relative overflow-hidden section-padding pt-4">
-      <ParallaxWord
+      <BackgroundWord
         text="Projects"
-        className="left-0 -translate-y-1/2 text-[clamp(130px,16vw,250px)] opacity-50"
+        className="left-0 -translate-y-1/2 text-[clamp(130px,16vw,250px)]"
       />
       <div className="relative z-10">
         {projects.map((project, i) => (

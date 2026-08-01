@@ -1,6 +1,6 @@
+import { BackgroundWord } from "@/components/background-word";
 import { BlueprintLines } from "@/components/blueprint-lines";
 import { Hairline } from "@/components/hairline";
-import { ParallaxWord } from "@/components/parallax-word";
 import { Reveal } from "@/components/reveal";
 
 const categories = [
@@ -37,9 +37,9 @@ export function TechStack() {
     <section className="relative overflow-hidden py-12 lg:py-16">
       <Hairline />
 
-      <ParallaxWord
+      <BackgroundWord
         text="Stack"
-        className="left-0 -translate-y-1/2 text-[clamp(200px,24vw,280px)] opacity-50"
+        className="left-0 -translate-y-1/2 text-[clamp(200px,24vw,280px)]"
       />
 
       <BlueprintLines />
