@@ -1,4 +1,4 @@
-import { Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Linkedin, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import { PageIntro } from "@/components/page-intro";
 import { BackgroundWord } from "@/components/background-word";
 import { Reveal } from "@/components/reveal";
@@ -27,62 +27,85 @@ export default function ContactPage() {
         meta="Contact / Jakarta Barat, DKI Jakarta"
       />
 
-      <section className="section-container relative overflow-hidden section-padding pt-2 pb-36">
+      <section className="section-container relative overflow-hidden pb-28 pt-2">
         <BackgroundWord
           text="Let's Talk"
-          className="left-auto right-0 -translate-y-1/2 text-[clamp(120px,15vw,230px)] opacity-60"
+          className="left-auto right-0 -translate-y-1/2 text-[clamp(110px,14vw,210px)] opacity-40"
         />
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          <div className="lg:col-span-5 space-y-8">
+        <div className="relative z-10 grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-5">
             <Reveal>
-              <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Direct Inquiries</span>
-              <h2 className="mt-3 font-serif text-3xl sm:text-4xl tracking-tight text-primary">
+              <h2 className="font-serif text-4xl leading-[1.08] tracking-tight text-primary sm:text-5xl">
                 Get in touch.
               </h2>
-              <p className="mt-4 text-base sm:text-lg leading-relaxed text-secondary">
-                Whether you have an engineering project, an IoT development inquiry, or want to discuss collaboration across hardware and software systems, my inbox is open.
+              <p className="mt-6 max-w-md text-base font-light leading-[1.85] text-secondary sm:text-lg">
+                Whether you have an engineering project, an IoT development
+                inquiry, or want to discuss collaboration across hardware and
+                software systems, my inbox is open.
               </p>
             </Reveal>
 
-            <div className="grid grid-cols-1 gap-6 pt-4">
+            <div className="mt-10 border-t border-line">
               {contactItems.map((item, i) => (
                 <Reveal key={item.label} delay={i * 0.05}>
                   <a
                     href={item.href}
                     target={item.href.startsWith("http") ? "_blank" : undefined}
                     rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="group flex items-center gap-6 rounded-[28px] border border-line bg-card p-8 transition-all duration-300 hover:border-line-strong hover:shadow-xl"
+                    className="group flex items-center gap-6 border-b border-line py-6 transition-colors duration-300 hover:bg-surface/50"
                   >
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-surface border border-line text-accent shadow-sm">
-                      <item.icon size={22} strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-line bg-card text-accent transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-background">
+                      <item.icon size={19} strokeWidth={1.5} />
+                    </span>
+                    <div className="flex-1">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-accent">
                         {item.label}
                       </span>
-                      <p className="mt-1 text-sm sm:text-base font-medium text-primary transition-colors group-hover:text-accent">
+                      <p className="mt-1 text-sm font-medium text-primary sm:text-base">
                         {item.value}
                       </p>
                     </div>
+                    <ArrowUpRight
+                      size={17}
+                      className="text-line-strong transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                    />
                   </a>
                 </Reveal>
               ))}
             </div>
+
+            <Reveal delay={0.2}>
+              <div className="mt-10 flex flex-wrap gap-3">
+                {["IoT Systems", "Embedded", "AI Integration", "Full Stack"].map(
+                  (tag) => (
+                    <span key={tag} className="chip">
+                      {tag}
+                    </span>
+                  )
+                )}
+              </div>
+            </Reveal>
           </div>
 
-          <Reveal className="lg:col-span-7">
-            <div className="rounded-[36px] border border-line bg-card p-8 sm:p-14 shadow-2xl">
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-                Secure Channel
-              </span>
-              <h3 className="mt-2 font-serif text-3xl text-primary font-normal">
-                Send a message
-              </h3>
-              <p className="mt-2 text-sm text-secondary">
-                Fill the form below and I&apos;ll get back to you promptly.
-              </p>
-              <div className="mt-10">
-                <ContactForm />
+          <Reveal className="lg:col-span-7" delay={0.08}>
+            <div className="card-base relative overflow-hidden p-7 shadow-lift sm:p-12">
+              <div
+                aria-hidden="true"
+                className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-accent/10 blur-[80px]"
+              />
+              <div className="relative">
+                <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
+                  Secure Channel
+                </span>
+                <h3 className="mt-2.5 font-serif text-3xl text-primary">
+                  Send a message
+                </h3>
+                <p className="mt-2 text-sm font-light text-secondary">
+                  Fill the form below and I&apos;ll get back to you promptly.
+                </p>
+                <div className="mt-9">
+                  <ContactForm />
+                </div>
               </div>
             </div>
           </Reveal>

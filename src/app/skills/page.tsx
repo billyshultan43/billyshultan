@@ -2,6 +2,7 @@ import { Code2, Layers, Cpu, Wrench, Sparkles, Globe, ArrowUpRight } from "lucid
 import Link from "next/link";
 import { PageIntro } from "@/components/page-intro";
 import { Reveal } from "@/components/reveal";
+import { SectionHeading } from "@/components/section-heading";
 import { skills } from "@/content/skills";
 import { profile } from "@/content/profile";
 import { buttonVariants } from "@/components/ui/button";
@@ -37,12 +38,12 @@ export default function SkillsPage() {
         meta="Skills / Engineering Practice"
       />
 
-      <section className="section-container pb-24">
+      <section className="section-container pb-4">
         <Reveal>
-          <div className="flex flex-wrap items-baseline gap-x-16 gap-y-4 border-t border-line pt-8">
+          <div className="flex flex-wrap items-baseline gap-x-12 gap-y-4">
             {stats.map((stat) => (
               <p key={stat.label} className="font-mono text-xs text-secondary">
-                <span className="font-serif text-3xl italic text-primary mr-2">
+                <span className="mr-2 font-serif text-3xl italic text-primary">
                   {stat.value}
                 </span>{" "}
                 {stat.label}
@@ -52,38 +53,68 @@ export default function SkillsPage() {
         </Reveal>
       </section>
 
-      {/* MINIMAL ICON GRID BENTO */}
-      <section className="section-container border-t border-line py-24 lg:py-36">
-        <Reveal>
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Practice Taxonomy</span>
-          <h2 className="mt-3 font-serif text-3xl sm:text-4xl tracking-tight text-primary">
-            Domains of practice
-          </h2>
-        </Reveal>
+      {/* BENTO DOMAINS */}
+      <section className="section-container pb-24 pt-16 sm:pb-32 sm:pt-20">
+        <SectionHeading
+          index="01"
+          title="Domains of practice"
+          right={
+            <span className="font-mono text-[11px] text-secondary">
+              {skills.length} domains, end to end
+            </span>
+          }
+        />
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {skills.map((cat, i) => {
             const Icon = iconMap[cat.icon as keyof typeof iconMap] ?? Code2;
+            const featured = i === 2;
             return (
-              <Reveal key={cat.name} delay={i * 0.05} className="h-full">
-                <div className="rounded-3xl border border-line bg-card p-10 h-full flex flex-col justify-between transition-all duration-300 hover:border-line-strong hover:shadow-xl">
+              <Reveal
+                key={cat.name}
+                delay={i * 0.04}
+                className={featured ? "h-full md:col-span-2 lg:col-span-1" : "h-full"}
+              >
+                <div
+                  className={`card-base card-hover flex h-full flex-col justify-between p-9 ${
+                    featured ? "bg-primary text-background" : ""
+                  }`}
+                >
                   <div>
-                    <div className="flex items-center justify-between mb-8">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-surface border border-line text-accent shadow-sm">
+                    <div className="flex items-center justify-between">
+                      <span
+                        className={`flex h-14 w-14 items-center justify-center rounded-2xl border ${
+                          featured
+                            ? "border-background/20 bg-background/10 text-accent-light"
+                            : "border-line bg-surface text-accent"
+                        }`}
+                      >
                         <Icon size={24} strokeWidth={1.5} />
-                      </div>
-                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+                      </span>
+                      <span
+                        className={`font-mono text-[10px] uppercase tracking-[0.24em] ${
+                          featured ? "text-background/50" : "text-accent"
+                        }`}
+                      >
                         0{i + 1}
                       </span>
                     </div>
-                    <h3 className="font-serif text-2xl text-primary font-normal">
+                    <h3
+                      className={`mt-8 font-serif text-2xl ${
+                        featured ? "text-background" : "text-primary"
+                      }`}
+                    >
                       {cat.name}
                     </h3>
-                    <div className="mt-8 flex flex-wrap gap-2">
+                    <div className="mt-6 flex flex-wrap gap-2">
                       {cat.skills.map((s) => (
                         <span
                           key={s}
-                          className="rounded-full bg-surface px-3.5 py-2 font-mono text-xs text-secondary border border-line/50"
+                          className={`inline-flex items-center rounded-full px-3.5 py-2 font-mono text-[11px] ${
+                            featured
+                              ? "border border-background/20 bg-background/10 text-background/85"
+                              : "chip"
+                          }`}
                         >
                           {s}
                         </span>
@@ -98,25 +129,24 @@ export default function SkillsPage() {
       </section>
 
       {/* HOW THE STACK FITS TOGETHER */}
-      <section className="border-t border-line bg-surface/40 py-32 lg:py-40">
+      <section className="border-t border-line bg-surface/40 py-24 lg:py-32">
         <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <Reveal>
-                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Architecture & Flow</span>
-                <h2 className="mt-3 font-serif text-3xl sm:text-4xl tracking-tight text-primary">
-                  How the stack fits together.
-                </h2>
-              </Reveal>
+              <SectionHeading
+                index="02"
+                title="How the stack fits together."
+                className="mb-0"
+              />
             </div>
-            <div className="lg:col-span-7 space-y-8">
+            <div className="space-y-7 lg:col-span-7">
               <Reveal>
-                <p className="font-serif text-2xl sm:text-3xl leading-relaxed text-primary">
+                <p className="font-serif text-2xl leading-[1.5] text-primary sm:text-3xl">
                   {profile.tagline}
                 </p>
               </Reveal>
               <Reveal delay={0.06}>
-                <p className="text-base sm:text-lg leading-relaxed text-secondary">
+                <p className="text-base font-light leading-[1.85] text-secondary sm:text-lg">
                   Every project connects hardware, firmware, and cloud. Sensor
                   data from microcontrollers such as the ESP32 and ESP8266 is
                   transmitted over Wi-Fi and MQTT into structured databases,
@@ -126,10 +156,13 @@ export default function SkillsPage() {
                 </p>
               </Reveal>
               <Reveal delay={0.12}>
-                <div className="flex flex-wrap gap-4 pt-6">
+                <div className="flex flex-wrap gap-4 pt-4">
                   <Link
                     href="/projects"
-                    className={cn(buttonVariants({ size: "lg" }), "group rounded-full px-8 py-6 text-base gap-2")}
+                    className={cn(
+                      buttonVariants({ size: "lg" }),
+                      "group gap-2 px-8"
+                    )}
                   >
                     See it applied
                     <ArrowUpRight
@@ -141,7 +174,10 @@ export default function SkillsPage() {
                     href={profile.cvFile}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={cn(buttonVariants({ variant: "outline", size: "lg" }), "rounded-full px-8 py-6 text-base")}
+                    className={cn(
+                      buttonVariants({ variant: "outline", size: "lg" }),
+                      "px-8"
+                    )}
                   >
                     Download CV
                   </a>

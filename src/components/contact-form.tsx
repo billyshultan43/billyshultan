@@ -16,7 +16,7 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 const inputClass =
-  "w-full border bg-transparent px-4 py-3 text-sm text-primary placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-accent transition-colors duration-200";
+  "w-full rounded-xl border bg-surface/50 px-4 py-3.5 text-sm text-primary placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/40 transition-all duration-200";
 
 export function ContactForm() {
   const [sent, setSent] = React.useState(false);
@@ -36,17 +36,19 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <div className="flex flex-col items-center justify-center border border-line bg-card/50 p-10 text-center">
-        <CheckCircle2 size={36} className="text-accent" />
-        <h3 className="mt-4 font-serif text-xl text-primary">Message ready</h3>
-        <p className="mt-2 max-w-sm text-sm text-secondary">
+      <div className="flex flex-col items-center justify-center rounded-3xl border border-accent/25 bg-surface/50 p-10 text-center">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 text-accent">
+          <CheckCircle2 size={28} strokeWidth={1.5} />
+        </span>
+        <h3 className="mt-5 font-serif text-2xl text-primary">Message ready</h3>
+        <p className="mt-3 max-w-sm text-sm font-light leading-relaxed text-secondary">
           This is a local demo form, no message was actually sent. Please reach
           out via the contact details provided.
         </p>
         <button
           type="button"
           onClick={() => setSent(false)}
-          className="mt-6 h-10 border border-line px-5 text-sm font-medium text-primary transition-colors hover:border-primary"
+          className="mt-7 h-11 rounded-full border border-line px-6 text-sm font-medium text-primary transition-colors duration-300 hover:border-accent hover:text-accent"
         >
           Send another
         </button>
@@ -55,44 +57,46 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8" noValidate>
-      <div>
-        <label htmlFor="name" className="mb-2 block text-sm font-medium text-primary">
-          Name
-        </label>
-        <input
-          id="name"
-          {...register("name")}
-          aria-invalid={!!errors.name}
-          className={cn(
-            inputClass,
-            errors.name ? "border-red-700/50" : "border-line focus:border-accent"
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label htmlFor="name" className="mb-2 block text-sm font-medium text-primary">
+            Name
+          </label>
+          <input
+            id="name"
+            {...register("name")}
+            aria-invalid={!!errors.name}
+            className={cn(
+              inputClass,
+              errors.name ? "border-red-700/50" : "border-line focus:border-accent"
+            )}
+            placeholder="Your name"
+          />
+          {errors.name && (
+            <p className="mt-1.5 text-xs text-red-700">{errors.name.message}</p>
           )}
-          placeholder="Your name"
-        />
-        {errors.name && (
-          <p className="mt-1.5 text-xs text-red-700">{errors.name.message}</p>
-        )}
-      </div>
+        </div>
 
-      <div>
-        <label htmlFor="email" className="mb-2 block text-sm font-medium text-primary">
-          Email
-        </label>
-        <input
-          id="email"
-          type="email"
-          {...register("email")}
-          aria-invalid={!!errors.email}
-          className={cn(
-            inputClass,
-            errors.email ? "border-red-700/50" : "border-line focus:border-accent"
+        <div>
+          <label htmlFor="email" className="mb-2 block text-sm font-medium text-primary">
+            Email
+          </label>
+          <input
+            id="email"
+            type="email"
+            {...register("email")}
+            aria-invalid={!!errors.email}
+            className={cn(
+              inputClass,
+              errors.email ? "border-red-700/50" : "border-line focus:border-accent"
+            )}
+            placeholder="you@example.com"
+          />
+          {errors.email && (
+            <p className="mt-1.5 text-xs text-red-700">{errors.email.message}</p>
           )}
-          placeholder="you@example.com"
-        />
-        {errors.email && (
-          <p className="mt-1.5 text-xs text-red-700">{errors.email.message}</p>
-        )}
+        </div>
       </div>
 
       <div>
@@ -106,6 +110,7 @@ export function ContactForm() {
           aria-invalid={!!errors.message}
           className={cn(
             inputClass,
+            "resize-none",
             errors.message ? "border-red-700/50" : "border-line focus:border-accent"
           )}
           placeholder="How can we work together?"
@@ -118,9 +123,13 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-[8px] border border-primary bg-primary text-[13px] tracking-wide text-background transition-colors duration-300 hover:border-accent hover:bg-accent disabled:opacity-60 active:translate-y-[1px]"
+        className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-primary bg-primary px-8 text-sm font-medium tracking-wide text-background transition-all duration-300 hover:border-accent hover:bg-accent hover:shadow-glow disabled:opacity-60 active:translate-y-[1px]"
       >
-        <Send size={15} /> {isSubmitting ? "Sending..." : "Send message"}
+        <Send
+          size={15}
+          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
+        {isSubmitting ? "Sending..." : "Send message"}
       </button>
     </form>
   );

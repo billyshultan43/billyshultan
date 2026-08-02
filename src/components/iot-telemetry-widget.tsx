@@ -34,38 +34,37 @@ export function IotTelemetryWidget() {
   const result = calculateFuzzyOutput(coValue, hcValue);
 
   return (
-    <div className="my-10 rounded-2xl border border-line bg-card p-6 sm:p-8">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-line pb-6">
+    <div className="card-base my-10 overflow-hidden p-6 shadow-soft sm:p-9">
+      <div className="flex flex-col gap-5 border-b border-line pb-7 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <span className="relative flex h-2.5 w-2.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
             </span>
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
               ESP32 + Fuzzy Mamdani Live Simulator
             </span>
           </div>
-          <h3 className="mt-2 font-serif text-2xl text-primary">
+          <h3 className="mt-2.5 font-serif text-2xl text-primary">
             Vehicle Emission & Air Quality Telemetry
           </h3>
         </div>
         <button
           onClick={() => setIsSimulating(!isSimulating)}
-          className="inline-flex items-center gap-2 rounded-lg border border-line bg-surface px-3 py-1.5 font-mono text-xs text-secondary hover:text-primary transition-colors"
+          className="inline-flex items-center gap-2 self-start rounded-full border border-line bg-surface px-4 py-2 font-mono text-xs text-secondary transition-colors duration-300 hover:border-accent hover:text-accent"
         >
           <RefreshCw size={12} className={isSimulating ? "animate-spin" : ""} />
           {isSimulating ? "Live Stream Active" : "Manual Control"}
         </button>
       </div>
 
-      <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Controls */}
+      <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div className="space-y-6 lg:col-span-1">
           <div>
-            <div className="flex justify-between font-mono text-xs text-secondary mb-2">
+            <div className="mb-2 flex justify-between font-mono text-xs text-secondary">
               <span>CO (Carbon Monoxide)</span>
-              <span className="text-primary font-medium">{coValue} ppm</span>
+              <span className="font-medium text-primary">{coValue} ppm</span>
             </div>
             <input
               type="range"
@@ -76,14 +75,14 @@ export function IotTelemetryWidget() {
                 setIsSimulating(false);
                 setCoValue(Number(e.target.value));
               }}
-              className="w-full accent-accent cursor-pointer"
+              className="w-full cursor-pointer accent-accent"
             />
           </div>
 
           <div>
-            <div className="flex justify-between font-mono text-xs text-secondary mb-2">
+            <div className="mb-2 flex justify-between font-mono text-xs text-secondary">
               <span>HC (Hydrocarbon)</span>
-              <span className="text-primary font-medium">{hcValue} ppm</span>
+              <span className="font-medium text-primary">{hcValue} ppm</span>
             </div>
             <input
               type="range"
@@ -94,14 +93,14 @@ export function IotTelemetryWidget() {
                 setIsSimulating(false);
                 setHcValue(Number(e.target.value));
               }}
-              className="w-full accent-accent cursor-pointer"
+              className="w-full cursor-pointer accent-accent"
             />
           </div>
 
           <div>
-            <div className="flex justify-between font-mono text-xs text-secondary mb-2">
+            <div className="mb-2 flex justify-between font-mono text-xs text-secondary">
               <span>Engine RPM</span>
-              <span className="text-primary font-medium">{rpmValue} RPM</span>
+              <span className="font-medium text-primary">{rpmValue} RPM</span>
             </div>
             <input
               type="range"
@@ -113,32 +112,31 @@ export function IotTelemetryWidget() {
                 setIsSimulating(false);
                 setRpmValue(Number(e.target.value));
               }}
-              className="w-full accent-accent cursor-pointer"
+              className="w-full cursor-pointer accent-accent"
             />
           </div>
         </div>
 
-        {/* Telemetry Output Display */}
-        <div className="lg:col-span-2 flex flex-col justify-between rounded-xl border border-line bg-surface/60 p-6">
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
-            <div className="rounded-lg bg-card p-4 border border-line">
-              <span className="font-mono text-[11px] text-muted uppercase">Sensor MQ-7</span>
+        <div className="flex flex-col justify-between rounded-2xl border border-line bg-surface/50 p-6 lg:col-span-2">
+          <div className="mb-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
+            <div className="rounded-2xl border border-line bg-card p-4">
+              <span className="font-mono text-[11px] uppercase text-muted">Sensor MQ-7</span>
               <p className="mt-1 font-serif text-2xl text-primary">{coValue}</p>
               <span className="font-mono text-[10px] text-secondary">ppm CO</span>
             </div>
-            <div className="rounded-lg bg-card p-4 border border-line">
-              <span className="font-mono text-[11px] text-muted uppercase">Sensor MQ-2</span>
+            <div className="rounded-2xl border border-line bg-card p-4">
+              <span className="font-mono text-[11px] uppercase text-muted">Sensor MQ-2</span>
               <p className="mt-1 font-serif text-2xl text-primary">{hcValue}</p>
               <span className="font-mono text-[10px] text-secondary">ppm HC</span>
             </div>
-            <div className="rounded-lg bg-card p-4 border border-line col-span-2 sm:col-span-1">
-              <span className="font-mono text-[11px] text-muted uppercase">Blynk Cloud</span>
-              <p className="mt-1 font-mono text-sm text-emerald-600 dark:text-emerald-400 font-medium pt-1">Connected</p>
+            <div className="col-span-2 rounded-2xl border border-line bg-card p-4 sm:col-span-1">
+              <span className="font-mono text-[11px] uppercase text-muted">Blynk Cloud</span>
+              <p className="pt-1 font-mono text-sm font-medium text-emerald-600 dark:text-emerald-400">Connected</p>
               <span className="font-mono text-[10px] text-secondary">Wi-Fi ESP32</span>
             </div>
           </div>
 
-          <div className={`rounded-xl border p-4 ${result.bg} flex items-center justify-between`}>
+          <div className={`flex items-center justify-between rounded-2xl border p-5 ${result.bg}`}>
             <div>
               <span className="font-mono text-xs uppercase tracking-wider text-secondary">
                 Fuzzy Mamdani Classification Result

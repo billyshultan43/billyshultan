@@ -15,7 +15,7 @@ const serif = Cormorant_Garamond({
 
 const sans = Inter({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["300", "400", "500"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -60,7 +60,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F8F7F5",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F4F6F4" },
+    { media: "(prefers-color-scheme: dark)", color: "#121412" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
@@ -73,8 +76,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body className="font-sans antialiased">
+        <div
+          aria-hidden="true"
+          className="noise-overlay pointer-events-none fixed inset-0 z-[70] opacity-[0.035] dark:opacity-[0.06]"
+        />
         <Navbar />
-        <main className="pt-[72px]">{children}</main>
+        <main className="pt-20">{children}</main>
         <Footer />
       </body>
     </html>
