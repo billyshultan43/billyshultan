@@ -7,6 +7,7 @@ import { AnimatePresence, motion, useReducedMotion, useScroll, useMotionValueEve
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { navLinks } from "@/content/site";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -83,6 +84,8 @@ export function Navbar() {
             Let&apos;s Talk
             <ArrowUpRight size={13} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
+
+          <ThemeToggle />
 
           <button
             type="button"

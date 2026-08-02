@@ -3,37 +3,38 @@
 @tailwind utilities;
 
 /* ------------------------------------------------------------------ */
-/*  Premium editorial palette — cool monochrome paper + ink with a     */
+/*  Theme tokens — warm paper light / premium charcoal dark with a     */
 /*  single restrained violet accent used sparingly (dots, hovers,      */
-/*  emphasis words, tinted AI card).                                   */
+/*  emphasis words, tinted AI card). Values are swapped by the .dark   */
+/*  class, the prefers-color-scheme media query, or both (System).     */
 /* ------------------------------------------------------------------ */
 :root {
-  --bg: 243 244 247; /* #F3F4F7 cool paper */
-  --surface: 234 236 242;
-  --card: 251 251 253;
-  --primary: 23 24 27; /* #17181B ink */
+  --bg: 250 250 248; /* #FAFAF8 warm white */
+  --surface: 244 244 240;
+  --card: 255 255 255; /* pure white */
+  --primary: 23 24 27; /* #17181B near-black ink */
   --secondary: 92 96 108;
   --muted: 148 152 164;
   --accent: 100 84 212; /* #6454D4 restrained violet */
   --accent-deep: 77 60 172;
   --accent-light: 154 140 238;
-  --line: 226 228 235;
-  --line-strong: 200 203 214;
+  --line: 231 229 222; /* subtle warm hairline */
+  --line-strong: 207 204 194;
   --shadow: 22 19 42;
   color-scheme: light;
 }
 
 .dark {
-  --bg: 15 15 18;
+  --bg: 15 15 18; /* #0F0F12 very dark charcoal */
   --surface: 21 21 27;
-  --card: 27 27 34;
-  --primary: 236 238 244;
-  --secondary: 158 162 176;
-  --muted: 116 121 136;
-  --accent: 158 140 255;
+  --card: 27 27 34; /* slightly lighter than the background */
+  --primary: 246 247 250; /* pure white headings */
+  --secondary: 162 166 178; /* soft gray body text */
+  --muted: 118 122 136;
+  --accent: 158 140 255; /* the same violet, brightened for contrast */
   --accent-deep: 186 173 255;
   --accent-light: 124 108 224;
-  --line: 42 43 52;
+  --line: 42 43 52; /* low-contrast borders */
   --line-strong: 60 62 74;
   --shadow: 0 0 0;
   color-scheme: dark;
@@ -44,9 +45,9 @@
     --bg: 15 15 18;
     --surface: 21 21 27;
     --card: 27 27 34;
-    --primary: 236 238 244;
-    --secondary: 158 162 176;
-    --muted: 116 121 136;
+    --primary: 246 247 250;
+    --secondary: 162 166 178;
+    --muted: 118 122 136;
     --accent: 158 140 255;
     --accent-deep: 186 173 255;
     --accent-light: 124 108 224;
@@ -55,6 +56,33 @@
     --shadow: 0 0 0;
     color-scheme: dark;
   }
+}
+
+/* Soft ambient shadows for the dark surface */
+.dark .shadow-soft {
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.28), 0 10px 30px -12px rgb(0 0 0 / 0.45);
+}
+.dark .shadow-lift {
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.32), 0 24px 48px -16px rgb(0 0 0 / 0.55);
+}
+.dark .shadow-ink-lg {
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.36), 0 32px 64px -20px rgb(0 0 0 / 0.65);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Smooth theme switching — animate only color-ish properties so      */
+/*  scroll, marquees and motion animations stay crisp.                  */
+/* ------------------------------------------------------------------ */
+html *,
+html *::before,
+html *::after {
+  transition:
+    background-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    fill 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    stroke 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
