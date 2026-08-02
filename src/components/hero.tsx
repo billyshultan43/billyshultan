@@ -50,7 +50,7 @@ export function Hero() {
             I design and build intelligent systems that connect hardware, software, and data to solve real-world problems and create meaningful impact.
           </motion.p>
 
-          <motion.div variants={item} className="flex flex-wrap items-center gap-4 pt-2">
+          <motion.div variants={item} className="flex flex-wrap items-center gap-8 pt-2">
             <Link
               href="/projects"
               className={cn(buttonVariants({ size: "lg" }), "group rounded-full px-8 py-6 text-base gap-2")}
@@ -60,10 +60,10 @@ export function Hero() {
             </Link>
             <Link
               href="/about"
-              className={cn(buttonVariants({ variant: "outline", size: "lg" }), "group rounded-full px-8 py-6 text-base gap-2")}
+              className="group inline-flex items-center gap-2 text-sm font-medium text-primary link-underline"
             >
               About Me
-              <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </motion.div>
 
