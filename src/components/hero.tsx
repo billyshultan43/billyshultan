@@ -95,7 +95,7 @@ export function Hero() {
 
             <motion.p
               variants={item}
-              className="mt-7 max-w-[540px] text-[15px] font-light leading-[1.75] text-secondary sm:text-base"
+              className="mt-7 max-w-[560px] text-[15px] font-light leading-[1.8] text-secondary text-balance sm:text-base"
             >
               {profile.heroSummary}
             </motion.p>
