@@ -20,14 +20,6 @@ const sans = Inter({
   display: "swap",
 });
 
-const themeScript = `
-try {
-  const stored = localStorage.getItem("theme");
-  const dark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
-  if (dark) document.documentElement.classList.add("dark");
-} catch (e) {}
-`;
-
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -68,7 +60,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F8F4ED",
+  themeColor: "#F8F7F5",
   width: "device-width",
   initialScale: 1,
 };
@@ -79,14 +71,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${serif.variable} ${sans.variable}`}
-      suppressHydrationWarning
-    >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
+    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body className="font-sans antialiased">
         <Navbar />
         <main className="pt-[72px]">{children}</main>

@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --bg: 248 244 237; /* #F8F4ED */
-  --surface: 240 234 223;
-  --card: 253 250 245;
-  --primary: 21 21 21; /* #151515 */
-  --secondary: 102 102 102; /* #666666 */
-  --muted: 148 139 128;
-  --accent: 166 106 69; /* #A66A45 */
-  --accent-deep: 138 84 54;
-  --accent-light: 198 145 112;
-  --line: 217 206 194; /* #D9CEC2 */
-  --line-strong: 196 180 162;
+  --bg: 248 247 245; /* #F8F7F5 */
+  --surface: 243 242 239;
+  --card: 251 250 248;
+  --primary: 12 13 15; /* #0C0D0F */
+  --secondary: 108 107 105;
+  --muted: 156 154 150;
+  --accent: 12 13 15;
+  --accent-deep: 12 13 15;
+  --accent-light: 80 80 80;
+  --line: 229 227 223;
+  --line-strong: 211 208 203;
   color-scheme: light;
 }
 
@@ -64,7 +64,7 @@ body {
 
 @layer components {
   .section-container {
-    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-10;
+    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-7;
   }
   .section-padding {
     @apply py-20 sm:py-28 lg:py-32;
