@@ -1,5 +1,6 @@
 import { contact } from "@/content/social";
 import { Hairline } from "@/components/hairline";
+import { Linkedin, Github, Mail } from "lucide-react";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -12,15 +13,35 @@ export function Footer() {
             &copy; {year} Billy Shultan Al Hadiy. All rights reserved.
           </p>
           <div className="flex items-center gap-8">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
-              Electrical & IoT Systems
-            </span>
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-secondary">
-              {contact.location}
-            </span>
+            <a
+              href={contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary hover:text-primary transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={18} />
+            </a>
+            <a
+              href="https://github.com/billyshultan43"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary hover:text-primary transition-colors"
+              aria-label="GitHub"
+            >
+              <Github size={18} />
+            </a>
+            <a
+              href={`mailto:${contact.email}`}
+              className="text-secondary hover:text-primary transition-colors"
+              aria-label="Email"
+            >
+              <Mail size={18} />
+            </a>
           </div>
         </div>
       </div>
     </footer>
   );
 }
+

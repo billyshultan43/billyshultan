@@ -35,7 +35,7 @@ export default function ContactPage() {
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-5 space-y-8">
             <Reveal>
-              <span className="label text-accent">Direct Inquiries</span>
+              <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Direct Inquiries</span>
               <h2 className="mt-3 font-serif text-3xl sm:text-4xl tracking-tight text-primary">
                 Get in touch.
               </h2>
@@ -51,7 +51,7 @@ export default function ContactPage() {
                     href={item.href}
                     target={item.href.startsWith("http") ? "_blank" : undefined}
                     rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="group flex items-center gap-6 rounded-3xl border border-line bg-card p-8 transition-all duration-300 hover:border-line-strong hover:shadow-xl"
+                    className="group flex items-center gap-6 rounded-[28px] border border-line bg-card p-8 transition-all duration-300 hover:border-line-strong hover:shadow-xl"
                   >
                     <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-surface border border-line text-accent shadow-sm">
                       <item.icon size={22} strokeWidth={1.5} />
@@ -71,7 +71,7 @@ export default function ContactPage() {
           </div>
 
           <Reveal className="lg:col-span-7">
-            <div className="rounded-3xl border border-line bg-card p-8 sm:p-14 shadow-2xl">
+            <div className="rounded-[36px] border border-line bg-card p-8 sm:p-14 shadow-2xl">
               <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
                 Secure Channel
               </span>

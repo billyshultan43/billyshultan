@@ -1,9 +1,12 @@
 import Image from "next/image";
-import { Target, Cpu, Wrench, Sparkles } from "lucide-react";
+import { Target, Cpu, Wrench, Sparkles, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { PageIntro } from "@/components/page-intro";
 import { Reveal } from "@/components/reveal";
 import { profile } from "@/content/profile";
 import { skills } from "@/content/skills";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
   title: "About",
@@ -41,24 +44,18 @@ export default function AboutPage() {
         meta="Profile / Billy Shultan Al Hadiy"
       />
 
-      <section className="section-container section-padding pt-2">
+      <section className="section-container pb-32 pt-2">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-12 items-start">
           <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1">
             <Reveal>
-              <div className="relative">
-                <span
-                  aria-hidden="true"
-                  className="absolute -left-4 -top-4 h-full w-full border border-line-strong rounded-3xl"
+              <div className="relative aspect-[3/4] overflow-hidden rounded-[32px] border border-line bg-card shadow-2xl">
+                <Image
+                  src={profile.profileImage}
+                  alt={profile.name}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover object-top"
                 />
-                <div className="relative aspect-[3/4] overflow-hidden rounded-3xl border border-line bg-card shadow-2xl">
-                  <Image
-                    src={profile.profileImage}
-                    alt={profile.name}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-cover object-top"
-                  />
-                </div>
               </div>
             </Reveal>
           </div>
@@ -91,11 +88,11 @@ export default function AboutPage() {
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <div className="flex flex-wrap gap-x-4 gap-y-3 border-t border-line pt-8">
+              <div className="flex flex-wrap gap-x-3 gap-y-3 border-t border-line pt-8">
                 {profile.roles.map((role) => (
                   <span
                     key={role}
-                    className="rounded-lg bg-surface px-3.5 py-2 font-mono text-xs text-secondary border border-line/60"
+                    className="rounded-full bg-surface px-4 py-2 font-mono text-xs text-secondary border border-line/60"
                   >
                     {role}
                   </span>
@@ -108,7 +105,7 @@ export default function AboutPage() {
         {/* BENTO INTERESTS GRID */}
         <div className="mt-36">
           <Reveal>
-            <span className="label text-accent">Focus Areas</span>
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Focus Areas</span>
             <h2 className="mt-3 font-serif text-3xl sm:text-4xl tracking-tight text-primary">
               Technical interests
             </h2>
@@ -138,7 +135,7 @@ export default function AboutPage() {
         {/* SKILL DOMAINS BENTO */}
         <div className="mt-36">
           <Reveal>
-            <span className="label text-accent">Taxonomy</span>
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Taxonomy</span>
             <h2 className="mt-3 font-serif text-3xl sm:text-4xl tracking-tight text-primary">
               Skill domains
             </h2>

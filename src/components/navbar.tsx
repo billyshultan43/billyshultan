@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, Moon, Sun, X, ArrowUpRight } from "lucide-react";
 import { navLinks } from "@/content/site";
 import { cn } from "@/lib/utils";
 
@@ -44,27 +44,24 @@ export function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-background/90 backdrop-blur-md">
-      <nav className="mx-auto flex h-20 w-full max-w-[1920px] items-center justify-between px-6 sm:px-10 xl:px-[72px]">
+      <nav className="mx-auto flex h-20 w-full max-w-[1400px] items-center justify-between px-6 sm:px-10">
         <Link
           href="/"
-          className="group flex items-center gap-2 font-serif text-lg tracking-tight text-primary"
+          className="group flex items-center gap-1.5 font-serif text-lg tracking-tight text-primary"
         >
-          <span className="font-sans text-xs uppercase tracking-[0.25em] text-accent">
-            BS
-          </span>
-          <span className="font-serif text-base font-normal">
-            Billy Shultan
+          <span className="font-serif text-lg font-semibold tracking-normal text-primary">
+            BS<span className="text-accent">.</span>
           </span>
         </Link>
 
-        <ul className="hidden items-center gap-12 lg:flex">
+        <ul className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 aria-current={isActive(link.href) ? "page" : undefined}
                 className={cn(
-                  "link-underline text-[13px] font-normal tracking-[0.1em] transition-colors duration-300",
+                  "link-underline text-[13px] font-normal tracking-[0.08em] transition-colors duration-300",
                   isActive(link.href)
                     ? "text-primary font-medium"
                     : "text-secondary hover:text-primary"
@@ -76,15 +73,23 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4">
           <button
             type="button"
             onClick={toggle}
             aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-line bg-surface text-secondary transition-all duration-300 hover:scale-105 hover:text-primary hover:border-line-strong"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface text-secondary transition-all duration-300 hover:scale-105 hover:text-primary hover:border-line-strong"
           >
             {dark ? <Sun size={15} /> : <Moon size={15} />}
           </button>
+
+          <Link
+            href="/contact"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-[13px] font-medium text-background transition-all duration-300 hover:bg-accent"
+          >
+            Let&apos;s Talk <ArrowUpRight size={14} />
+          </Link>
+
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -119,3 +124,4 @@ export function Navbar() {
     </header>
   );
 }
+

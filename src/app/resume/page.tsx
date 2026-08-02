@@ -24,7 +24,7 @@ export default function ResumePage() {
     <>
       <section className="section-container relative overflow-hidden pt-20 sm:pt-32">
         <Reveal>
-          <span className="label text-accent">Curriculum Vitae</span>
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Curriculum Vitae</span>
           <h1 className="mt-4 max-w-4xl font-serif text-4xl leading-[1.04] tracking-tight text-primary sm:text-5xl lg:text-6xl">
             Experience & Credentials
           </h1>
@@ -68,7 +68,7 @@ export default function ResumePage() {
             <div className="space-y-12">
               {experience.map((item, i) => (
                 <Reveal key={item.id} delay={i * 0.06}>
-                  <div className="rounded-3xl border border-line bg-card p-8 sm:p-12 transition-all duration-300 hover:border-line-strong hover:shadow-xl">
+                  <div className="rounded-[32px] border border-line bg-card p-8 sm:p-12 transition-all duration-300 hover:border-line-strong hover:shadow-xl">
                     <div className="flex flex-wrap items-baseline justify-between gap-4">
                       <div>
                         <h3 className="font-serif text-2xl sm:text-3xl leading-tight text-primary">
@@ -80,7 +80,7 @@ export default function ResumePage() {
                       </div>
                       <div className="flex items-center gap-3">
                         {item.current && (
-                          <span className="rounded-full bg-accent/10 px-3.5 py-1 font-mono text-xs text-accent">
+                          <span className="rounded-full bg-accent/10 px-4 py-1 font-mono text-xs text-accent">
                             current
                           </span>
                         )}
@@ -110,7 +110,7 @@ export default function ResumePage() {
                         {item.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="rounded-lg bg-surface px-3 py-1.5 font-mono text-xs text-secondary border border-line/40"
+                            className="rounded-full bg-surface px-3.5 py-1.5 font-mono text-xs text-secondary border border-line/40"
                           >
                             {tech}
                           </span>
@@ -140,7 +140,7 @@ export default function ResumePage() {
               <div className="grid grid-cols-1 gap-8">
                 {achievements.map((ach) => (
                   <Reveal key={ach.id}>
-                    <div className="rounded-3xl border border-line bg-card p-8 sm:p-12 shadow-sm">
+                    <div className="rounded-[32px] border border-line bg-card p-8 sm:p-12 shadow-sm">
                       <div className="flex flex-wrap items-baseline justify-between gap-4">
                         <div>
                           <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
@@ -197,7 +197,7 @@ export default function ResumePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {certificates.map((cert, i) => (
                 <Reveal key={cert.id} delay={i * 0.05} className="h-full">
-                  <div className="rounded-3xl border border-line bg-card p-8 sm:p-10 h-full flex flex-col justify-between shadow-sm">
+                  <div className="rounded-[32px] border border-line bg-card p-8 sm:p-10 h-full flex flex-col justify-between shadow-sm">
                     <div>
                       <div className="flex items-center justify-between gap-4 mb-6">
                         <span className="rounded-full bg-surface px-3.5 py-1 font-mono text-xs text-accent border border-line/50">
@@ -251,7 +251,7 @@ export default function ResumePage() {
 
             <div className="space-y-8">
               {education.map((item) => (
-                <div key={item.id} className="rounded-3xl border border-line bg-card p-8 sm:p-12 shadow-sm">
+                <div key={item.id} className="rounded-[32px] border border-line bg-card p-8 sm:p-12 shadow-sm">
                   <div className="flex flex-wrap items-baseline justify-between gap-4">
                     <h3 className="font-serif text-2xl sm:text-3xl leading-tight text-primary">
                       {item.degree}
@@ -297,7 +297,7 @@ export default function ResumePage() {
               ))}
 
               {organization.map((org) => (
-                <div key={org.id} className="rounded-3xl border border-line bg-card p-8 sm:p-12 shadow-sm">
+                <div key={org.id} className="rounded-[32px] border border-line bg-card p-8 sm:p-12 shadow-sm">
                   <div className="flex flex-wrap items-baseline justify-between gap-4">
                     <h3 className="font-serif text-2xl sm:text-3xl text-primary font-normal">
                       {org.role}

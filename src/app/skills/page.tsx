@@ -37,7 +37,7 @@ export default function SkillsPage() {
         meta="Skills / Engineering Practice"
       />
 
-      <section className="section-container pb-24 lg:pb-32">
+      <section className="section-container pb-24">
         <Reveal>
           <div className="flex flex-wrap items-baseline gap-x-16 gap-y-4 border-t border-line pt-8">
             {stats.map((stat) => (
@@ -55,7 +55,7 @@ export default function SkillsPage() {
       {/* MINIMAL ICON GRID BENTO */}
       <section className="section-container border-t border-line py-24 lg:py-36">
         <Reveal>
-          <span className="label text-accent">Practice Taxonomy</span>
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Practice Taxonomy</span>
           <h2 className="mt-3 font-serif text-3xl sm:text-4xl tracking-tight text-primary">
             Domains of practice
           </h2>
@@ -83,7 +83,7 @@ export default function SkillsPage() {
                       {cat.skills.map((s) => (
                         <span
                           key={s}
-                          className="rounded-lg bg-surface px-3 py-1.5 font-mono text-xs text-secondary border border-line/50"
+                          className="rounded-full bg-surface px-3.5 py-2 font-mono text-xs text-secondary border border-line/50"
                         >
                           {s}
                         </span>
@@ -103,7 +103,7 @@ export default function SkillsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-5">
               <Reveal>
-                <span className="label text-accent">Architecture & Flow</span>
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Architecture & Flow</span>
                 <h2 className="mt-3 font-serif text-3xl sm:text-4xl tracking-tight text-primary">
                   How the stack fits together.
                 </h2>
@@ -129,7 +129,7 @@ export default function SkillsPage() {
                 <div className="flex flex-wrap gap-4 pt-6">
                   <Link
                     href="/projects"
-                    className={cn(buttonVariants({ size: "lg" }), "group px-8 py-6 text-base")}
+                    className={cn(buttonVariants({ size: "lg" }), "group rounded-full px-8 py-6 text-base gap-2")}
                   >
                     See it applied
                     <ArrowUpRight
@@ -141,7 +141,7 @@ export default function SkillsPage() {
                     href={profile.cvFile}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={cn(buttonVariants({ variant: "outline", size: "lg" }), "px-8 py-6 text-base")}
+                    className={cn(buttonVariants({ variant: "outline", size: "lg" }), "rounded-full px-8 py-6 text-base")}
                   >
                     Download CV
                   </a>
