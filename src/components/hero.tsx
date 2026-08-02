@@ -19,16 +19,36 @@ const item = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: EASE } },
 };
 
-const infoBlocks = [
-  { label: "Based in", value: "Jakarta, ID", detail: "Jakarta Barat, DKI Jakarta" },
-  { label: "Experience", value: "2+ Years", detail: "Instrumentation & IoT" },
-  { label: "Focus", value: "IoT · AI", detail: "Embedded · Full Stack" },
+const infoCards = [
+  {
+    label: "Location",
+    value: "Jakarta, ID",
+    detail: profile.location,
+    live: false,
+  },
+  {
+    label: "Focus",
+    value: "IoT · AI",
+    detail: "Embedded · Full Stack",
+    live: false,
+  },
+  {
+    label: "Availability",
+    value: "Open",
+    detail: "Open to collaboration",
+    live: true,
+  },
+  {
+    label: "Technology",
+    value: "15+",
+    detail: "Technologies practiced",
+    live: false,
+  },
 ];
 
 const chips = [
-  { label: "IoT", className: "left-[-14px] top-8" },
-  { label: "Embedded Systems", className: "right-[-8px] top-16" },
-  { label: "AI Integration", className: "bottom-20 left-[-18px]" },
+  { label: "IoT", className: "right-[-14px] top-10" },
+  { label: "AI Integration", className: "bottom-24 left-[-18px]" },
   { label: "Env. Monitoring", className: "right-[-10px] bottom-6" },
 ];
 
@@ -48,7 +68,7 @@ export function Hero() {
           animate="visible"
           className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-8"
         >
-          {/* LEFT — role label, huge name, description, CTAs */}
+          {/* LEFT — role label, large editorial heading, description, CTAs */}
           <div className="lg:col-span-6">
             <motion.div variants={item}>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -65,7 +85,7 @@ export function Hero() {
 
             <motion.h1
               variants={item}
-              className="mt-7 font-serif text-[clamp(48px,6.4vw,82px)] font-medium leading-[1.02] tracking-tight text-primary"
+              className="mt-7 font-serif text-[clamp(44px,6.2vw,82px)] font-medium leading-[1.02] tracking-tight text-primary lg:text-[clamp(44px,5.4vw,82px)]"
             >
               Billy Shultan
               <br />
@@ -104,38 +124,62 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* MIDDLE — small information blocks */}
-          <div className="flex flex-row gap-3 lg:col-span-2 lg:flex-col lg:gap-4">
-            {infoBlocks.map((block, i) => (
+          {/* CENTER — small information cards */}
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:col-span-2 lg:grid-cols-1 lg:gap-4">
+            {infoCards.map((card) => (
               <motion.div
-                key={block.label}
+                key={card.label}
                 variants={item}
-                className="card-base flex flex-1 flex-col justify-between p-5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-soft lg:min-h-[118px]"
+                className="card-base flex flex-col justify-between p-4 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-soft lg:min-h-[104px] lg:p-5"
               >
                 <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-secondary">
-                  {block.label}
+                  {card.label}
                 </span>
-                <div className="mt-4">
-                  <p className="font-serif text-lg leading-tight text-primary">{block.value}</p>
-                  <p className="mt-1 font-mono text-[10px] leading-relaxed text-muted">
-                    {block.detail}
+                <div className="mt-3 flex items-center gap-2">
+                  {card.live && (
+                    <span
+                      aria-hidden="true"
+                      className="h-1.5 w-1.5 shrink-0 animate-pulse-dot rounded-full bg-accent"
+                    />
+                  )}
+                  <p className="font-serif text-lg font-medium leading-tight text-primary">
+                    {card.value}
                   </p>
                 </div>
+                <p className="mt-1 font-mono text-[10px] leading-relaxed text-muted">
+                  {card.detail}
+                </p>
               </motion.div>
             ))}
           </div>
 
-          {/* RIGHT — large portrait card */}
+          {/* RIGHT — large portrait composed into the layout */}
           <motion.div variants={item} className="lg:col-span-4">
-            <div className="relative mx-auto w-full max-w-[420px] lg:max-w-none">
+            <div className="relative mx-auto w-full max-w-[420px] pt-4 lg:max-w-none lg:pt-0">
               <div
                 aria-hidden="true"
-                className="absolute -right-5 -top-5 h-40 w-40 rounded-full bg-accent/15 blur-[70px]"
+                className="absolute -right-5 -top-2 h-40 w-40 rounded-full bg-accent/15 blur-[70px]"
               />
+
+              {/* vertical caption that anchors the composition */}
+              <span className="absolute -left-12 top-12 hidden rotate-180 font-mono text-[10px] uppercase tracking-[0.3em] text-muted [writing-mode:vertical-rl] lg:block">
+                Jakarta Barat &middot; Since 2021
+              </span>
+
+              {/* availability pill overlapping the frame */}
+              <span className="glass absolute -top-4 left-7 z-10 hidden items-center gap-2 rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary shadow-soft sm:inline-flex">
+                <span
+                  aria-hidden="true"
+                  className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-accent"
+                />
+                Open to collaboration
+              </span>
+
               <div
                 aria-hidden="true"
-                className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-[36px] border border-accent/35"
+                className="absolute -bottom-5 -right-5 -z-10 h-full w-full rounded-[36px] border border-accent/35"
               />
+
               <div className="group relative aspect-[4/5] overflow-hidden rounded-[36px] bg-surface shadow-ink-lg ring-1 ring-line">
                 <Image
                   src={profile.profileImage}
@@ -164,6 +208,23 @@ export function Hero() {
                   </span>
                 </div>
               </div>
+
+              {/* overlapping stats card — ties the portrait to the grid */}
+              <Link
+                href="/resume"
+                className="group absolute -bottom-7 -left-7 hidden w-44 overflow-hidden rounded-[20px] border border-accent/30 bg-card p-5 shadow-lift transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-glow lg:block"
+              >
+                <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-accent">
+                  Since 2021
+                </span>
+                <p className="mt-2 font-serif text-3xl font-medium leading-none text-primary">
+                  2<span className="text-accent">+</span>
+                </p>
+                <p className="mt-1 font-mono text-[10px] text-secondary">
+                  Years of Experience
+                </p>
+              </Link>
+
               {chips.map((chip) => (
                 <span
                   key={chip.label}

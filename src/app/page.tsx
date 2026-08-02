@@ -1,23 +1,32 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Code2, Layers, Cpu, Wrench, Sparkles, Globe, Cloud, Quote } from "lucide-react";
+import {
+  ArrowUpRight,
+  Download,
+  Code2,
+  Layers,
+  Cpu,
+  Wrench,
+  Sparkles,
+  Globe,
+  Cloud,
+  Quote,
+} from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { Hero } from "@/components/hero";
 import { projects } from "@/content/projects";
 import { profile } from "@/content/profile";
 import { contact } from "@/content/social";
 import { skills } from "@/content/skills";
 import { experience } from "@/content/experience";
-
-const projectCards = [
-  { project: projects[0], index: "01", caption: "Environmental Monitoring" },
-  { project: projects[2], index: "02", caption: "Vehicle Emission" },
-  { project: projects[1], index: "03", caption: "AI Cashier System" },
-];
+import { achievements } from "@/content/achievements";
+import type { Project } from "@/lib/types";
 
 const stats = [
   { value: "2+", label: "Years" },
-  { value: "3", label: "Projects" },
+  { value: String(projects.length), label: "Projects" },
   { value: "15+", label: "Technologies" },
   { value: "∞", label: "Ideas" },
 ];
@@ -31,308 +40,533 @@ const iconMap = {
   globe: Globe,
 } as const;
 
+const currentRole = experience[0];
+
+/* ------------------------------------------------------------------ */
+/*  BENTO GRID — cards generated from real data, only when it exists.  */
+/* ------------------------------------------------------------------ */
+
+const bentoCards: Array<{ id: string; show: boolean; span: string; node: ReactNode }> = [
+  {
+    id: "experience",
+    show: experience.length > 0,
+    span: "md:col-span-7 md:row-span-2",
+    node: (
+      <div className="relative flex h-full min-h-[420px] flex-col justify-between overflow-hidden rounded-[24px] bg-primary p-8 text-background shadow-ink-lg sm:p-10">
+        <div
+          aria-hidden="true"
+          className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-accent/25 blur-[80px]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -bottom-24 -left-16 h-48 w-48 rounded-full bg-accent/10 blur-[70px]"
+        />
+        <div className="relative flex items-center justify-between">
+          <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-background/50">
+            Experience &middot; Since 2021
+          </span>
+          <span aria-hidden="true" className="h-2 w-2 rounded-full bg-accent-light/90" />
+        </div>
+        <div className="relative mt-auto">
+          <span className="font-serif text-[92px] font-medium leading-[0.9] tracking-tight text-background">
+            2<span className="text-accent-light">+</span>
+          </span>
+          <h3 className="mt-3 font-serif text-3xl leading-tight text-background">
+            Years of Experience
+          </h3>
+          <p className="mt-4 max-w-md text-sm font-light leading-[1.75] text-background/65">
+            Development, assembly, and maintenance of environmental laboratory
+            testing equipment — from the bench to the cloud.
+          </p>
+          <div className="mt-8 rounded-[20px] border border-background/10 bg-background/5 p-6 backdrop-blur-sm">
+            <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-background/50">
+              Currently
+            </p>
+            <p className="mt-2 font-serif text-xl text-background">{currentRole.role}</p>
+            <p className="mt-1 text-sm font-medium text-accent-light">{currentRole.company}</p>
+            <p className="mt-1 font-mono text-[11px] text-background/55">{currentRole.period}</p>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-2">
+            {currentRole.technologies?.slice(0, 5).map((tech) => (
+              <span key={tech} className="chip-dark">
+                {tech}
+              </span>
+            ))}
+          </div>
+          <Link
+            href="/resume"
+            className="group mt-9 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-background/75 transition-colors duration-300 hover:text-accent-light"
+          >
+            Full resume
+            <ArrowUpRight
+              size={14}
+              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            />
+          </Link>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "projects",
+    show: projects.length > 0,
+    span: "md:col-span-5",
+    node: (
+      <Link
+        href="/projects"
+        className="card-base card-hover group flex h-full min-h-[280px] flex-col justify-between p-8"
+      >
+        <div className="flex items-start justify-between">
+          <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-accent">
+            Featured Work
+          </span>
+          <span className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface text-primary transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-background">
+            <ArrowUpRight
+              size={17}
+              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            />
+          </span>
+        </div>
+        <div className="flex-1 space-y-1">
+          {projects.slice(0, 3).map((project) => (
+            <div
+              key={project.slug}
+              className="group/item flex items-baseline gap-4 rounded-2xl px-2 py-2.5 transition-colors duration-300 hover:bg-surface/70"
+            >
+              <span className="font-mono text-[10px] tracking-[0.2em] text-muted">
+                {project.year}
+              </span>
+              <span className="flex-1 font-serif text-xl leading-snug text-primary transition-colors duration-300 group-hover/item:text-accent-deep">
+                {project.title}
+              </span>
+              <ArrowUpRight
+                size={15}
+                className="text-line-strong transition-all duration-300 group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5 group-hover/item:text-accent"
+              />
+            </div>
+          ))}
+        </div>
+        <div className="flex items-center justify-between border-t border-line pt-4">
+          <span className="font-mono text-[11px] text-secondary">
+            {projects.length} projects and counting
+          </span>
+          <span className="font-serif text-4xl italic leading-none text-line-strong transition-colors duration-500 group-hover:text-accent">
+            {String(projects.length).padStart(2, "0")}
+          </span>
+        </div>
+      </Link>
+    ),
+  },
+  {
+    id: "quote",
+    show: Boolean(profile.tagline),
+    span: "md:col-span-5",
+    node: (
+      <div className="card-base relative flex h-full min-h-[240px] flex-col justify-between overflow-hidden p-8">
+        <div
+          aria-hidden="true"
+          className="absolute -right-14 -top-14 h-40 w-40 rounded-full bg-accent/10 blur-[60px]"
+        />
+        <Quote aria-hidden="true" size={30} className="text-accent/70" strokeWidth={1.25} />
+        <div className="relative">
+          <p className="font-serif text-2xl italic leading-[1.45] text-primary">
+            &ldquo;{profile.tagline}&rdquo;
+          </p>
+          <div className="mt-6 flex items-center gap-4">
+            <span
+              aria-hidden="true"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 font-serif text-sm font-semibold text-accent"
+            >
+              B
+            </span>
+            <div>
+              <p className="text-sm font-medium text-primary">{profile.name}</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-secondary">
+                Electrical Engineer
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "ai",
+    show: skills.some((cat) => cat.skills.includes("AI Integration")),
+    span: "md:col-span-5",
+    node: (
+      <div className="relative flex h-full min-h-[240px] flex-col justify-between overflow-hidden rounded-[24px] bg-accent p-8 text-background shadow-glow">
+        <div
+          aria-hidden="true"
+          className="absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-background/10 blur-[60px]"
+        />
+        <div className="relative flex items-center justify-between">
+          <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-background/60">
+            Intelligence
+          </span>
+          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-background/20 bg-background/10">
+            <Sparkles size={18} strokeWidth={1.5} />
+          </span>
+        </div>
+        <div className="relative">
+          <span className="font-serif text-5xl font-medium leading-none">AI</span>
+          <h3 className="mt-2 font-serif text-2xl text-background">
+            Integration &amp; Fuzzy Logic
+          </h3>
+          <p className="mt-3 max-w-xs text-sm font-light leading-relaxed text-background/70">
+            Turning raw sensor readings into intelligent classification with
+            Fuzzy Mamdani.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {["AI Integration", "Fuzzy Logic", "ML-ready"].map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center rounded-full border border-background/20 bg-background/10 px-3.5 py-1.5 font-mono text-[11px] text-background/85"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "cloud",
+    show: skills.some((cat) =>
+      cat.skills.some((s) => ["Supabase", "Blynk", "PostgreSQL"].includes(s))
+    ),
+    span: "md:col-span-4",
+    node: (
+      <div className="relative flex h-full min-h-[240px] flex-col justify-between overflow-hidden rounded-[24px] bg-primary p-8 text-background shadow-soft">
+        <div
+          aria-hidden="true"
+          className="absolute -right-14 -top-14 h-40 w-40 rounded-full bg-accent/20 blur-[60px]"
+        />
+        <div className="relative flex items-center justify-between">
+          <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-background/50">
+            Infrastructure
+          </span>
+          <Cloud size={20} strokeWidth={1.5} className="text-accent-light" />
+        </div>
+        <div className="relative">
+          <span className="font-serif text-4xl font-medium leading-none text-background">
+            Cloud
+          </span>
+          <h3 className="mt-2 font-serif text-xl text-background">Real-time Solutions</h3>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {["Blynk", "Supabase", "PostgreSQL"].map((tag) => (
+              <span key={tag} className="chip-dark">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "tech",
+    show: skills.length > 0,
+    span: "md:col-span-3",
+    node: (
+      <Link
+        href="/skills"
+        className="card-base card-hover group flex h-full min-h-[240px] flex-col justify-between p-8"
+      >
+        <span className="font-mono text-[10px] uppercase tracking-[0.26em] text-accent">
+          Tech
+        </span>
+        <div>
+          <span className="font-serif text-6xl font-medium leading-none text-primary transition-colors duration-300 group-hover:text-accent-deep">
+            15<span className="text-accent">+</span>
+          </span>
+          <h3 className="mt-2 font-serif text-xl text-primary">Technologies</h3>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {skills[0]?.skills.slice(0, 3).map((tag) => (
+              <span key={tag} className="chip">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </Link>
+    ),
+  },
+  {
+    id: "iot",
+    show: skills.length > 2,
+    span: "md:col-span-7",
+    node: (
+      <div className="card-base card-hover flex h-full flex-col justify-between p-8 sm:flex-row sm:items-center sm:gap-8">
+        <div className="flex items-start gap-5">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-line bg-surface text-accent">
+            <Cpu size={22} strokeWidth={1.5} />
+          </span>
+          <div>
+            <h3 className="font-serif text-2xl text-primary">Embedded &amp; IoT</h3>
+            <p className="mt-2 max-w-md text-sm font-light leading-relaxed text-secondary">
+              Microcontrollers, sensors, and wireless communication — engineered
+              end to end.
+            </p>
+          </div>
+        </div>
+        <div className="mt-6 flex flex-wrap gap-2 sm:mt-0">
+          {skills[2].skills.map((s) => (
+            <span key={s} className="chip">
+              {s}
+            </span>
+          ))}
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "languages",
+    show: skills.length > 5,
+    span: "md:col-span-5",
+    node: (
+      <div className="card-base card-hover flex h-full flex-col justify-between p-8">
+        <div className="flex items-start justify-between">
+          <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-line bg-surface text-accent">
+            <Globe size={22} strokeWidth={1.5} />
+          </span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-secondary">
+            Languages
+          </span>
+        </div>
+        <div className="mt-6 flex flex-wrap gap-2">
+          {skills[5].skills.map((s) => (
+            <span key={s} className="chip">
+              {s}
+            </span>
+          ))}
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "achievements",
+    show: achievements.length > 0,
+    span: "md:col-span-12",
+    node: (
+      <div className="card-base card-hover group relative flex flex-col gap-8 overflow-hidden p-8 sm:flex-row sm:items-center sm:p-10">
+        <div
+          aria-hidden="true"
+          className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-accent/10 blur-[70px]"
+        />
+        {achievements[0].image && (
+          <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-[20px] border border-line bg-surface">
+            <Image
+              src={achievements[0].image}
+              alt={achievements[0].title}
+              fill
+              sizes="144px"
+              className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
+            />
+          </div>
+        )}
+        <div className="relative flex-1">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
+              {achievements[0].event}
+            </span>
+            <span aria-hidden="true" className="h-3 w-px bg-line-strong" />
+            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-secondary">
+              {achievements[0].date}
+            </span>
+          </div>
+          <h3 className="mt-3 font-serif text-3xl text-primary">
+            {achievements[0].title}
+          </h3>
+          <p className="mt-1 text-sm font-medium text-secondary">
+            {achievements[0].organizer}
+          </p>
+          <p className="mt-4 max-w-3xl text-base font-light leading-[1.75] text-secondary">
+            {achievements[0].description}
+          </p>
+          <div className="mt-5 flex flex-wrap items-center gap-6">
+            {achievements[0].file && (
+              <a
+                href={achievements[0].file}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/link inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-primary transition-colors duration-300 hover:text-accent"
+              >
+                <Download size={13} />
+                View certificate
+              </a>
+            )}
+            {achievements[0].project && (
+              <Link
+                href="/projects/ambient-particulate-monitoring"
+                className="group/link inline-flex items-center gap-1.5 text-sm font-medium text-primary"
+              >
+                {achievements[0].project}
+                <ArrowUpRight
+                  size={14}
+                  className="text-accent transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+                />
+              </Link>
+            )}
+          </div>
+        </div>
+      </div>
+    ),
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/*  FEATURED PROJECTS — adaptive bento generated from real projects.   */
+/* ------------------------------------------------------------------ */
+
+function projectSpan(count: number, index: number) {
+  const wide = count <= 3 ? index === 0 : index % 3 === 0;
+  return wide ? "md:col-span-8" : "md:col-span-4";
+}
+
+function ProjectWideCard({ project, index }: { project: Project; index: number }) {
+  return (
+    <Link
+      href={`/projects/${project.slug}`}
+      className="card-base card-hover group flex h-full flex-col overflow-hidden sm:flex-row"
+    >
+      <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-surface sm:aspect-auto sm:w-[38%]">
+        <Image
+          src={project.gallery[0]}
+          alt={project.title}
+          fill
+          sizes="(max-width: 640px) 100vw, 34vw"
+          className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        />
+        <span
+          aria-hidden="true"
+          className="absolute right-4 top-3 font-serif text-5xl italic leading-none text-background/70 transition-colors duration-500 group-hover:text-accent-light"
+        >
+          {String(index + 1).padStart(2, "0")}
+        </span>
+      </div>
+      <div className="flex flex-1 flex-col justify-between p-7 sm:p-8">
+        <div>
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-secondary">
+            {project.year} &middot; {project.category}
+          </p>
+          <h3 className="mt-3 font-serif text-2xl leading-[1.18] tracking-tight text-primary transition-colors duration-300 group-hover:text-accent-deep sm:text-3xl">
+            {project.title}
+          </h3>
+          <p className="mt-3 line-clamp-2 max-w-xl text-sm font-light leading-[1.75] text-secondary">
+            {project.summary}
+          </p>
+        </div>
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.slice(0, 3).map((tech) => (
+              <span key={tech} className="chip">
+                {tech}
+              </span>
+            ))}
+          </div>
+          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary">
+            View case study
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-background">
+              <ArrowUpRight
+                size={14}
+                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </span>
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function ProjectHalfCard({ project, index }: { project: Project; index: number }) {
+  return (
+    <Link
+      href={`/projects/${project.slug}`}
+      className="card-base card-hover group flex h-full flex-col overflow-hidden"
+    >
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface">
+        <Image
+          src={project.gallery[0]}
+          alt={project.title}
+          fill
+          sizes="(max-width: 640px) 100vw, 40vw"
+          className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        />
+        <span
+          aria-hidden="true"
+          className="absolute right-4 top-3 font-serif text-5xl italic leading-none text-background/70 transition-colors duration-500 group-hover:text-accent-light"
+        >
+          {String(index + 1).padStart(2, "0")}
+        </span>
+      </div>
+      <div className="flex flex-1 flex-col justify-between p-6 sm:p-7">
+        <div>
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-secondary">
+            {project.year} &middot; {project.category}
+          </p>
+          <h3 className="mt-3 font-serif text-2xl leading-[1.2] tracking-tight text-primary transition-colors duration-300 group-hover:text-accent-deep">
+            {project.title}
+          </h3>
+          <p className="mt-3 line-clamp-3 text-sm font-light leading-[1.75] text-secondary">
+            {project.summary}
+          </p>
+        </div>
+        <div className="mt-6">
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.slice(0, 3).map((tech) => (
+              <span key={tech} className="chip">
+                {tech}
+              </span>
+            ))}
+          </div>
+          <div className="mt-5 flex items-center justify-between border-t border-line pt-4">
+            <span className="text-xs font-medium text-primary">View case study</span>
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-background">
+              <ArrowUpRight
+                size={14}
+                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </span>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
 export default function HomePage() {
-  const currentRole = experience[0];
+  const visibleCards = bentoCards.filter((card) => card.show);
 
   return (
     <>
+      <Hero />
+
       {/* ============================ BENTO GRID ============================ */}
       <section className="section-container pt-14 sm:pt-20">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
-          {/* EXPERIENCE — dark, tall */}
-          <Reveal variant="scale" className="md:col-span-7 md:row-span-2">
-            <div className="relative flex h-full min-h-[420px] flex-col justify-between overflow-hidden rounded-[24px] bg-primary p-8 text-background shadow-ink-lg sm:p-10">
-              <div
-                aria-hidden="true"
-                className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-accent/25 blur-[80px]"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute -bottom-24 -left-16 h-48 w-48 rounded-full bg-accent/10 blur-[70px]"
-              />
-              <div className="relative flex items-center justify-between">
-                <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-background/50">
-                  Experience &middot; Since 2021
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="h-2 w-2 rounded-full bg-accent-light/90"
-                />
-              </div>
-              <div className="relative mt-auto">
-                <span className="font-serif text-[92px] font-medium leading-[0.9] tracking-tight text-background">
-                  2<span className="text-accent-light">+</span>
-                </span>
-                <h3 className="mt-3 font-serif text-3xl leading-tight text-background">
-                  Years of Experience
-                </h3>
-                <p className="mt-4 max-w-md text-sm font-light leading-[1.75] text-background/65">
-                  Development, assembly, and maintenance of environmental
-                  laboratory testing equipment — from the bench to the cloud.
-                </p>
-                <div className="mt-8 rounded-[20px] border border-background/10 bg-background/5 p-6 backdrop-blur-sm">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-background/50">
-                    Currently
-                  </p>
-                  <p className="mt-2 font-serif text-xl text-background">
-                    {currentRole.role}
-                  </p>
-                  <p className="mt-1 text-sm font-medium text-accent-light">
-                    {currentRole.company}
-                  </p>
-                  <p className="mt-1 font-mono text-[11px] text-background/55">
-                    {currentRole.period}
-                  </p>
-                </div>
-                <div className="mt-8 flex flex-wrap gap-2">
-                  {currentRole.technologies?.slice(0, 5).map((tech) => (
-                    <span key={tech} className="chip-dark">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <Link
-                  href="/resume"
-                  className="group mt-9 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-background/75 transition-colors duration-300 hover:text-accent-light"
-                >
-                  Full resume
-                  <ArrowUpRight
-                    size={14}
-                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  />
-                </Link>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* FEATURED PROJECTS — light */}
-          <Reveal variant="scale" className="md:col-span-5" delay={0.05}>
-            <Link
-              href="/projects"
-              className="card-base card-hover group flex h-full min-h-[280px] flex-col justify-between p-8"
-            >
-              <div className="flex items-start justify-between">
-                <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-accent">
-                  Featured Work
-                </span>
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface text-primary transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-background">
-                  <ArrowUpRight
-                    size={17}
-                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  />
-                </span>
-              </div>
-              <div className="flex-1 space-y-1">
-                {projectCards.map((card) => (
-                  <div
-                    key={card.project.slug}
-                    className="group/item flex items-baseline gap-4 rounded-2xl px-2 py-2.5 transition-colors duration-300 hover:bg-surface/70"
-                  >
-                    <span className="font-mono text-[10px] tracking-[0.2em] text-muted">
-                      {card.project.year}
-                    </span>
-                    <span className="flex-1 font-serif text-xl leading-snug text-primary transition-colors duration-300 group-hover/item:text-accent-deep">
-                      {card.project.title}
-                    </span>
-                    <ArrowUpRight
-                      size={15}
-                      className="text-line-strong transition-all duration-300 group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5 group-hover/item:text-accent"
-                    />
-                  </div>
-                ))}
-              </div>
-              <div className="flex items-center justify-between border-t border-line pt-4">
-                <span className="font-mono text-[11px] text-secondary">
-                  {projects.length} projects and counting
-                </span>
-                <span className="font-serif text-4xl italic leading-none text-line-strong transition-colors duration-500 group-hover:text-accent">
-                  03
-                </span>
-              </div>
-            </Link>
-          </Reveal>
-
-          {/* TESTIMONIAL — quote card */}
-          <Reveal variant="scale" className="md:col-span-5" delay={0.1}>
-            <div className="card-base relative flex h-full min-h-[240px] flex-col justify-between overflow-hidden p-8">
-              <div
-                aria-hidden="true"
-                className="absolute -right-14 -top-14 h-40 w-40 rounded-full bg-accent/10 blur-[60px]"
-              />
-              <Quote
-                aria-hidden="true"
-                size={30}
-                className="text-accent/70"
-                strokeWidth={1.25}
-              />
-              <div className="relative">
-                <p className="font-serif text-2xl italic leading-[1.45] text-primary">
-                  &ldquo;{profile.tagline}&rdquo;
-                </p>
-                <div className="mt-6 flex items-center gap-4">
-                  <span
-                    aria-hidden="true"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 font-serif text-sm font-semibold text-accent"
-                  >
-                    B
-                  </span>
-                  <div>
-                    <p className="text-sm font-medium text-primary">{profile.name}</p>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-secondary">
-                      Electrical Engineer
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* AI — violet accent card */}
-          <Reveal variant="scale" className="md:col-span-5" delay={0.08}>
-            <div className="relative flex h-full min-h-[240px] flex-col justify-between overflow-hidden rounded-[24px] bg-accent p-8 text-background shadow-glow">
-              <div
-                aria-hidden="true"
-                className="absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-background/10 blur-[60px]"
-              />
-              <div className="relative flex items-center justify-between">
-                <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-background/60">
-                  Intelligence
-                </span>
-                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-background/20 bg-background/10">
-                  <Sparkles size={18} strokeWidth={1.5} />
-                </span>
-              </div>
-              <div className="relative">
-                <span className="font-serif text-5xl font-medium leading-none">AI</span>
-                <h3 className="mt-2 font-serif text-2xl text-background">
-                  Integration &amp; Fuzzy Logic
-                </h3>
-                <p className="mt-3 max-w-xs text-sm font-light leading-relaxed text-background/70">
-                  Turning raw sensor readings into intelligent classification
-                  with Fuzzy Mamdani.
-                </p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {["AI Integration", "Fuzzy Logic", "ML-ready"].map((tag) => (
-                    <span
-                      key={tag}
-                      className="inline-flex items-center rounded-full border border-background/20 bg-background/10 px-3.5 py-1.5 font-mono text-[11px] text-background/85"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* CLOUD — dark */}
-          <Reveal variant="scale" className="md:col-span-4" delay={0.13}>
-            <div className="relative flex h-full min-h-[240px] flex-col justify-between overflow-hidden rounded-[24px] bg-primary p-8 text-background shadow-soft">
-              <div
-                aria-hidden="true"
-                className="absolute -right-14 -top-14 h-40 w-40 rounded-full bg-accent/20 blur-[60px]"
-              />
-              <div className="relative flex items-center justify-between">
-                <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-background/50">
-                  Infrastructure
-                </span>
-                <Cloud size={20} strokeWidth={1.5} className="text-accent-light" />
-              </div>
-              <div className="relative">
-                <span className="font-serif text-4xl font-medium leading-none text-background">
-                  Cloud
-                </span>
-                <h3 className="mt-2 font-serif text-xl text-background">
-                  Real-time Solutions
-                </h3>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {["Blynk", "Supabase", "PostgreSQL"].map((tag) => (
-                    <span key={tag} className="chip-dark">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* TECH — small */}
-          <Reveal variant="scale" className="md:col-span-3" delay={0.16}>
-            <Link
-              href="/skills"
-              className="card-base card-hover group flex h-full min-h-[240px] flex-col justify-between p-8"
-            >
-              <span className="font-mono text-[10px] uppercase tracking-[0.26em] text-accent">
-                Tech
-              </span>
-              <div>
-                <span className="font-serif text-6xl font-medium leading-none text-primary transition-colors duration-300 group-hover:text-accent-deep">
-                  15<span className="text-accent">+</span>
-                </span>
-                <h3 className="mt-2 font-serif text-xl text-primary">Technologies</h3>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {["PHP", "Laravel", "Flutter"].map((tag) => (
-                    <span key={tag} className="chip">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </Link>
-          </Reveal>
-
-          {/* EMBEDDED & IoT — wide */}
-          <Reveal variant="scale" className="md:col-span-7" delay={0.1}>
-            <div className="card-base card-hover flex h-full flex-col justify-between p-8 sm:flex-row sm:items-center sm:gap-8">
-              <div className="flex items-start gap-5">
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-line bg-surface text-accent">
-                  <Cpu size={22} strokeWidth={1.5} />
-                </span>
-                <div>
-                  <h3 className="font-serif text-2xl text-primary">Embedded &amp; IoT</h3>
-                  <p className="mt-2 max-w-md text-sm font-light leading-relaxed text-secondary">
-                    Microcontrollers, sensors, and wireless communication —
-                    engineered end to end.
-                  </p>
-                </div>
-              </div>
-              <div className="mt-6 flex flex-wrap gap-2 sm:mt-0">
-                {skills[2].skills.map((s) => (
-                  <span key={s} className="chip">
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-
-          {/* LANGUAGES */}
-          <Reveal variant="scale" className="md:col-span-5" delay={0.14}>
-            <div className="card-base card-hover flex h-full flex-col justify-between p-8">
-              <div className="flex items-start justify-between">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-line bg-surface text-accent">
-                  <Globe size={22} strokeWidth={1.5} />
-                </span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-secondary">
-                  Languages
-                </span>
-              </div>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {skills[5].skills.map((s) => (
-                  <span key={s} className="chip">
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </Reveal>
+          {visibleCards.map((card, i) => (
+            <Reveal key={card.id} variant="scale" className={card.span} delay={i * 0.05}>
+              {card.node}
+            </Reveal>
+          ))}
         </div>
       </section>
 
       {/* ============================ FEATURED PROJECTS ============================ */}
       <section className="section-container pt-24 sm:pt-32">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-8">
-          {/* Editorial title on the left */}
+          {/* Editorial heading on the left */}
           <div className="lg:col-span-4">
             <Reveal>
               <h2 className="font-serif text-5xl font-medium leading-[1.02] tracking-tight text-primary sm:text-6xl">
@@ -366,72 +600,27 @@ export default function HomePage() {
             </Reveal>
           </div>
 
-          {/* Project cards on the right */}
-          <div className="space-y-4 lg:col-span-8">
-            {projectCards.map((card, i) => (
-              <Reveal key={card.project.slug} variant="up" delay={i * 0.06}>
-                <Link
-                  href={`/projects/${card.project.slug}`}
-                  className="card-base card-hover group flex flex-col overflow-hidden sm:flex-row"
-                >
-                  <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-surface sm:aspect-auto sm:w-[38%]">
-                    <Image
-                      src={card.project.gallery[0]}
-                      alt={card.project.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, 34vw"
-                      className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                    />
-                    <span
-                      aria-hidden="true"
-                      className="absolute right-4 top-3 font-serif text-5xl italic leading-none text-background/70 transition-colors duration-500 group-hover:text-accent-light"
-                    >
-                      {card.index}
-                    </span>
-                  </div>
-                  <div className="flex flex-1 flex-col justify-between p-7 sm:p-8">
-                    <div>
-                      <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-secondary">
-                        {card.project.year} &middot; {card.caption}
-                      </p>
-                      <h3 className="mt-3 font-serif text-2xl leading-[1.18] tracking-tight text-primary transition-colors duration-300 group-hover:text-accent-deep sm:text-3xl">
-                        {card.project.title}
-                      </h3>
-                      <p className="mt-3 line-clamp-2 max-w-xl text-sm font-light leading-[1.75] text-secondary">
-                        {card.project.summary}
-                      </p>
-                    </div>
-                    <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-                      <div className="flex flex-wrap gap-2">
-                        {card.project.technologies.slice(0, 3).map((tech) => (
-                          <span key={tech} className="chip">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                      <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary">
-                        View case study
-                        <span className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-background">
-                          <ArrowUpRight
-                            size={14}
-                            className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                          />
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </Link>
+          {/* Responsive bento generated from real project data */}
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-8 lg:col-span-8">
+            {projects.map((project, i) => (
+              <Reveal
+                key={project.slug}
+                variant="up"
+                delay={i * 0.06}
+                className={projectSpan(projects.length, i)}
+              >
+                {projectSpan(projects.length, i) === "md:col-span-8" ? (
+                  <ProjectWideCard project={project} index={i} />
+                ) : (
+                  <ProjectHalfCard project={project} index={i} />
+                )}
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ============================ TECH STACK BENTO ============================ */}
+      {/* ============================ TECH STACK ============================ */}
       <section className="section-container pt-24 sm:pt-32">
         <SectionHeading
           index="02"
@@ -568,15 +757,9 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="border-l-2 border-accent/40 pl-6 lg:max-w-md">
-                <p className="font-serif text-xl italic leading-[1.5] text-secondary">
-                  &ldquo;Bridging hardware, firmware, and cloud into connected
-                  engineering solutions.&rdquo;
-                </p>
-                <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.24em] text-accent">
-                  Billy Shultan Al Hadiy
-                </p>
-              </div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-secondary">
+                Indonesian &middot; English
+              </p>
             </div>
           </Reveal>
         </div>
@@ -585,7 +768,7 @@ export default function HomePage() {
       {/* ============================ EXPERIENCE ============================ */}
       <section className="section-container pt-24 sm:pt-32">
         <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-12 lg:gap-12">
-          {/* Timeline on the left */}
+          {/* Editorial timeline on the left */}
           <div className="lg:col-span-7">
             <SectionHeading
               index="03"
@@ -633,9 +816,7 @@ export default function HomePage() {
                         )}
                       </div>
                       <div className="mt-2 flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                        <p className="text-base font-medium text-accent-deep">
-                          {item.company}
-                        </p>
+                        <p className="text-base font-medium text-accent-deep">{item.company}</p>
                         <p className="font-mono text-xs text-secondary">{item.period}</p>
                       </div>
                       <ul className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2">
@@ -668,7 +849,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Image card on the right */}
+          {/* Supporting visual card on the right */}
           <div className="lg:col-span-5">
             <Reveal variant="left" delay={0.1} className="lg:sticky lg:top-28">
               <div className="card-base relative overflow-hidden p-6 shadow-soft sm:p-8">
@@ -761,14 +942,17 @@ export default function HomePage() {
                   software development.
                 </p>
                 <p className="mt-3 max-w-xl text-base font-light leading-[1.8] text-background/70">
-                  Currently focused on environmental monitoring and
-                  AI-integrated systems.
+                  Currently focused on environmental monitoring and AI-integrated
+                  systems.
                 </p>
                 <div className="mt-10 flex flex-wrap items-center gap-8">
                   {stats.map((s, i) => (
                     <div key={s.label} className="flex items-center gap-8">
                       {i > 0 && (
-                        <span aria-hidden="true" className="hidden h-8 w-px bg-background/15 sm:block" />
+                        <span
+                          aria-hidden="true"
+                          className="hidden h-8 w-px bg-background/15 sm:block"
+                        />
                       )}
                       <div>
                         <span className="font-serif text-3xl leading-none text-background">
