@@ -15,7 +15,9 @@ export default function ProjectsPage() {
         description="Each project below is documented from verified sources, the CV and project documentation."
         meta="Index / 2023-2026"
       />
-      <ProjectsIndex />
+      <div className="pb-24">
+        <ProjectsIndex />
+      </div>
     </>
   );
 }

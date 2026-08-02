@@ -9,15 +9,15 @@ import { profile } from "@/content/profile";
 
 const container: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.07, delayChildren: 0.08 } },
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -45,23 +45,27 @@ export function Hero() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="bg-background text-primary">
+    <section className="bg-background text-primary overflow-hidden">
       <div className="mx-auto flex w-full max-w-[1920px] flex-col px-6 sm:px-10 xl:px-[72px]">
-        <div className="grid flex-1 grid-cols-1 gap-12 pb-10 pt-12 lg:min-h-[calc(80dvh-72px)] lg:grid-cols-[42fr_33fr_25fr] lg:gap-x-12 lg:pb-0 lg:pt-16">
+        <div className="grid flex-1 grid-cols-1 gap-16 pb-16 pt-16 lg:min-h-[calc(85dvh-80px)] lg:grid-cols-[42fr_33fr_25fr] lg:gap-x-12 lg:pb-0 lg:pt-24">
           {/* ——— LEFT COLUMN ——— */}
-          <div className="relative z-10 flex flex-col justify-center pl-5 lg:-translate-y-[min(84px,8vh)]">
+          <div className="relative z-10 flex flex-col justify-center pl-0 lg:pl-6">
             <motion.div
               variants={container}
               initial={reduce ? false : "hidden"}
               animate="show"
             >
-              <motion.p variants={item} className="label">
-                Available for opportunities
-              </motion.p>
+              <motion.div variants={item} className="flex items-center gap-3">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                </span>
+                <span className="label text-accent">Available for opportunities</span>
+              </motion.div>
 
               <motion.h1
                 variants={item}
-                className="mt-3 font-serif text-[clamp(38px,4.2vw,62px)] font-medium leading-[0.9] tracking-[-0.01em] text-primary"
+                className="mt-6 font-serif text-[clamp(42px,4.5vw,68px)] font-normal leading-[0.92] tracking-[-0.02em] text-primary"
               >
                 Billy
                 <br />
@@ -72,59 +76,59 @@ export function Hero() {
 
               <motion.p
                 variants={item}
-                className="mt-1.5 text-[15px] font-medium text-primary"
+                className="mt-4 text-base font-medium text-primary tracking-wide"
               >
                 Electrical Engineer
               </motion.p>
 
               <motion.p
                 variants={item}
-                className="mt-2.5 max-w-[420px] text-[15px] leading-[1.65] text-secondary"
+                className="mt-4 max-w-[440px] text-base leading-[1.75] text-secondary"
               >
                 Electrical Engineer specializing in Industrial IoT, Embedded
                 Systems and AI Integration, building connected monitoring
                 solutions from hardware to cloud.
               </motion.p>
 
-              <motion.div variants={item} className="mt-5 grid max-w-[420px] grid-cols-3">
+              <motion.div variants={item} className="mt-8 grid max-w-[440px] grid-cols-3 border-t border-line pt-6">
                 <div className="pr-6">
-                  <p className="font-serif text-[30px] font-medium leading-none text-primary">
+                  <p className="font-serif text-[34px] font-normal leading-none text-primary">
                     2+
                   </p>
-                  <p className="mt-1.5 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
+                  <p className="mt-2 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
                     Years
                     <br />
                     Experience
                   </p>
                 </div>
-                <div className="border-l border-line/50 px-6">
-                  <p className="font-serif text-[30px] font-medium leading-none text-primary">
+                <div className="border-l border-line/60 px-6">
+                  <p className="font-serif text-[34px] font-normal leading-none text-primary">
                     3
                   </p>
-                  <p className="mt-1.5 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
+                  <p className="mt-2 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
                     Featured
                     <br />
                     Projects
                   </p>
                 </div>
-                <div className="border-l border-line/50 pl-6">
-                  <p className="font-serif text-[30px] font-medium leading-none text-primary">
+                <div className="border-l border-line/60 pl-6">
+                  <p className="font-serif text-[34px] font-normal leading-none text-primary">
                     15+
                   </p>
-                  <p className="mt-1.5 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
+                  <p className="mt-2 text-[10px] uppercase leading-[1.6] tracking-[0.22em] text-secondary">
                     Technologies
                   </p>
                 </div>
               </motion.div>
 
-              <motion.div variants={item} className="mt-6 flex items-center gap-9">
+              <motion.div variants={item} className="mt-8 flex items-center gap-10">
                 <Link
                   href="/projects"
-                  className="group link-underline inline-flex items-center gap-2 text-[13px] font-medium tracking-wide text-primary"
+                  className="group link-underline inline-flex items-center gap-2 text-sm font-medium tracking-wide text-primary"
                 >
                   View Projects
                   <ArrowRight
-                    size={14}
+                    size={15}
                     className="transition-transform duration-300 group-hover:translate-x-1"
                   />
                 </Link>
@@ -132,7 +136,7 @@ export function Hero() {
                   href={profile.cvFile}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link-underline inline-flex items-center text-[13px] font-medium tracking-wide text-primary"
+                  className="link-underline inline-flex items-center text-sm font-medium tracking-wide text-primary"
                 >
                   Download CV
                 </a>
@@ -141,48 +145,50 @@ export function Hero() {
           </div>
 
           {/* ——— CENTER COLUMN ——— */}
-          <div className="relative flex items-center justify-center lg:-translate-y-6 lg:min-h-0">
+          <div className="relative flex items-center justify-center lg:min-h-0">
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-1/2 h-[272px] w-[272px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#EADCC6] sm:h-[316px] sm:w-[316px] xl:h-[360px] xl:w-[360px]"
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#EADCC6]/40 dark:bg-[#322C24]/40 blur-2xl sm:h-[360px] sm:w-[360px]"
             />
             <BackgroundWord
               text="Engineer"
-              className="-translate-x-[50%] -translate-y-[30%] text-[clamp(96px,11vw,170px)]"
+              className="-translate-x-[50%] -translate-y-[30%] text-[clamp(100px,12vw,180px)] opacity-60"
             />
 
             <motion.div
-              initial={reduce ? false : { opacity: 0, scale: 0.96 }}
+              initial={reduce ? false : { opacity: 0, scale: 0.95 }}
               animate={
                 reduce
                   ? { opacity: 1, scale: 1 }
-                  : { opacity: 1, scale: 1, y: [0, -6, 0] }
+                  : { opacity: 1, scale: 1, y: [0, -8, 0] }
               }
               transition={
                 reduce
-                  ? { duration: 0.9, ease: "easeOut" }
+                  ? { duration: 1, ease: "easeOut" }
                   : {
-                      opacity: { duration: 0.9, ease: "easeOut", delay: 0.55 },
-                      scale: { duration: 0.9, ease: "easeOut", delay: 0.55 },
+                      opacity: { duration: 1, ease: "easeOut", delay: 0.6 },
+                      scale: { duration: 1, ease: "easeOut", delay: 0.6 },
                       y: {
-                        duration: 8,
+                        duration: 9,
                         repeat: Infinity,
                         ease: "easeInOut",
-                        delay: 1.45,
+                        delay: 1.5,
                       },
                     }
               }
-              className="relative z-10 -rotate-1 py-6"
+              className="relative z-10 py-6"
             >
-              <Image
-                src={profile.profileImage}
-                alt={profile.name}
-                width={810}
-                height={990}
-                priority
-                sizes="(max-width: 1024px) 70vw, 36vw"
-                className="h-[min(327px,44vh)] w-auto object-contain lg:h-[min(371px,50vh)]"
-              />
+              <div className="overflow-hidden rounded-3xl border border-line bg-card shadow-2xl p-3">
+                <Image
+                  src={profile.profileImage}
+                  alt={profile.name}
+                  width={810}
+                  height={990}
+                  priority
+                  sizes="(max-width: 1024px) 70vw, 36vw"
+                  className="h-[min(350px,46vh)] w-auto object-contain rounded-2xl lg:h-[min(410px,52vh)]"
+                />
+              </div>
             </motion.div>
           </div>
 
@@ -191,38 +197,38 @@ export function Hero() {
             variants={container}
             initial={reduce ? false : "hidden"}
             animate="show"
-            className="relative z-10 flex flex-col justify-center"
+            className="relative z-10 flex flex-col justify-center space-y-6 lg:pl-6"
           >
-            <motion.div variants={item} className="border-t border-line/50 pt-4">
-              <p className="label">Current Role</p>
-              <p className="mt-2 text-[12px] text-primary">Electrical Engineer</p>
+            <motion.div variants={item} className="border-t border-line/60 pt-5">
+              <p className="label text-accent">Current Role</p>
+              <p className="mt-2 text-sm font-medium text-primary">Electrical Engineer</p>
             </motion.div>
 
-            <motion.div variants={item} className="mt-5 border-t border-line/50 pt-4">
-              <p className="label">Specialization</p>
-              <ul className="mt-2 space-y-1">
+            <motion.div variants={item} className="border-t border-line/60 pt-5">
+              <p className="label text-accent">Specialization</p>
+              <ul className="mt-2 space-y-1.5">
                 {panelSpecialization.map((s) => (
-                  <li key={s} className="text-[12px] text-secondary">
+                  <li key={s} className="text-sm text-secondary">
                     {s}
                   </li>
                 ))}
               </ul>
             </motion.div>
 
-            <motion.div variants={item} className="mt-5 border-t border-line/50 pt-4">
-              <p className="label">Services</p>
-              <ul className="mt-2 space-y-1">
+            <motion.div variants={item} className="border-t border-line/60 pt-5">
+              <p className="label text-accent">Services</p>
+              <ul className="mt-2 space-y-1.5">
                 {services.map((s) => (
-                  <li key={s} className="text-[12px] text-secondary">
+                  <li key={s} className="text-sm text-secondary">
                     {s}
                   </li>
                 ))}
               </ul>
             </motion.div>
 
-            <motion.div variants={item} className="mt-5 border-t border-line/50 pt-4">
-              <p className="label">Contact</p>
-              <ul className="mt-2 space-y-1">
+            <motion.div variants={item} className="border-t border-line/60 pt-5">
+              <p className="label text-accent">Contact</p>
+              <ul className="mt-2 space-y-1.5">
                 {contacts.map((c) => (
                   <li key={c.label}>
                     <a
@@ -233,7 +239,7 @@ export function Hero() {
                           ? "noopener noreferrer"
                           : undefined
                       }
-                      className="link-underline text-[12px] text-primary"
+                      className="link-underline text-sm text-primary font-medium"
                     >
                       {c.label}
                     </a>
@@ -242,9 +248,9 @@ export function Hero() {
               </ul>
             </motion.div>
 
-            <motion.div variants={item} className="mt-5 border-t border-line/50 pt-4">
-              <p className="label">Location</p>
-              <p className="mt-2 text-[12px] text-primary">Jakarta, Indonesia</p>
+            <motion.div variants={item} className="border-t border-line/60 pt-5">
+              <p className="label text-accent">Location</p>
+              <p className="mt-2 text-sm text-primary">Jakarta, Indonesia</p>
             </motion.div>
           </motion.div>
         </div>

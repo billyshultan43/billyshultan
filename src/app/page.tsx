@@ -21,8 +21,8 @@ export default function HomePage() {
       <section className="section-container section-padding border-t border-line">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <Reveal>
-            <span className="label">Selected Works</span>
-            <h2 className="mt-3 font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-primary">
+            <span className="label text-accent">Selected Works</span>
+            <h2 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-primary">
               Engineering & IoT Systems.
             </h2>
           </Reveal>
@@ -41,22 +41,22 @@ export default function HomePage() {
       </section>
 
       {/* EDITORIAL ABOUT & EXPERTISE SECTION */}
-      <section className="border-t border-line bg-surface/40 py-28 lg:py-36">
+      <section className="border-t border-line bg-surface/40 py-32 lg:py-40">
         <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             <div className="lg:col-span-5">
               <Reveal>
-                <span className="label">Editorial Manifesto</span>
+                <span className="label text-accent">Editorial Manifesto</span>
                 <h2 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-primary leading-tight">
                   Bridging hardware, firmware, and cloud.
                 </h2>
-                <p className="mt-6 text-base leading-relaxed text-secondary">
+                <p className="mt-6 text-base sm:text-lg leading-relaxed text-secondary">
                   {profile.summary}
                 </p>
                 <div className="mt-10">
                   <Link
                     href="/about"
-                    className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+                    className={cn(buttonVariants({ variant: "outline", size: "lg" }), "px-8 py-6 text-base")}
                   >
                     Read full background
                   </Link>
@@ -67,16 +67,16 @@ export default function HomePage() {
             <div className="lg:col-span-6 lg:col-start-7 space-y-8">
               {skills.slice(0, 4).map((cat, i) => (
                 <Reveal key={cat.name} delay={i * 0.05}>
-                  <div className="border-t border-line pt-6">
+                  <div className="border-t border-line pt-8">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-medium text-primary">
+                      <h3 className="font-serif text-xl text-primary font-normal">
                         {cat.name}
                       </h3>
-                      <span className="font-mono text-xs text-muted">
+                      <span className="font-mono text-xs text-accent">
                         0{i + 1}
                       </span>
                     </div>
-                    <p className="mt-3 font-mono text-[13px] leading-relaxed text-secondary">
+                    <p className="mt-4 font-mono text-xs leading-relaxed text-secondary">
                       {cat.skills.join(" / ")}
                     </p>
                   </div>
@@ -90,23 +90,23 @@ export default function HomePage() {
 
       {/* MAGAZINE EXPERIENCE & ACHIEVEMENTS */}
       <section className="section-container section-padding border-t border-line">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-5">
             <Reveal>
-              <span className="label">Career & Recognition</span>
+              <span className="label text-accent">Career & Recognition</span>
               <h2 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-primary">
                 Professional journey & awards.
               </h2>
-              <p className="mt-6 text-base leading-relaxed text-secondary">
+              <p className="mt-6 text-base sm:text-lg leading-relaxed text-secondary">
                 Over 2 years of rigorous field experience in instrumentation, environmental laboratory testing equipment, and connected embedded systems.
               </p>
               <div className="mt-10">
                 <Link
                   href="/resume"
-                  className={cn(buttonVariants({ size: "lg" }), "group")}
+                  className={cn(buttonVariants({ size: "lg" }), "group px-8 py-6 text-base")}
                 >
                   View full resume
-                  <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               </div>
             </Reveal>
@@ -124,8 +124,8 @@ export default function HomePage() {
                       {exp.period}
                     </span>
                   </div>
-                  <p className="mt-1 text-sm text-secondary">{exp.company}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-secondary line-clamp-2">
+                  <p className="mt-1 text-sm text-secondary font-medium">{exp.company}</p>
+                  <p className="mt-4 text-sm sm:text-base leading-relaxed text-secondary line-clamp-2">
                     {exp.responsibilities[0]}
                   </p>
                 </div>
@@ -134,14 +134,14 @@ export default function HomePage() {
 
             {achievements.map((ach) => (
               <Reveal key={ach.id} delay={0.2}>
-                <div className="border-t border-line pt-8 bg-card p-6 rounded-2xl border">
+                <div className="border border-line pt-8 bg-card p-8 rounded-3xl shadow-sm">
                   <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
                     {ach.date} — {ach.event}
                   </span>
-                  <h3 className="mt-2 font-serif text-2xl text-primary">
+                  <h3 className="mt-3 font-serif text-2xl text-primary font-normal">
                     {ach.title}
                   </h3>
-                  <p className="mt-2 text-sm text-secondary">
+                  <p className="mt-3 text-sm sm:text-base text-secondary leading-relaxed">
                     {ach.description}
                   </p>
                 </div>
@@ -152,20 +152,20 @@ export default function HomePage() {
       </section>
 
       {/* LARGE PREMIUM CONTACT CTA */}
-      <section className="border-t border-line bg-surface/60 py-28 lg:py-36 text-center">
+      <section className="border-t border-line bg-surface/60 py-32 lg:py-40 text-center">
         <div className="section-container max-w-4xl mx-auto">
           <Reveal>
-            <span className="label">Ready to collaborate</span>
+            <span className="label text-accent">Ready to collaborate</span>
             <h2 className="mt-4 font-serif text-4xl sm:text-6xl lg:text-7xl tracking-tight text-primary leading-[1.05]">
               Let&apos;s build connected engineering solutions.
             </h2>
             <p className="mt-6 text-base sm:text-lg text-secondary max-w-2xl mx-auto leading-relaxed">
               Available for engineering consulting, IoT system development, and collaborative projects.
             </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-6">
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-6">
               <Link
                 href="/contact"
-                className={cn(buttonVariants({ size: "lg" }), "group text-base px-8 py-6")}
+                className={cn(buttonVariants({ size: "lg" }), "group text-base px-10 py-7")}
               >
                 Get in touch
                 <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -174,7 +174,7 @@ export default function HomePage() {
                 href={profile.cvFile}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={cn(buttonVariants({ variant: "outline", size: "lg" }), "text-base px-8 py-6")}
+                className={cn(buttonVariants({ variant: "outline", size: "lg" }), "text-base px-10 py-7")}
               >
                 Download CV
               </a>

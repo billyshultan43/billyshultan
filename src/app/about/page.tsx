@@ -42,20 +42,20 @@ export default function AboutPage() {
       />
 
       <section className="section-container section-padding pt-2">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-8 items-start">
-          <div className="lg:col-span-4 lg:col-start-9 lg:row-start-1">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-12 items-start">
+          <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1">
             <Reveal>
               <div className="relative">
                 <span
                   aria-hidden="true"
-                  className="absolute -left-3 -top-3 h-full w-full border border-line-strong rounded-2xl"
+                  className="absolute -left-4 -top-4 h-full w-full border border-line-strong rounded-3xl"
                 />
-                <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-line bg-card shadow-lg">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-3xl border border-line bg-card shadow-2xl">
                   <Image
                     src={profile.profileImage}
                     alt={profile.name}
                     fill
-                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover object-top"
                   />
                 </div>
@@ -65,16 +65,16 @@ export default function AboutPage() {
 
           <div className="lg:col-span-7 lg:col-start-1 lg:row-start-1 space-y-8">
             <Reveal>
-              <p className="font-serif text-2xl leading-relaxed text-primary lg:text-3xl">
+              <p className="font-serif text-2xl sm:text-3xl leading-relaxed text-primary">
                 {profile.heroSummary}
               </p>
             </Reveal>
-            <Reveal delay={0.08}>
-              <p className="text-base leading-relaxed text-secondary">
+            <Reveal delay={0.06}>
+              <p className="text-base sm:text-lg leading-relaxed text-secondary">
                 {profile.summary}
               </p>
             </Reveal>
-            <Reveal delay={0.14}>
+            <Reveal delay={0.12}>
               <p className="text-base leading-relaxed text-secondary">
                 My work centers on Electrical Engineering, the Internet of
                 Things, Embedded Systems, AI Integration, Software Development,
@@ -82,7 +82,7 @@ export default function AboutPage() {
                 environmental and industrial monitoring applications.
               </p>
             </Reveal>
-            <Reveal delay={0.18}>
+            <Reveal delay={0.16}>
               <p className="text-base leading-relaxed text-secondary">
                 Committed to supporting operational and engineering system
                 development across the energy, environmental, and manufacturing
@@ -90,12 +90,12 @@ export default function AboutPage() {
                 modern software and connectivity.
               </p>
             </Reveal>
-            <Reveal delay={0.22}>
-              <div className="flex flex-wrap gap-x-6 gap-y-3 border-t border-line pt-7">
+            <Reveal delay={0.2}>
+              <div className="flex flex-wrap gap-x-4 gap-y-3 border-t border-line pt-8">
                 {profile.roles.map((role) => (
                   <span
                     key={role}
-                    className="rounded-md bg-surface px-3 py-1.5 font-mono text-xs text-secondary"
+                    className="rounded-lg bg-surface px-3.5 py-2 font-mono text-xs text-secondary border border-line/60"
                   >
                     {role}
                   </span>
@@ -106,26 +106,26 @@ export default function AboutPage() {
         </div>
 
         {/* BENTO INTERESTS GRID */}
-        <div className="mt-32">
+        <div className="mt-36">
           <Reveal>
-            <span className="label">Focus Areas</span>
-            <h2 className="mt-3 font-serif text-3xl tracking-tight text-primary sm:text-4xl">
+            <span className="label text-accent">Focus Areas</span>
+            <h2 className="mt-3 font-serif text-3xl sm:text-4xl tracking-tight text-primary">
               Technical interests
             </h2>
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
             {interests.map((item, i) => (
               <Reveal key={item.title} delay={i * 0.06}>
-                <div className="flex flex-col justify-between rounded-2xl border border-line bg-card p-8 h-full transition-all duration-300 hover:border-line-strong hover:shadow-lg">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface border border-line text-accent mb-6">
-                    <item.icon size={22} strokeWidth={1.5} />
+                <div className="flex flex-col justify-between rounded-3xl border border-line bg-card p-10 h-full transition-all duration-300 hover:border-line-strong hover:shadow-xl">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-surface border border-line text-accent mb-8 shadow-sm">
+                    <item.icon size={24} strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h3 className="font-serif text-xl text-primary font-medium">
+                    <h3 className="font-serif text-2xl text-primary font-normal">
                       {item.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-secondary">
+                    <p className="mt-4 text-base leading-relaxed text-secondary">
                       {item.text}
                     </p>
                   </div>
@@ -136,27 +136,27 @@ export default function AboutPage() {
         </div>
 
         {/* SKILL DOMAINS BENTO */}
-        <div className="mt-32">
+        <div className="mt-36">
           <Reveal>
-            <span className="label">Taxonomy</span>
-            <h2 className="mt-3 font-serif text-3xl tracking-tight text-primary sm:text-4xl">
+            <span className="label text-accent">Taxonomy</span>
+            <h2 className="mt-3 font-serif text-3xl sm:text-4xl tracking-tight text-primary">
               Skill domains
             </h2>
           </Reveal>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {skills.map((cat, i) => (
               <Reveal key={cat.name} delay={i * 0.05}>
-                <div className="rounded-2xl border border-line bg-card p-8 h-full flex flex-col justify-between">
+                <div className="rounded-3xl border border-line bg-card p-10 h-full flex flex-col justify-between shadow-sm">
                   <div>
-                    <h3 className="text-base font-medium text-primary mb-4">
+                    <h3 className="font-serif text-2xl font-normal text-primary mb-4">
                       {cat.name}
                     </h3>
                     <p className="font-mono text-xs leading-loose text-secondary">
                       {cat.skills.join(" / ")}
                     </p>
                   </div>
-                  <div className="mt-6 pt-4 border-t border-line/60 font-mono text-[11px] text-muted">
+                  <div className="mt-8 pt-6 border-t border-line/60 font-mono text-xs text-accent">
                     Domain 0{i + 1}
                   </div>
                 </div>

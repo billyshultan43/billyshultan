@@ -43,13 +43,18 @@ export function Navbar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-background">
-      <nav className="mx-auto flex h-[72px] w-full max-w-[1920px] items-center justify-between px-6 sm:px-10 xl:px-[72px]">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-background/90 backdrop-blur-md">
+      <nav className="mx-auto flex h-20 w-full max-w-[1920px] items-center justify-between px-6 sm:px-10 xl:px-[72px]">
         <Link
           href="/"
-          className="text-[13px] font-normal tracking-[0.08em] text-primary"
+          className="group flex items-center gap-2 font-serif text-lg tracking-tight text-primary"
         >
-          Billy Shultan
+          <span className="font-sans text-xs uppercase tracking-[0.25em] text-accent">
+            BS
+          </span>
+          <span className="font-serif text-base font-normal">
+            Billy Shultan
+          </span>
         </Link>
 
         <ul className="hidden items-center gap-12 lg:flex">
@@ -59,9 +64,9 @@ export function Navbar() {
                 href={link.href}
                 aria-current={isActive(link.href) ? "page" : undefined}
                 className={cn(
-                  "link-underline text-[13px] font-normal tracking-[0.08em] transition-colors duration-300",
+                  "link-underline text-[13px] font-normal tracking-[0.1em] transition-colors duration-300",
                   isActive(link.href)
-                    ? "text-primary"
+                    ? "text-primary font-medium"
                     : "text-secondary hover:text-primary"
                 )}
               >
@@ -76,7 +81,7 @@ export function Navbar() {
             type="button"
             onClick={toggle}
             aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
-            className="inline-flex h-6 w-6 items-center justify-center text-secondary transition-transform duration-300 hover:scale-110 hover:text-primary"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-line bg-surface text-secondary transition-all duration-300 hover:scale-105 hover:text-primary hover:border-line-strong"
           >
             {dark ? <Sun size={15} /> : <Moon size={15} />}
           </button>
@@ -85,7 +90,7 @@ export function Navbar() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-9 w-9 items-center justify-center text-primary lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface text-primary lg:hidden"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -93,15 +98,15 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-line bg-background lg:hidden">
-          <ul className="flex flex-col px-6 py-4 sm:px-10">
+        <div className="border-t border-line bg-background lg:hidden shadow-2xl">
+          <ul className="flex flex-col px-6 py-8 sm:px-10 space-y-4">
             {navLinks.map((link) => (
-              <li key={link.href} className="border-b border-line last:border-b-0">
+              <li key={link.href} className="border-b border-line/60 pb-4 last:border-b-0">
                 <Link
                   href={link.href}
                   className={cn(
-                    "block py-5 font-serif text-3xl font-normal transition-colors duration-300",
-                    isActive(link.href) ? "text-primary" : "text-secondary"
+                    "block font-serif text-3xl font-normal transition-colors duration-300",
+                    isActive(link.href) ? "text-primary text-accent" : "text-secondary"
                   )}
                 >
                   {link.label}
