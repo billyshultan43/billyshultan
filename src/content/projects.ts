@@ -258,56 +258,6 @@ Smartphone Dashboard`,
       { label: "Final Thesis Poster", file: "/assets/images/projects/vehicle-emission/Poster-Tugas-Akhir-Billy.pdf" },
     ],
   },
-  {
-    slug: "ai-smart-bedroom-monitoring",
-    title: "AI Smart Bedroom Monitoring System",
-    year: "2024-2025",
-    category: "IoT / AI / Smart Home",
-    role: "IoT & Embedded Developer",
-    summary:
-      "An intelligent IoT and AI-integrated bedroom monitoring system that tracks environmental quality, temperature, and lighting while automating control routines for enhanced living comfort.",
-    overview:
-      "The AI Smart Bedroom Monitoring System is a smart home automation and monitoring prototype developed to track indoor air parameters, temperature, humidity, and ambient light. It integrates an ESP32 microcontroller, environment sensors, relay-controlled actuators, and wireless cloud communication to provide remote monitoring and automated adjustments.",
-    problem:
-      "Standard bedrooms lack automated environment monitoring and intelligent control, making it difficult to maintain optimal air quality and comfort without manual intervention.",
-    solution:
-      "A smart monitoring node was constructed using an ESP32 microcontroller, DHT22 sensor, MQ-135 gas sensor, and relay modules. Sensor data is processed in real time and synced with the cloud for remote smartphone monitoring and automated appliance activation.",
-    features: [
-      "Real-time temperature and humidity tracking",
-      "Air quality (MQ-135) monitoring",
-      "AI-assisted environmental analysis",
-      "Automated relay control for appliances",
-      "Wi-Fi cloud connectivity",
-      "Mobile dashboard visualization",
-    ],
-    technologies: [
-      "Internet of Things (IoT)",
-      "Embedded Systems",
-      "ESP32",
-      "AI Integration",
-      "Sensor Integration",
-      "Wireless Communication",
-    ],
-    hardware: [
-      { name: "ESP32 NodeMCU", description: "Main Controller & Wi-Fi Module" },
-      { name: "DHT22", description: "Temperature & Humidity Sensor" },
-      { name: "MQ-135", description: "Air Quality / Gas Sensor" },
-      { name: "Relay Module 4-Channel", description: "Appliance Switching" },
-      { name: "Power Supply", description: "System Power Unit" },
-    ],
-    software: ["Arduino IDE", "ESP32 Framework", "Blynk IoT Platform"],
-    gallery: [
-      "/assets/images/projects/ambient-particulate/Thumbnail.png",
-      "/assets/images/projects/ambient-particulate/3D-Design-Tampak-Luar.png",
-    ],
-    contributions: [
-      "IoT firmware development",
-      "Sensor and relay integration",
-      "Circuit wiring and assembly",
-      "Cloud dashboard configuration",
-      "System testing and refinement",
-    ],
-  },
 ];
 
 export function getProject(slug: string): Project | undefined {
