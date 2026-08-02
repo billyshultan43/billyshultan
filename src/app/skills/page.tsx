@@ -1,6 +1,5 @@
 import { Code2, Layers, Cpu, Wrench, Sparkles, Globe, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { Hairline } from "@/components/hairline";
 import { PageIntro } from "@/components/page-intro";
 import { Reveal } from "@/components/reveal";
 import { skills } from "@/content/skills";
@@ -53,64 +52,71 @@ export default function SkillsPage() {
         </Reveal>
       </section>
 
+      {/* MINIMAL ICON GRID BENTO */}
       <section className="section-container border-t border-line py-20 lg:py-28">
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-4">
-            <Reveal>
-              <h2 className="font-serif text-3xl tracking-tight text-primary sm:text-4xl">
-                Domains of practice
-              </h2>
-              <p className="mt-6 max-w-xs text-sm leading-relaxed text-secondary">
-                The skills are not isolated; each domain is exercised in the
-                systems delivered on the projects page.
-              </p>
-            </Reveal>
-          </div>
+        <Reveal>
+          <span className="label">Practice Taxonomy</span>
+          <h2 className="mt-3 font-serif text-3xl tracking-tight text-primary sm:text-4xl">
+            Domains of practice
+          </h2>
+        </Reveal>
 
-          <div className="lg:col-span-7 lg:col-start-6">
-            {skills.map((cat, i) => {
-              const Icon = iconMap[cat.icon as keyof typeof iconMap] ?? Code2;
-              return (
-                <Reveal key={cat.name} delay={i * 0.04}>
-                  <div className="grid grid-cols-1 gap-3 border-t border-line py-9 sm:grid-cols-12 sm:gap-6">
-                    <Icon size={18} className="mt-1 text-accent sm:col-span-1" />
-                    <div className="sm:col-span-11">
-                      <h3 className="text-sm font-medium text-primary">
-                        {cat.name}
-                      </h3>
-                      <p className="mt-3 font-mono text-[13px] leading-loose text-secondary">
-                        {cat.skills.join(" / ")}
-                      </p>
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skills.map((cat, i) => {
+            const Icon = iconMap[cat.icon as keyof typeof iconMap] ?? Code2;
+            return (
+              <Reveal key={cat.name} delay={i * 0.05} className="h-full">
+                <div className="rounded-2xl border border-line bg-card p-8 h-full flex flex-col justify-between transition-all duration-300 hover:border-line-strong hover:shadow-lg">
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface border border-line text-accent">
+                        <Icon size={22} strokeWidth={1.5} />
+                      </div>
+                      <span className="font-mono text-xs text-muted">
+                        0{i + 1}
+                      </span>
+                    </div>
+                    <h3 className="font-serif text-xl text-primary font-medium">
+                      {cat.name}
+                    </h3>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {cat.skills.map((s) => (
+                        <span
+                          key={s}
+                          className="rounded-md bg-surface px-3 py-1 font-mono text-xs text-secondary border border-line/50"
+                        >
+                          {s}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                </Reveal>
-              );
-            })}
-            <Reveal delay={0.2}>
-              <Hairline />
-            </Reveal>
-          </div>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
-      <section className="border-t border-line bg-surface/50">
-        <div className="section-container section-padding">
-          <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-8">
-            <div className="lg:col-span-4">
+      {/* HOW THE STACK FITS TOGETHER */}
+      <section className="border-t border-line bg-surface/40 py-28 lg:py-36">
+        <div className="section-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="lg:col-span-5">
               <Reveal>
-                <h2 className="font-serif text-3xl tracking-tight text-primary sm:text-4xl">
-                  How the stack fits together
+                <span className="label">Architecture & Flow</span>
+                <h2 className="mt-3 font-serif text-3xl tracking-tight text-primary sm:text-4xl">
+                  How the stack fits together.
                 </h2>
               </Reveal>
             </div>
-            <div className="lg:col-span-7 lg:col-start-6">
+            <div className="lg:col-span-7 space-y-8">
               <Reveal>
-                <p className="max-w-2xl font-serif text-2xl leading-relaxed text-primary lg:text-3xl">
+                <p className="font-serif text-2xl leading-relaxed text-primary lg:text-3xl">
                   {profile.tagline}
                 </p>
               </Reveal>
               <Reveal delay={0.08}>
-                <p className="mt-8 max-w-[65ch] text-base leading-relaxed text-secondary">
+                <p className="text-base leading-relaxed text-secondary">
                   Every project connects hardware, firmware, and cloud. Sensor
                   data from microcontrollers such as the ESP32 and ESP8266 is
                   transmitted over Wi-Fi and MQTT into structured databases,
@@ -120,7 +126,7 @@ export default function SkillsPage() {
                 </p>
               </Reveal>
               <Reveal delay={0.14}>
-                <div className="mt-12 flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-4 pt-4">
                   <Link
                     href="/projects"
                     className={cn(buttonVariants({ size: "lg" }), "group")}

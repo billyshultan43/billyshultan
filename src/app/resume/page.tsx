@@ -3,7 +3,7 @@ import { BackgroundWord } from "@/components/background-word";
 import { Hairline } from "@/components/hairline";
 import { Reveal } from "@/components/reveal";
 import { experience } from "@/content/experience";
-import { education } from "@/content/education";
+import { education, organization } from "@/content/education";
 import { certificates } from "@/content/certificates";
 import { achievements } from "@/content/achievements";
 
@@ -24,7 +24,8 @@ export default function ResumePage() {
     <>
       <section className="section-container relative overflow-hidden pt-20 sm:pt-24">
         <Reveal>
-          <h1 className="max-w-4xl font-serif text-4xl leading-[1.05] tracking-tight text-primary sm:text-5xl lg:text-6xl">
+          <span className="label">Curriculum Vitae</span>
+          <h1 className="mt-3 max-w-4xl font-serif text-4xl leading-[1.05] tracking-tight text-primary sm:text-5xl lg:text-6xl">
             Experience & Credentials
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-secondary">
@@ -50,199 +51,234 @@ export default function ResumePage() {
           text="Resume"
           className="left-auto right-0 -translate-y-1/2 text-[clamp(170px,20vw,260px)]"
         />
-        <div className="relative z-10">
-        <Reveal>
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-6">
-            <h2 className="font-serif text-3xl tracking-tight text-primary lg:col-span-4 sm:text-4xl">
-              Experience
-            </h2>
-            <div className="lg:col-span-8">
+        <div className="relative z-10 space-y-28">
+          {/* EXPERIENCE MAGAZINE TIMELINE */}
+          <div>
+            <Reveal>
+              <div className="flex items-center justify-between mb-12 border-b border-line pb-6">
+                <h2 className="font-serif text-3xl tracking-tight text-primary sm:text-4xl">
+                  Experience
+                </h2>
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
+                  Chronological Record
+                </span>
+              </div>
+            </Reveal>
+
+            <div className="space-y-12">
               {experience.map((item, i) => (
-                <Reveal key={item.id} delay={i * 0.05}>
-                  <div className="border-t border-line py-10">
-                    <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                      <h3 className="font-serif text-2xl leading-tight text-primary">
-                        {item.role}
-                      </h3>
-                      {item.current && (
-                        <span className="font-mono text-[11px] text-accent">
-                          current
+                <Reveal key={item.id} delay={i * 0.06}>
+                  <div className="rounded-2xl border border-line bg-card p-8 sm:p-10 transition-all duration-300 hover:border-line-strong">
+                    <div className="flex flex-wrap items-baseline justify-between gap-4">
+                      <div>
+                        <h3 className="font-serif text-2xl sm:text-3xl leading-tight text-primary">
+                          {item.role}
+                        </h3>
+                        <p className="mt-1 text-base text-secondary font-medium">
+                          {item.company}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        {item.current && (
+                          <span className="rounded-full bg-accent/10 px-3 py-1 font-mono text-[11px] text-accent">
+                            current
+                          </span>
+                        )}
+                        <span className="font-mono text-xs text-muted">
+                          {item.period}
                         </span>
-                      )}
+                      </div>
                     </div>
-                    <p className="mt-1 text-sm text-secondary">{item.company}</p>
-                    <p className="mt-1 font-mono text-xs text-muted">
-                      <span
-                        aria-hidden="true"
-                        className="mr-2 inline-block h-2 w-2 border border-accent/60"
-                      />
-                      {item.period}
-                    </p>
-                    <ul className="mt-6 max-w-3xl space-y-3">
+
+                    <ul className="mt-8 grid gap-4 sm:grid-cols-2">
                       {item.responsibilities.map((r, idx) => (
                         <li
                           key={idx}
-                          className="flex gap-3 text-sm leading-relaxed text-secondary"
+                          className="flex gap-3 text-sm leading-relaxed text-secondary rounded-xl bg-surface/50 p-4 border border-line/60"
                         >
                           <span
                             aria-hidden="true"
-                            className="mt-1.5 h-2.5 w-2.5 shrink-0 border border-accent/60"
+                            className="mt-1.5 h-2 w-2 shrink-0 bg-accent rounded-full"
                           />
                           <span>{r}</span>
                         </li>
                       ))}
                     </ul>
+
                     {item.technologies && item.technologies.length > 0 && (
-                      <p className="mt-5 font-mono text-[11px] leading-loose text-muted">
-                        {item.technologies.join(" / ")}
-                      </p>
+                      <div className="mt-8 pt-6 border-t border-line/60 flex flex-wrap gap-2">
+                        {item.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="rounded-md bg-surface px-2.5 py-1 font-mono text-[11px] text-secondary"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     )}
                   </div>
                 </Reveal>
               ))}
-              <Reveal delay={0.15}>
-                <Hairline />
-              </Reveal>
             </div>
           </div>
-        </Reveal>
 
-        {achievements.length > 0 && (
-          <Reveal>
-            <div className="mt-20 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-6">
-              <h2 className="font-serif text-3xl tracking-tight text-primary lg:col-span-4 sm:text-4xl">
-                Achievements
-              </h2>
-              <div className="lg:col-span-8">
+          {/* LUXURY EDITORIAL ACHIEVEMENTS */}
+          {achievements.length > 0 && (
+            <div>
+              <Reveal>
+                <div className="flex items-center justify-between mb-12 border-b border-line pb-6">
+                  <h2 className="font-serif text-3xl tracking-tight text-primary sm:text-4xl">
+                    Achievements
+                  </h2>
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
+                    Recognition
+                  </span>
+                </div>
+              </Reveal>
+
+              <div className="grid grid-cols-1 gap-6">
                 {achievements.map((ach) => (
-                  <div key={ach.id} className="border-t border-line py-10">
-                    <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                      <h3 className="font-serif text-2xl leading-tight text-primary">
-                        {ach.title}
-                      </h3>
-                      <span className="font-mono text-xs text-muted">
-                        <span
-                          aria-hidden="true"
-                          className="mr-2 inline-block h-2 w-2 border border-accent/60"
-                        />
-                        {ach.date}
-                      </span>
+                  <Reveal key={ach.id}>
+                    <div className="rounded-2xl border border-line bg-card p-8 sm:p-10">
+                      <div className="flex flex-wrap items-baseline justify-between gap-4">
+                        <div>
+                          <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+                            {ach.event}
+                          </span>
+                          <h3 className="mt-2 font-serif text-3xl text-primary">
+                            {ach.title}
+                          </h3>
+                        </div>
+                        <span className="font-mono text-xs text-muted">
+                          {ach.date}
+                        </span>
+                      </div>
+                      <p className="mt-2 text-sm text-secondary">{ach.organizer}</p>
+                      <p className="mt-6 max-w-4xl text-base leading-relaxed text-secondary">
+                        {ach.description}
+                      </p>
+                      {ach.file && (
+                        <div className="mt-8 pt-6 border-t border-line/60">
+                          <a
+                            href={ach.file}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group inline-flex items-center gap-2 font-mono text-xs text-primary transition-colors hover:text-accent"
+                          >
+                            View verified certificate
+                            <ArrowUpRight
+                              size={15}
+                              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                            />
+                          </a>
+                        </div>
+                      )}
                     </div>
-                    <p className="mt-1 text-sm text-secondary">{ach.event}</p>
-                    <p className="mt-1 text-xs text-muted">{ach.organizer}</p>
-                    <p className="mt-5 max-w-3xl text-sm leading-relaxed text-secondary">
-                      {ach.description}
-                    </p>
-                    {ach.file && (
-                      <a
-                        href={ach.file}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group mt-6 inline-flex items-center gap-1.5 text-sm text-accent-deep transition-colors duration-300 hover:text-primary"
-                      >
-                        View certificate
-                        <ArrowUpRight
-                          size={14}
-                          className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                        />
-                      </a>
-                    )}
-                  </div>
+                  </Reveal>
                 ))}
-                <Hairline />
               </div>
             </div>
-          </Reveal>
-        )}
+          )}
 
-        <Reveal>
-          <div className="mt-20 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-6">
-            <h2 className="font-serif text-3xl tracking-tight text-primary lg:col-span-4 sm:text-4xl">
-              Certificates & Training
-            </h2>
-            <div className="lg:col-span-8">
+          {/* CERTIFICATES & TRAINING */}
+          <div>
+            <Reveal>
+              <div className="flex items-center justify-between mb-12 border-b border-line pb-6">
+                <h2 className="font-serif text-3xl tracking-tight text-primary sm:text-4xl">
+                  Certificates & Training
+                </h2>
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
+                  Credentials
+                </span>
+              </div>
+            </Reveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {certificates.map((cert, i) => (
-                <Reveal key={cert.id} delay={i * 0.05}>
-                  <div className="flex flex-col justify-between gap-3 border-t border-line py-10 sm:flex-row sm:items-baseline sm:gap-6">
+                <Reveal key={cert.id} delay={i * 0.05} className="h-full">
+                  <div className="rounded-2xl border border-line bg-card p-8 h-full flex flex-col justify-between">
                     <div>
+                      <div className="flex items-center justify-between gap-4 mb-4">
+                        <span className="rounded-full bg-surface px-3 py-1 font-mono text-[11px] text-accent">
+                          {cert.category}
+                        </span>
+                        <span className="font-mono text-xs text-muted">
+                          {cert.date}
+                        </span>
+                      </div>
                       <h3 className="font-serif text-xl leading-snug text-primary">
                         {cert.name}
                       </h3>
-                      <p className="mt-2 text-sm text-secondary">
-                        {cert.category} / {cert.issuer}
+                      <p className="mt-3 text-sm text-secondary">
+                        {cert.issuer}
                       </p>
                     </div>
-                    <div className="flex shrink-0 items-center justify-between gap-8 sm:flex-col sm:items-end sm:gap-2">
-                      <p className="font-mono text-xs text-muted">
-                        <span
-                          aria-hidden="true"
-                          className="mr-2 inline-block h-2 w-2 border border-accent/60"
-                        />
-                        {cert.date}
-                      </p>
-                      {cert.file && (
+                    {cert.file && (
+                      <div className="mt-8 pt-6 border-t border-line/60">
                         <a
                           href={cert.file}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={`Open ${cert.name}`}
-                          className="group inline-flex items-center gap-1 font-mono text-xs text-accent-deep transition-colors duration-300 hover:text-primary"
+                          className="group inline-flex items-center gap-2 font-mono text-xs text-primary transition-colors hover:text-accent"
                         >
-                          PDF
+                          Open Document PDF
                           <ArrowUpRight
-                            size={13}
+                            size={14}
                             className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                           />
                         </a>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 </Reveal>
               ))}
-              <Hairline />
             </div>
           </div>
-        </Reveal>
 
-        <Reveal>
-          <div className="mt-20 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-6">
-            <h2 className="font-serif text-3xl tracking-tight text-primary lg:col-span-4 sm:text-4xl">
-              Education
-            </h2>
-            <div className="lg:col-span-8">
+          {/* EDUCATION & ORGANIZATIONS */}
+          <div>
+            <Reveal>
+              <div className="flex items-center justify-between mb-12 border-b border-line pb-6">
+                <h2 className="font-serif text-3xl tracking-tight text-primary sm:text-4xl">
+                  Education & Organization
+                </h2>
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
+                  Academic Background
+                </span>
+              </div>
+            </Reveal>
+
+            <div className="space-y-8">
               {education.map((item) => (
-                <div key={item.id} className="border-t border-line py-10">
-                  <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                    <h3 className="font-serif text-2xl leading-tight text-primary">
+                <div key={item.id} className="rounded-2xl border border-line bg-card p-8 sm:p-10">
+                  <div className="flex flex-wrap items-baseline justify-between gap-4">
+                    <h3 className="font-serif text-2xl sm:text-3xl leading-tight text-primary">
                       {item.degree}
                     </h3>
-                    <p className="font-mono text-xs text-muted">
-                      <span
-                        aria-hidden="true"
-                        className="mr-2 inline-block h-2 w-2 border border-accent/60"
-                      />
+                    <span className="font-mono text-xs text-muted">
                       {item.period}
-                    </p>
+                    </span>
                   </div>
-                  <p className="mt-1 text-sm text-secondary">
+                  <p className="mt-2 text-base text-secondary font-medium">
                     {item.institution}
                   </p>
                   {item.gpa && (
                     <p className="mt-4 text-sm text-secondary">
                       GPA:{" "}
-                      <span className="font-serif text-lg italic text-primary">
+                      <span className="font-serif text-xl italic text-primary">
                         {item.gpa}
                       </span>
                     </p>
                   )}
                   {item.thesis && (
-                    <p className="mt-4 max-w-3xl text-sm leading-relaxed text-secondary">
+                    <p className="mt-4 max-w-4xl text-sm leading-relaxed text-secondary bg-surface/50 p-4 rounded-xl border border-line/60">
                       <span className="font-medium text-primary">Thesis: </span>
                       {item.thesis}
                     </p>
                   )}
                   {item.details && (
-                    <ul className="mt-6 max-w-3xl space-y-3">
+                    <ul className="mt-6 space-y-3">
                       {item.details.map((d, idx) => (
                         <li
                           key={idx}
@@ -250,7 +286,7 @@ export default function ResumePage() {
                         >
                           <span
                             aria-hidden="true"
-                            className="mt-1.5 h-2.5 w-2.5 shrink-0 border border-accent/60"
+                            className="mt-1.5 h-2 w-2 shrink-0 bg-accent rounded-full"
                           />
                           <span>{d}</span>
                         </li>
@@ -259,10 +295,38 @@ export default function ResumePage() {
                   )}
                 </div>
               ))}
-              <Hairline />
+
+              {organization.map((org) => (
+                <div key={org.id} className="rounded-2xl border border-line bg-card p-8 sm:p-10">
+                  <div className="flex flex-wrap items-baseline justify-between gap-4">
+                    <h3 className="font-serif text-2xl text-primary">
+                      {org.role}
+                    </h3>
+                    <span className="font-mono text-xs text-muted">
+                      {org.period}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-sm text-secondary font-medium">
+                    {org.organization}
+                  </p>
+                  <ul className="mt-6 space-y-3">
+                    {org.responsibilities.map((r, idx) => (
+                      <li
+                        key={idx}
+                        className="flex gap-3 text-sm leading-relaxed text-secondary"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="mt-1.5 h-2 w-2 shrink-0 bg-accent rounded-full"
+                        />
+                        <span>{r}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
-        </Reveal>
         </div>
       </section>
     </>
