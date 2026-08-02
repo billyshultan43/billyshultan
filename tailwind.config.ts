@@ -20,8 +20,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)", "Cormorant Garamond", "Georgia", "serif"],
-        display: ["var(--font-serif)", "Cormorant Garamond", "Georgia", "serif"],
+        serif: ["var(--font-serif)", "Playfair Display", "Georgia", "serif"],
+        display: ["var(--font-serif)", "Playfair Display", "Georgia", "serif"],
         mono: [
           "var(--font-mono)",
           "ui-monospace",

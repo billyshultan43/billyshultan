@@ -27,22 +27,25 @@ export function Navbar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+    <header className="fixed inset-x-0 top-4 z-50 px-4 sm:top-5 sm:px-6">
       <nav
         className={cn(
-          "glass mx-auto flex h-16 max-w-[1330px] items-center justify-between rounded-full pl-5 pr-4 transition-all duration-500 sm:pl-7 sm:pr-5",
+          "glass mx-auto flex h-16 max-w-[1330px] items-center justify-between rounded-full pl-6 pr-3 transition-all duration-500 sm:pl-8 sm:pr-4",
           scrolled && !open && "shadow-lift"
         )}
       >
         <Link
           href="/"
-          className="group flex items-center gap-2 font-serif text-[22px] font-semibold tracking-tight text-primary"
+          className="group flex items-center gap-2.5 font-serif text-[21px] font-semibold tracking-tight text-primary"
         >
-          <span className="eyebrow-dot" aria-hidden="true" />
-          BS.
+          <span
+            aria-hidden="true"
+            className="inline-block h-2.5 w-2.5 rounded-full bg-accent/90 transition-transform duration-300 group-hover:scale-125"
+          />
+          Billy S.
         </Link>
 
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden items-center gap-0.5 lg:flex">
           {navLinks.map((link) => {
             const active = isActive(link.href);
             return (
@@ -75,7 +78,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/contact"
-            className="group hidden items-center gap-1.5 rounded-full bg-primary px-6 py-2.5 text-[13px] font-medium text-background transition-all duration-300 hover:bg-accent hover:shadow-glow sm:inline-flex"
+            className="group hidden items-center gap-1.5 rounded-full bg-primary px-6 py-2.5 text-[13px] font-medium text-background transition-all duration-300 hover:bg-accent hover:shadow-glow active:translate-y-[1px] sm:inline-flex"
           >
             Let&apos;s Talk
             <ArrowUpRight size={13} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

@@ -27,7 +27,7 @@ export function SectionHeading({
               {index}
             </span>
           )}
-          <h2 className="mt-3 font-serif text-4xl font-normal leading-[1.08] tracking-tight text-primary sm:text-5xl">
+          <h2 className="mt-3 font-serif text-4xl font-medium leading-[1.08] tracking-tight text-primary sm:text-5xl">
             {title}
           </h2>
         </div>

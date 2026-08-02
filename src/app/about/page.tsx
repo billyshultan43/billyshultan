@@ -113,24 +113,27 @@ export default function AboutPage() {
         {/* BENTO INTERESTS GRID */}
         <div className="mt-32">
           <SectionHeading index="01" title="Technical interests" />
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {interests.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.05} className="h-full">
-                <div className="card-base card-hover group flex h-full flex-col justify-between p-9">
-                  <div>
-                    <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-surface text-accent transition-colors duration-300 group-hover:border-accent/40 group-hover:bg-accent/10">
-                      <item.icon size={24} strokeWidth={1.5} />
-                    </span>
-                    <h3 className="mt-8 font-serif text-2xl text-primary">
-                      {item.title}
-                    </h3>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
+            {interests.map((item, i) => {
+              const spans = ["md:col-span-7", "md:col-span-5", "md:col-span-5", "md:col-span-7"];
+              return (
+                <Reveal key={item.title} delay={i * 0.05} className={`${spans[i]} h-full`}>
+                  <div className="card-base card-hover group flex h-full flex-col justify-between p-9">
+                    <div>
+                      <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-surface text-accent transition-colors duration-300 group-hover:border-accent/40 group-hover:bg-accent/10">
+                        <item.icon size={24} strokeWidth={1.5} />
+                      </span>
+                      <h3 className="mt-8 font-serif text-2xl text-primary">
+                        {item.title}
+                      </h3>
+                    </div>
+                    <p className="mt-5 max-w-lg text-base font-light leading-[1.75] text-secondary">
+                      {item.text}
+                    </p>
                   </div>
-                  <p className="mt-5 text-base font-light leading-[1.75] text-secondary">
-                    {item.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
 

@@ -100,7 +100,7 @@ export default function SkillsPage() {
                       </span>
                     </div>
                     <h3
-                      className={`mt-8 font-serif text-2xl ${
+                      className={`mt-8 font-serif text-2xl font-medium ${
                         featured ? "text-background" : "text-primary"
                       }`}
                     >

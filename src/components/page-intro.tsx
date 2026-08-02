@@ -17,7 +17,7 @@ export function PageIntro({
     <section className={cn("section-container pb-14 pt-8 sm:pb-16 sm:pt-12", className)}>
       <Reveal>
         {meta && <p className="label mb-7 text-accent">{meta}</p>}
-        <h1 className="max-w-5xl font-serif text-5xl font-normal leading-[1.02] tracking-tight text-primary sm:text-6xl lg:text-7xl">
+        <h1 className="max-w-5xl font-serif text-5xl font-medium leading-[1.02] tracking-tight text-primary sm:text-6xl lg:text-7xl">
           {title}
         </h1>
         {description && (

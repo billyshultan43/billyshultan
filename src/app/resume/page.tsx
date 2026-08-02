@@ -194,7 +194,7 @@ export default function ResumePage() {
                         }`}
                       />
                       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-                        <h3 className="font-serif text-3xl tracking-tight text-primary sm:text-4xl">
+                        <h3 className="font-serif text-3xl font-medium tracking-tight text-primary sm:text-4xl">
                           {item.role}
                         </h3>
                         <div className="flex items-center gap-4">
@@ -274,9 +274,9 @@ export default function ResumePage() {
                           <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
                             {ach.event}
                           </span>
-                          <h3 className="mt-3 font-serif text-3xl text-primary">
-                            {ach.title}
-                          </h3>
+                      <h3 className="mt-3 font-serif text-3xl font-medium text-primary">
+                        {ach.title}
+                      </h3>
                           <p className="mt-2 text-sm font-medium text-secondary">
                             {ach.organizer}
                           </p>
@@ -345,7 +345,7 @@ export default function ResumePage() {
                           {cert.date}
                         </span>
                       </div>
-                      <h3 className="mt-6 font-serif text-2xl leading-snug text-primary">
+                      <h3 className="mt-6 font-serif text-2xl font-medium leading-snug text-primary">
                         {cert.name}
                       </h3>
                       <p className="mt-3 text-sm font-medium text-secondary">
@@ -389,10 +389,10 @@ export default function ResumePage() {
               {education.map((item) => (
                 <Reveal key={item.id}>
                   <div className="card-base card-hover p-8 sm:p-10">
-                    <div className="flex flex-wrap items-baseline justify-between gap-4">
-                      <h3 className="font-serif text-2xl leading-tight tracking-tight text-primary sm:text-3xl">
-                        {item.degree}
-                      </h3>
+                      <div className="flex flex-wrap items-baseline justify-between gap-4">
+                        <h3 className="font-serif text-2xl font-medium leading-tight tracking-tight text-primary sm:text-3xl">
+                          {item.degree}
+                        </h3>
                       <span className="font-mono text-xs text-secondary">
                         {item.period}
                       </span>

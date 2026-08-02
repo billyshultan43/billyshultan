@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { site } from "@/content/site";
 
-const serif = Cormorant_Garamond({
+const serif = Playfair_Display({
   subsets: ["latin"],
   style: ["normal", "italic"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-serif",
   display: "swap",
 });
@@ -61,8 +61,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F4F6F4" },
-    { media: "(prefers-color-scheme: dark)", color: "#121412" },
+    { media: "(prefers-color-scheme: light)", color: "#F3F4F7" },
+    { media: "(prefers-color-scheme: dark)", color: "#0F0F12" },
   ],
   width: "device-width",
   initialScale: 1,

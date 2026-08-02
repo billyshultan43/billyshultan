@@ -114,7 +114,7 @@ export default async function ProjectDetailPage({
               {project.year}
             </span>
           </div>
-          <h1 className="mt-6 max-w-5xl font-serif text-4xl font-normal leading-[1.04] tracking-tight text-primary sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 max-w-5xl font-serif text-4xl font-medium leading-[1.04] tracking-tight text-primary sm:text-5xl lg:text-6xl">
             {project.title}
           </h1>
           <p className="mt-7 max-w-3xl text-lg font-light leading-[1.75] text-secondary sm:text-xl">
