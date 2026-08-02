@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, Download } from "lucide-react";
 import { getProject, projects } from "@/content/projects";
 import { Reveal } from "@/components/reveal";
 import { Gallery } from "@/components/gallery";
+import { IotTelemetryWidget } from "@/components/iot-telemetry-widget";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -119,6 +120,10 @@ export default async function ProjectDetailPage({
       <div className="section-container grid gap-14 py-20 lg:grid-cols-12 lg:gap-8">
         <div className="space-y-14 lg:col-span-8">
           <Section title="Overview">{project.overview}</Section>
+
+          {project.slug === "vehicle-emission-fuzzy-mamdani" && (
+            <IotTelemetryWidget />
+          )}
 
           {project.problem && <Section title="Problem">{project.problem}</Section>}
           {project.solution && <Section title="Solution">{project.solution}</Section>}
